@@ -1,0 +1,26 @@
+###############################################################################
+#        Copyright (C) 2020        Sebastian Francisco Colomar Bauza          #
+#        Copyright (C) 2020        Alejandro Colomar Andrés                   #
+#        SPDX-License-Identifier:  GPL-2.0-only                               #
+###############################################################################
+
+version: "3.8"
+
+services:
+
+    web:
+        image: nginx
+        ports:
+        -   80:80
+        volumes:
+        -   ./Web/:/usr/share/nginx/html/:ro
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+
+################################################################################
+#sudo docker swarm init                                                        ;
+#sudo docker stack deploy -c docker-compose.yaml web                           ;
+#sudo docker stack rm mystack                                                  ;
+################################################################################
