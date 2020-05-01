@@ -7,8 +7,6 @@ FROM                                                                          \
     alpine/git:1.0.12 AS git
 RUN                                                                           \
     git clone                                                                 \
-        --single-branch                                                       \
-        --branch master                                                       \
         https://github.com/alejandro-colomar/https.alejandro-colomar.com.git  \
         /repo
 ###############################################################################
