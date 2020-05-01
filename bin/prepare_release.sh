@@ -5,10 +5,10 @@
 ################################################################################
 ##
 ## Prepare the repo for release
-##==============================
+## ============================
 ##
-## - Remove the files that shouldn't go into the release
-## - Update version numbers
+##  - Remove the files that shouldn't go into the release
+##  - Update version numbers
 ##
 ################################################################################
 
