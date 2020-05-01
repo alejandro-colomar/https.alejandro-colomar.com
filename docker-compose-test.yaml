@@ -1,0 +1,27 @@
+###############################################################################
+#        Copyright (C) 2020        Sebastian Francisco Colomar Bauza          #
+#        Copyright (C) 2020        Alejandro Colomar Andrés                   #
+#        SPDX-License-Identifier:  GPL-2.0-only                               #
+###############################################################################
+
+version: "3.8"
+
+services:
+
+    nginx:
+        deploy:
+            placement:
+                constraints:
+                -   node.role == manager
+            replicas: 1
+            restart_policy:
+                condition: any
+        image: secobau/https.alejandro-colomar.com:latest
+        ports:
+        -   80:80
+
+################################################################################
+#sudo docker swarm init                                                        ;
+#sudo docker stack deploy -c docker-compose-test.yaml web-test                 ;
+#sudo docker stack rm web-test                                                 ;
+################################################################################
