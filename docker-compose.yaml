@@ -22,6 +22,6 @@ services:
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c docker-compose-test.yaml web-test                 ;
-#sudo docker stack rm web-test                                                 ;
+#sudo docker stack deploy -c docker-compose.yaml web                           ;
+#sudo docker stack rm web                                                      ;
 ################################################################################
