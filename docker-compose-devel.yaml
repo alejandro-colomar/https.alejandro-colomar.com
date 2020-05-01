@@ -8,20 +8,19 @@ version: "3.8"
 
 services:
 
-    nginx:
+    web:
         deploy:
-            placement:
-                constraints:
-                -   node.role == manager
             replicas: 1
             restart_policy:
                 condition: any
-        image: secobau/https.alejandro-colomar.com:latest
+        image: nginx
         ports:
         -   80:80
+        volumes:
+        -   ./Web/:/usr/share/nginx/html/:ro
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c docker-compose-test.yaml web-test                 ;
-#sudo docker stack rm web-test                                                 ;
+#sudo docker stack deploy -c docker-compose-devel.yaml web-devel               ;
+#sudo docker stack rm web-devel                                                ;
 ################################################################################
