@@ -9,8 +9,7 @@ FROM									\
 
 RUN									\
 	git clone							\
-	    --single-branch						\
-	    --branch master						\
+	    --single-branch --branch master				\
 	    https://github.com/alejandro-colomar/https.alejandro-colomar.com.git \
 	    /repo
 
