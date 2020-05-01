@@ -6,15 +6,17 @@
 
 FROM									\
 	alpine/git:1.0.12 AS git
+
 RUN									\
 	git clone							\
 	    https://github.com/alejandro-colomar/https.alejandro-colomar.com.git \
 	    /repo
 
-
 ###############################################################################
+
 FROM									\
 	nginx:1.18.0-alpine AS nginx
+
 RUN									\
 	for package in $(						\
 		for x in 0 1 2 3 4 5 6 7 8 9;				\
@@ -31,8 +33,8 @@ RUN									\
 	do								\
 		apk del $package;					\
 	done
+
 COPY									\
 	--from=git /repo/Web/ /usr/share/nginx/html
-
 
 ###############################################################################
