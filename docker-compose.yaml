@@ -16,7 +16,7 @@ services:
             replicas: 1
             restart_policy:
                 condition: any
-        image: alejandrocolomar/https.alejandro-colomar.com:latest
+        image: alejandrocolomar/www.alejandro-colomar.com:latest
         ports:
         -   80:80
 

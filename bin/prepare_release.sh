@@ -28,7 +28,7 @@ update_version()
 
 	sed "/--branch master/s/master/release-${version}/"		\
 			-i ./Dockerfile
-	sed "/https.alejandro-colomar.com:latest/s/latest/v${version}/"	\
+	sed "/www.alejandro-colomar.com:latest/s/latest/v${version}/"	\
 			-i ./docker-compose.yaml
 }
 
