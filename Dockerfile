@@ -19,6 +19,7 @@ RUN									\
 FROM									\
 	nginx@sha256:676b8117782d9e8c20af8e1b19356f64acc76c981f3a65c66e33a9874877892a AS nginx
 
+## Remove any nginx module but 'nginx' itself.
 RUN									\
 	for package in $(						\
 		for x in 0 1 2 3 4 5 6 7 8 9;				\
