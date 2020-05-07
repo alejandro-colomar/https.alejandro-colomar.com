@@ -39,7 +39,8 @@ RUN									\
 		apk del $package;					\
 	done
 
-COPY									\
-	--from=git /repo/Web/ /usr/share/nginx/html
+## copy web files
+COPY	--from=git	/repo/share/html/	/usr/share/nginx/html
+COPY	--from=git	/repo/share/pictures/	/usr/share/nginx/pictures
 
 ###############################################################################

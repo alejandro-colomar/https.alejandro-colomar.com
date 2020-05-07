@@ -17,7 +17,8 @@ services:
         ports:
         -   80:80
         volumes:
-        -   ./Web/:/usr/share/nginx/html/:ro
+        -   ./share/html/:/usr/share/nginx/html/:ro
+        -   ./share/pictures/:/usr/share/nginx/pictures/:ro
 
 ################################################################################
 #sudo docker swarm init                                                        ;
