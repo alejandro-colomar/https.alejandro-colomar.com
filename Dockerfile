@@ -5,7 +5,8 @@
 ###############################################################################
 
 FROM									\
-	alpine/git@sha256:3640856b23fc294757fd1d0d8b6aaecd689e8f234df8513e7b789f04c99ac600 AS git
+	alpine/git@sha256:3640856b23fc294757fd1d0d8b6aaecd689e8f234df8513e7b789f04c99ac600 \
+			AS git
 
 RUN									\
 	git clone							\
@@ -17,7 +18,8 @@ RUN									\
 ###############################################################################
 
 FROM									\
-	nginx@sha256:676b8117782d9e8c20af8e1b19356f64acc76c981f3a65c66e33a9874877892a AS nginx
+	nginx@sha256:676b8117782d9e8c20af8e1b19356f64acc76c981f3a65c66e33a9874877892a \
+			AS nginx
 
 ## Remove any nginx module but 'nginx' itself.
 RUN									\
