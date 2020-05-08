@@ -39,6 +39,9 @@ RUN									\
 		apk del $package;					\
 	done
 
+## configure nginx server
+COPY	--from=git	/repo/etc/nginx/nginx.conf	/etc/nginx/nginx.conf
+
 ## copy web files
 COPY	--from=git	/repo/share/html/	/usr/share/nginx/html
 COPY	--from=git	/repo/share/pictures/	/usr/share/nginx/pictures
