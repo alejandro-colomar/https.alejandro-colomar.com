@@ -41,6 +41,7 @@ RUN									\
 
 ## configure nginx server
 COPY	--from=git	/repo/etc/nginx/nginx.conf	/etc/nginx/nginx.conf
+RUN	rm		/etc/nginx/conf.d/default.conf
 COPY	--from=git	/repo/etc/nginx/conf.d/		/etc/nginx/conf.d
 
 ## copy web files
