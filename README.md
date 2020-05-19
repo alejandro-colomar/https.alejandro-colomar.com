@@ -32,7 +32,7 @@ RecordSetName3=service-3                                   		;
 RecordSetName3=ca                                   			;
 repository=myproject							;
 repository=www.alejandro-colomar.com					;
-stack=$repository                                                     	;
+stack=web                                                     		;
 username=johndoe							;
 username=secobau							;
 #########################################################################
