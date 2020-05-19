@@ -28,8 +28,12 @@ update_version()
 
 	sed "/--branch master/s/master/v${version}/"			\
 			-i ./Dockerfile
-	sed "/www.alejandro-colomar.com:latest/s/latest/v${version}/"	\
-			-i ./docker-compose.yaml
+	sed "/www.alejandro-colomar.com:v0.4/s/v0.4/v${version}/"	\
+			-i ./Swarm/release/web.yaml
+	sed "/www.alejandro-colomar.com:v0.4/s/v0.4/v${version}/"	\
+			-i ./Swarm/release/web-BLUE.yaml
+	sed "/v0.4/s/v0.4/v${version}/g"				\
+			-i ./prepare_release.sh
 }
 
 
