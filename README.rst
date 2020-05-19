@@ -20,7 +20,7 @@ You may also configure the variables so as to customize the setup:
 	deploy=release							;
 	domain=raw.githubusercontent.com				;
 	HostedZoneName=example.com					;
-	HostedZoneName=alejandro-colomar.es				;
+	HostedZoneName=alejandro-colomar.com				;
 	## Identifier is the ID of the certificate in case you are using HTTPS	##
 	Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c			;
 	KeyName=mySSHpublicKey						;
