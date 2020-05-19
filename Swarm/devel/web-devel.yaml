@@ -24,6 +24,6 @@ services:
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c docker-compose-devel.yaml web-devel               ;
+#sudo docker stack deploy -c Swarm/devel/web-devel.yaml web-devel              ;
 #sudo docker stack rm web-devel                                                ;
 ################################################################################
