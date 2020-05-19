@@ -16,12 +16,6 @@
 ################################################################################
 ##	functions							      ##
 ################################################################################
-remove_files()
-{
-
-	rm	docker-compose-devel.yaml
-}
-
 update_version()
 {
 	local	version=$1
@@ -44,7 +38,6 @@ main()
 {
 	local	version=$1
 
-	remove_files
 	update_version	${version}
 }
 
