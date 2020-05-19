@@ -17,10 +17,10 @@ services:
         ports:
         -   80:80
         volumes:
-        -   ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-        -   ./etc/nginx/conf.d/:/etc/nginx/conf.d/:ro
-        -   ./share/html/:/usr/share/nginx/html/:ro
-        -   ./share/pictures/:/usr/share/nginx/pictures/:ro
+        -   ../../etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+        -   ../../etc/nginx/conf.d/:/etc/nginx/conf.d/:ro
+        -   ../../share/html/:/usr/share/nginx/html/:ro
+        -   ../../share/pictures/:/usr/share/nginx/pictures/:ro
 
 ################################################################################
 #sudo docker swarm init                                                        ;
