@@ -27,7 +27,7 @@ update_version()
 	sed "/www.alejandro-colomar.com:v0.4/s/v0.4/v${version}/"	\
 			-i ./Swarm/release/web-BLUE.yaml
 	sed "/v0.4/s/v0.4/v${version}/g"				\
-			-i ./prepare_release.sh
+			-i ./bin/prepare_release.sh
 }
 
 
