@@ -12,11 +12,11 @@ services:
         deploy:
             placement:
                 constraints:
-                -   node.role == manager
-            replicas: 1
+                -   node.role == worker
+            replicas: 3
             restart_policy:
                 condition: any
-        image: alejandrocolomar/www.alejandro-colomar.com:latest
+        image: alejandrocolomar/www.alejandro-colomar.com:v0.4
         ports:
         -   30001:80
 
