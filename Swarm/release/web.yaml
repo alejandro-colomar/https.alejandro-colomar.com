@@ -18,7 +18,7 @@ services:
                 condition: any
         image: alejandrocolomar/www.alejandro-colomar.com:latest
         ports:
-        -   80:80
+        -   30001:80
 
 ################################################################################
 #sudo docker swarm init                                                        ;
