@@ -17,7 +17,7 @@ deploy=latest                                                   	;
 deploy=release                                                   	;
 domain=raw.githubusercontent.com					;
 HostedZoneName=example.com                                  	 	;
-HostedZoneName=alejandro-colomar.com                                   	;
+HostedZoneName=alejandro-colomar.es                                   	;
 # Identifier is the ID of the certificate in case you are using HTTPS	#
 Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c				;
 KeyName=mySSHpublicKey							;
@@ -31,7 +31,7 @@ RecordSetName2=downloads                                   		;
 RecordSetName3=service-3                                   		;
 RecordSetName3=ca                                   			;
 repository=myproject							;
-repository=www.alejandro-colomar.com					;
+repository=www.alejandro-colomar.es					;
 stack=web                                                     		;
 username=johndoe							;
 username=secobau							;

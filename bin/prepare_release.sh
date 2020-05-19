@@ -22,9 +22,9 @@ update_version()
 
 	sed "/--branch master/s/master/v${version}/"			\
 			-i ./Dockerfile
-	sed "/www.alejandro-colomar.com:v0.4/s/v0.4/v${version}/"	\
+	sed "/www.alejandro-colomar.es:v0.4/s/v0.4/v${version}/"	\
 			-i ./Swarm/release/web.yaml
-	sed "/www.alejandro-colomar.com:v0.4/s/v0.4/v${version}/"	\
+	sed "/www.alejandro-colomar.es:v0.4/s/v0.4/v${version}/"	\
 			-i ./Swarm/release/web-BLUE.yaml
 	sed "/v0.4/s/v0.4/v${version}/g"				\
 			-i ./bin/prepare_release.sh
