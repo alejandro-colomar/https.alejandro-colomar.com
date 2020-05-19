@@ -21,6 +21,7 @@ services:
         -   ../../etc/nginx/conf.d/:/etc/nginx/conf.d/:ro
         -   ../../share/html/:/usr/share/nginx/html/:ro
         -   ../../share/pictures/:/usr/share/nginx/pictures/:ro
+        -   ../../share/downloads/:/usr/share/nginx/downloads/:ro
 
 ################################################################################
 #sudo docker swarm init                                                        ;
