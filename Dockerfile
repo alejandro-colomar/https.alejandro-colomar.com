@@ -11,7 +11,7 @@ RUN									\
 	git clone							\
 	    --single-branch						\
 	    --branch master						\
-	    https://github.com/alejandro-colomar/www.alejandro-colomar.com.git \
+	    https://github.com/alejandro-colomar/www.alejandro-colomar.bit.git \
 	    /repo
 
 ###############################################################################

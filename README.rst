@@ -34,7 +34,7 @@ You may also configure the variables so as to customize the setup:
 	RecordSetName3=service-3					;
 	RecordSetName3=ca						;
 	repository=myproject						;
-	repository=www.alejandro-colomar.es				;
+	repository=www.alejandro-colomar.bit				;
 	stack=web							;
 	username=johndoe						;
 	username=secobau						;
