@@ -37,7 +37,7 @@ You may also configure the variables so as to customize the setup:
 	repository=www.alejandro-colomar.bit				;
 	stack=web							;
 	username=johndoe						;
-	username=secobau						;
+	username=alejandro-colomar					;
 	#################################################################
 	export apps							;
 	export AWS							;
