@@ -16,12 +16,12 @@ services:
             replicas: 3
             restart_policy:
                 condition: any
-        image: alejandrocolomar/www.alejandro-colomar.com:v0.4
+        image: alejandrocolomar/www.alejandro-colomar.bit:v0.4
         ports:
         -   31001:80
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c docker-compose.yaml web                           ;
+#sudo docker stack deploy -c Swarm/release/web-BLUE.yaml web                   ;
 #sudo docker stack rm web                                                      ;
 ################################################################################

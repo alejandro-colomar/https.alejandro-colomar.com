@@ -16,20 +16,19 @@
 ################################################################################
 ##	functions							      ##
 ################################################################################
-remove_files()
-{
-
-	rm	docker-compose-devel.yaml
-}
-
 update_version()
 {
+	local	old_version=0.4
 	local	version=$1
 
 	sed "/--branch master/s/master/v${version}/"			\
 			-i ./Dockerfile
-	sed "/www.alejandro-colomar.com:latest/s/latest/v${version}/"	\
-			-i ./docker-compose.yaml
+	sed "/www.alejandro-colomar.bit:v${old_version}/s/v${old_version}/v${version}/" \
+			-i ./Swarm/release/web.yaml
+	sed "/www.alejandro-colomar.bit:v${old_version}/s/v${old_version}/v${version}/" \
+			-i ./Swarm/release/web-BLUE.yaml
+	sed "/old_version=${old_version}/s/${old_version}/${version}/"	\
+			-i ./bin/prepare_release.sh
 }
 
 
@@ -40,7 +39,6 @@ main()
 {
 	local	version=$1
 
-	remove_files
 	update_version	${version}
 }
 
