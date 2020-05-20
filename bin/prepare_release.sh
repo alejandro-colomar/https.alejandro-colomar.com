@@ -18,7 +18,7 @@
 ################################################################################
 update_version()
 {
-	local	old_version=0.4
+	local	old_version="0.4"
 	local	version=$1
 
 	sed "/--branch master/s/master/v${version}/"			\
