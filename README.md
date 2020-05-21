@@ -35,7 +35,7 @@ stack=web                                                     		;
 TypeManager=t3a.nano                                                    ;
 TypeWorker=t3a.nano                                                     ;
 username=johndoe							;
-username=secobau							;
+username=alejandro-colomar						;
 #########################################################################
 export apps								;
 export AWS=secobau/docker/master/AWS					;
