@@ -22,7 +22,7 @@ update_version()
 	local	version=$1
 
 	sed "/--branch master/s/master/v${version}/"			\
-			-i ./Dockerfile
+			-i ./etc/docker/Dockerfile
 	sed "/www.alejandro-colomar.bit:v${old_version}/s/v${old_version}/v${version}/" \
 			-i ./Swarm/release/web.yaml
 	sed "/old_version=\"${old_version}\"/s/${old_version}/${version}/" \
