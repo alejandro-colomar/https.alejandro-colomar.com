@@ -43,7 +43,7 @@ RUN	rm		/etc/nginx/conf.d/default.conf
 COPY	--from=git	/repo/etc/nginx/conf.d/		/etc/nginx/conf.d
 
 ## copy web files
-COPY	--from=git	/repo/share/html/	/usr/share/nginx/html
-COPY	--from=git	/repo/share/pictures/	/usr/share/nginx/pictures
+COPY	--from=git	/repo/share/nginx/html/		/usr/share/nginx/html
+COPY	--from=git	/repo/share/nginx/pictures/	/usr/share/nginx/pictures
 
 ###############################################################################
