@@ -18,16 +18,14 @@
 ################################################################################
 update_version()
 {
-	local	old_version=0.4
+	local	old_version="0.5"
 	local	version=$1
 
 	sed "/--branch master/s/master/v${version}/"			\
-			-i ./Dockerfile
+			-i ./etc/docker/Dockerfile
 	sed "/www.alejandro-colomar.bit:v${old_version}/s/v${old_version}/v${version}/" \
 			-i ./Swarm/release/web.yaml
-	sed "/www.alejandro-colomar.bit:v${old_version}/s/v${old_version}/v${version}/" \
-			-i ./Swarm/release/web-BLUE.yaml
-	sed "/old_version=${old_version}/s/${old_version}/${version}/"	\
+	sed "/old_version=\"${old_version}\"/s/${old_version}/${version}/" \
 			-i ./bin/prepare_release.sh
 }
 

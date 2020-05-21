@@ -19,9 +19,9 @@ services:
         volumes:
         -   ../../etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
         -   ../../etc/nginx/conf.d/:/etc/nginx/conf.d/:ro
-        -   ../../share/html/:/usr/share/nginx/html/:ro
-        -   ../../share/pictures/:/usr/share/nginx/pictures/:ro
-        -   ../../share/downloads/:/usr/share/nginx/downloads/:ro
+        -   ../../share/nginx/html/:/usr/share/nginx/html/:ro
+        -   ../../share/nginx/pictures/:/usr/share/nginx/pictures/:ro
+        -   ../../share/nginx/downloads/:/usr/share/nginx/downloads/:ro
 
 ################################################################################
 #sudo docker swarm init                                                        ;
