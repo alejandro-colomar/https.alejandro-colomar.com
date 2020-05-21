@@ -1,0 +1,27 @@
+###############################################################################
+#        Copyright (C) 2020        Sebastian Francisco Colomar Bauza          #
+#        Copyright (C) 2020        Alejandro Colomar Andrés                   #
+#        SPDX-License-Identifier:  GPL-2.0-only                               #
+###############################################################################
+
+version: "3.8"
+
+services:
+
+    nginx:
+        deploy:
+            placement:
+                constraints:
+                -   node.role == worker
+            replicas: 3
+            restart_policy:
+                condition: any
+        image: alejandrocolomar/www.alejandro-colomar.bit:devel
+        ports:
+        -   31001:80
+
+################################################################################
+#sudo docker swarm init                                                        ;
+#sudo docker stack deploy -c etc/docker/swarm/release/web-blue.yaml web                   ;
+#sudo docker stack rm web                                                      ;
+################################################################################
