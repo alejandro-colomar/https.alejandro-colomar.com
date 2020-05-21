@@ -10,7 +10,7 @@ FROM	alpine/git@sha256:3640856b23fc294757fd1d0d8b6aaecd689e8f234df8513e7b789f04c
 RUN									\
 	git clone							\
 	    --single-branch						\
-	    --branch v0.5						\
+	    --branch master						\
 	    https://github.com/alejandro-colomar/www.alejandro-colomar.bit.git \
 	    /repo
 
