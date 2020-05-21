@@ -66,10 +66,10 @@ create_new_dir()
 
 run_aws_init_script()
 {
-	local	fpath=${AWS}
+	local	path=${AWS}
 	local	fname="init.sh"
 
-	curl --remote-name https://${domain}/${path}/${file}
+	curl --remote-name https://${domain}/${path}/${fname}
 	chmod +x ./${fname}
 	nohup	./${fname} &
 }
