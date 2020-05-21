@@ -23,8 +23,8 @@ You may also configure the variables so as to customize the setup:
 	Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c			;
 	KeyName=mySSHpublicKey						;
 	KeyName=proxy2aws						;
-	mode=Kubernetes							;
-	mode=Swarm							;
+	mode=kubernetes							;
+	mode=swarm							;
 	RecordSetName1=service-1					;
 	RecordSetName1=www						;
 	RecordSetName2=service-2					;
@@ -58,7 +58,7 @@ You may also configure the variables so as to customize the setup:
 	export TypeWorker						;
 	export username							;
 	#################################################################
-	path=$AWS/Shell							;
+	path=$AWS/bin							;
 	file=init.sh							;
 	date=$( date +%F_%H%M )						;
 	mkdir $date							;
