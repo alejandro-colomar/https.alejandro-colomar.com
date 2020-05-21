@@ -12,13 +12,11 @@ You may also configure the variables so as to customize the setup:
 .. code-block:: BASH
 
 	#################################################################
-	apps=" web "							;
-	AWS=secobau/docker/master/AWS					;
+	apps=" web.yaml "						;
 	debug=false							;
 	debug=true							;
 	deploy=latest							;
 	deploy=release							;
-	domain=raw.githubusercontent.com				;
 	HostedZoneName=example.com					;
 	HostedZoneName=alejandro-colomar.com				;
 	## Identifier is the ID of the certificate in case you are using HTTPS	##
@@ -35,15 +33,18 @@ You may also configure the variables so as to customize the setup:
 	RecordSetName3=ca						;
 	repository=myproject						;
 	repository=www.alejandro-colomar.bit				;
+	stack=mystack							;
 	stack=web							;
+	TypeManager=t3a.nano						;
+	TypeWorker=t3a.nano						;
 	username=johndoe						;
 	username=alejandro-colomar					;
 	#################################################################
 	export apps							;
-	export AWS							;
+	export AWS=secobau/docker/master/AWS				;
 	export debug							;
 	export deploy							;
-	export domain							;
+	export domain=raw.githubusercontent.com				;
 	export HostedZoneName						;
 	export Identifier						;
 	export KeyName							;
@@ -53,6 +54,8 @@ You may also configure the variables so as to customize the setup:
 	export RecordSetName3						;
 	export repository						;
 	export stack							;
+	export TypeManager						;
+	export TypeWorker						;
 	export username							;
 	#################################################################
 	path=$AWS							;
