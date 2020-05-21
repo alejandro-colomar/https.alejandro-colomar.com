@@ -22,6 +22,6 @@ services:
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c Swarm/release/web-BLUE.yaml web                   ;
+#sudo docker stack deploy -c etc/docker/swarm/release/web-blue.yaml web                   ;
 #sudo docker stack rm web                                                      ;
 ################################################################################

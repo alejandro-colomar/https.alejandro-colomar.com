@@ -8,23 +8,20 @@ version: "3.8"
 
 services:
 
-    web:
+    nginx:
         deploy:
-            replicas: 1
+            placement:
+                constraints:
+                -   node.role == worker
+            replicas: 3
             restart_policy:
                 condition: any
-        image: nginx@sha256:676b8117782d9e8c20af8e1b19356f64acc76c981f3a65c66e33a9874877892a
+        image: alejandrocolomar/www.alejandro-colomar.bit:v0.5
         ports:
-        -   80:80
-        volumes:
-        -   ../../etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-        -   ../../etc/nginx/conf.d/:/etc/nginx/conf.d/:ro
-        -   ../../share/nginx/html/:/usr/share/nginx/html/:ro
-        -   ../../share/nginx/pictures/:/usr/share/nginx/pictures/:ro
-        -   ../../share/nginx/downloads/:/usr/share/nginx/downloads/:ro
+        -   30001:80
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c Swarm/devel/web-devel.yaml web-devel              ;
-#sudo docker stack rm web-devel                                                ;
+#sudo docker stack deploy -c etc/docker/swarm/release/web.yaml web                        ;
+#sudo docker stack rm web                                                      ;
 ################################################################################
