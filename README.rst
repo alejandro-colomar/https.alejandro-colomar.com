@@ -58,7 +58,7 @@ You may also configure the variables so as to customize the setup:
 	export TypeWorker						;
 	export username							;
 	#################################################################
-	path=$AWS							;
+	path=$AWS/Shell							;
 	file=init.sh							;
 	date=$( date +%F_%H%M )						;
 	mkdir $date							;
