@@ -10,10 +10,12 @@
 ##	variables							      ##
 ################################################################################
 apps=" web.yaml "
+branch=master
 debug=false
 debug=true
 deploy=latest
 deploy=release
+docker_branch=master
 HostedZoneName=example.com
 HostedZoneName=alejandro-colomar.com
 ## Identifier is the ID of the certificate in case you are using HTTPS
@@ -43,6 +45,7 @@ username=alejandro-colomar
 ################################################################################
 export apps
 export AWS=secobau/docker/master/AWS
+export branch
 export debug
 export deploy
 export domain=raw.githubusercontent.com
