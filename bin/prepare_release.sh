@@ -21,6 +21,8 @@ update_version()
 	local	old_version="0.5"
 	local	version=$1
 
+	sed "/branch=master/s/master/v${version}/"			\
+			-i ./bin/deploy_aws.sh
 	sed "/--branch master/s/master/v${version}/"			\
 			-i ./etc/docker/Dockerfile
 	sed "/www.alejandro-colomar.bit:v${old_version}/s/v${old_version}/v${version}/" \

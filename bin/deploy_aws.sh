@@ -44,7 +44,7 @@ username=alejandro-colomar
 ##	export								      ##
 ################################################################################
 export apps
-export AWS=secobau/docker/master/AWS
+export AWS=secobau/docker/${docker_branch}/AWS
 export branch
 export debug
 export deploy
