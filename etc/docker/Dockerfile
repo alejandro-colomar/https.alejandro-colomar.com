@@ -4,7 +4,8 @@
 #        SPDX-License-Identifier:  GPL-2.0-only                               #
 ###############################################################################
 
-FROM	alpine/git@sha256:3640856b23fc294757fd1d0d8b6aaecd689e8f234df8513e7b789f04c99ac600 \
+##	alpine/git:latest
+FROM	alpine/git@sha256:8d2aedf3898243892d170f033603b40a55e0b0a8ab68ba9762f9c0dae40b5c8d \
 			AS git
 
 RUN									\
