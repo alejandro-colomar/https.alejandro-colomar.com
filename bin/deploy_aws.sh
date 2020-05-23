@@ -15,7 +15,7 @@ debug=false
 debug=true
 deploy=latest
 deploy=release
-docker_branch=master
+docker_branch=v1.0
 HostedZoneName=example.com
 HostedZoneName=alejandro-colomar.com
 ## Identifier is the ID of the certificate in case you are using HTTPS
@@ -44,10 +44,11 @@ username=alejandro-colomar
 ##	export								      ##
 ################################################################################
 export apps
-export AWS=secobau/docker/${docker_branch}/AWS
+export AWS=secobau/docker-aws/${docker_branch}
 export branch
 export debug
 export deploy
+export docker_branch
 export domain=raw.githubusercontent.com
 export HostedZoneName
 export Identifier
@@ -57,7 +58,10 @@ export RecordSetName1
 export RecordSetName2
 export RecordSetName3
 export repository
+export s3name=docker-aws
+export s3region=ap-south-1
 export stack
+export template=cloudformation-https.yaml
 export TypeManager
 export TypeWorker
 export username
