@@ -10,7 +10,7 @@
 ##	variables							      ##
 ################################################################################
 apps=" web.yaml "
-branch=v0.6
+branch=master
 debug=false
 debug=true
 deploy=latest
