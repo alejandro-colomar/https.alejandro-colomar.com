@@ -41,6 +41,7 @@ COPY	--from=git	/repo/etc/nginx/nginx.conf	/etc/nginx/nginx.conf
 COPY	--from=git	/repo/etc/nginx/conf.d/		/etc/nginx/conf.d
 
 ## copy web files
+COPY	--from=git	/repo/share/nginx/downloads/	/usr/share/nginx/downloads
 COPY	--from=git	/repo/share/nginx/html/		/usr/share/nginx/html
 COPY	--from=git	/repo/share/nginx/pictures/	/usr/share/nginx/pictures
 
