@@ -73,9 +73,9 @@ export username
 fpath=${AWS}/bin
 fname=init.sh
 date=$( date +%F_%H%M )
-path=/var/tmp/alejandro-colomar
-mkdir -p /${path}/${date}
-cd	/${path}/${date}
+path=/var/tmp/${repository}
+mkdir -p ${path}/${date}
+cd	${path}/${date}
 curl --remote-name https://${domain}/${fpath}/${fname}
 chmod +x ./${fname}
 nohup	./${fname} &
