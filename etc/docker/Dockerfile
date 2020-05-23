@@ -8,8 +8,7 @@
 FROM	alpine/git@sha256:8d2aedf3898243892d170f033603b40a55e0b0a8ab68ba9762f9c0dae40b5c8d \
 			AS git
 
-RUN									\
-	git clone							\
+RUN	git clone							\
 	    --single-branch						\
 	    --branch master						\
 	    https://github.com/alejandro-colomar/www.alejandro-colomar.bit.git \
@@ -21,8 +20,7 @@ FROM	nginx@sha256:676b8117782d9e8c20af8e1b19356f64acc76c981f3a65c66e33a987487789
 			AS nginx
 
 ## Remove any nginx module but 'nginx' itself.
-RUN									\
-	for package in $(						\
+RUN	for package in $(						\
 		for x in 0 1 2 3 4 5 6 7 8 9;				\
 		do							\
 			apk list					\
