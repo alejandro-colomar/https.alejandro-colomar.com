@@ -13,30 +13,21 @@ apps=" web.yaml "
 branch=master
 debug=false
 debug=true
-deploy=latest
 deploy=release
 docker_branch=v1.0
-HostedZoneName=example.com
 HostedZoneName=alejandro-colomar.com
 ## Identifier is the ID of the certificate in case you are using HTTPS
 Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c
 KeyName=mySSHpublicKey
 KeyName=proxy2aws
-mode=kubernetes
 mode=swarm
-RecordSetName1=service-1
 RecordSetName1=www
 RecordSetName2=service-2
-RecordSetName2=downloads
 RecordSetName3=service-3
-RecordSetName3=ca
-repository=myproject
 repository=www.alejandro-colomar
-stack=mystack
 stack=web
 TypeManager=t3a.nano
 TypeWorker=t3a.nano
-username=johndoe
 username=alejandro-colomar
 
 
