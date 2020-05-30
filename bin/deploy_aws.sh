@@ -13,7 +13,6 @@ apps=" web.yaml "
 branch=master
 debug=false
 debug=true
-deploy=release
 docker_branch=v1.0
 HostedZoneName=alejandro-colomar.com
 ## Identifier is the ID of the certificate in case you are using HTTPS
@@ -38,7 +37,6 @@ export apps
 export AWS=secobau/docker-aws/${docker_branch}
 export branch
 export debug
-export deploy
 export docker_branch
 export domain=raw.githubusercontent.com
 export HostedZoneName
