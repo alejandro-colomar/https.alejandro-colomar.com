@@ -13,7 +13,6 @@ apps=" web.yaml "
 branch=master
 debug=false
 debug=true
-deploy=release
 docker_branch=v1.0
 HostedZoneName=alejandro-colomar.com
 ## Identifier is the ID of the certificate in case you are using HTTPS
@@ -24,11 +23,11 @@ mode=swarm
 RecordSetName1=www
 RecordSetName2=service-2
 RecordSetName3=service-3
-repository=www.alejandro-colomar
+repository_app=www.alejandro-colomar
 stack=web
 TypeManager=t3a.nano
 TypeWorker=t3a.nano
-username=alejandro-colomar
+username_app=alejandro-colomar
 
 
 ################################################################################
@@ -38,7 +37,6 @@ export apps
 export AWS=secobau/docker-aws/${docker_branch}
 export branch
 export debug
-export deploy
 export docker_branch
 export domain=raw.githubusercontent.com
 export HostedZoneName
@@ -48,7 +46,7 @@ export mode
 export RecordSetName1
 export RecordSetName2
 export RecordSetName3
-export repository
+export repository_app
 export s3name=docker-aws
 export s3region=ap-south-1
 export stack
@@ -64,7 +62,7 @@ export username
 fpath=${AWS}/bin
 fname=init.sh
 date=$( date +%F_%H%M )
-path=$HOME/.${repository}/var
+path=$HOME/.${repository_app}/var
 mkdir --parents ${path}/${date}
 cd ${path}/${date}
 curl --remote-name https://${domain}/${fpath}/${fname}
