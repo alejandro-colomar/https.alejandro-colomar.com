@@ -23,11 +23,11 @@ mode=swarm
 RecordSetName1=www
 RecordSetName2=service-2
 RecordSetName3=service-3
-repository=www.alejandro-colomar
+repository_app=www.alejandro-colomar
 stack=web
 TypeManager=t3a.nano
 TypeWorker=t3a.nano
-username=alejandro-colomar
+username_app=alejandro-colomar
 
 
 ################################################################################
@@ -46,7 +46,7 @@ export mode
 export RecordSetName1
 export RecordSetName2
 export RecordSetName3
-export repository
+export repository_app
 export s3name=docker-aws
 export s3region=ap-south-1
 export stack
@@ -62,7 +62,7 @@ export username
 fpath=${AWS}/bin
 fname=init.sh
 date=$( date +%F_%H%M )
-path=$HOME/.${repository}/var
+path=$HOME/.${repository_app}/var
 mkdir --parents ${path}/${date}
 cd ${path}/${date}
 curl --remote-name https://${domain}/${fpath}/${fname}
