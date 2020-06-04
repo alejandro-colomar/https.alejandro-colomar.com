@@ -4,12 +4,18 @@
 ##       Copyright (C) 2020        Alejandro Colomar Andrés                  ##
 ##       SPDX-License-Identifier:  GPL-2.0-only                              ##
 ###############################################################################
+##
+## The template for this file is in:
+## https://github.com/secobau/docker-aws/share/templates/deploy_aws.template.sh
+##
+## Read it to learn how to configure it.
+##
 
 
 ################################################################################
 ##	variables							      ##
 ################################################################################
-apps=" web.yaml "
+apps=" docker-compose.yaml "
 branch=master
 debug=false
 debug=true
@@ -17,7 +23,6 @@ docker_branch=v1.0
 HostedZoneName=alejandro-colomar.com
 ## Identifier is the ID of the certificate in case you are using HTTPS
 Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c
-KeyName=mySSHpublicKey
 KeyName=proxy2aws
 mode=swarm
 RecordSetName1=www
