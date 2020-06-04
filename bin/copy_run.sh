@@ -3,21 +3,9 @@
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
-
-
-################################################################################
-##	functions							      ##
-################################################################################
-deploy_stack()
-{
-	local	swarm_name=$1
-
-	local	path="etc/docker/swarm"
-	local	fname="docker-compose.yaml"
-
-	docker stack deploy -c ${path}/${fname} ${swarm_name}
-
-}
+##
+## Copy necessary files to /run
+##
 
 
 ################################################################################
@@ -25,24 +13,23 @@ deploy_stack()
 ################################################################################
 main()
 {
-	local	swarm_name=$1
 
-	./bin/copy_run.sh
-	deploy_stack	${swarm_name}
+	cp -avr	./run/configs	/run/
+	cp -avr	./run/secrets	/run/
 }
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-params=1
+params=0
 
 if [ "$#" -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
 
-main	$1
+main
 
 
 ################################################################################
