@@ -46,6 +46,13 @@ main()
 ################################################################################
 ##	run								      ##
 ################################################################################
+params=1
+
+if [ "$#" -ne ${params} ]; then
+	echo	"Illegal number of parameters (Requires ${params})"
+	exit	64	## EX_USAGE /* command line usage error */
+fi
+
 main	$1
 
 
