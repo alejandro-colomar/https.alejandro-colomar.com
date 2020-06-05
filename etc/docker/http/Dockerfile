@@ -15,7 +15,7 @@ RUN	git clone							\
 
 ###############################################################################
 
-FROM	nginx:alpine@sha256:fa24815c8e52981d8ef01249e17d46dc5367765814d6feed154f1043aa255b8e \
+FROM	nginx:alpine@sha256:ee5a9b68e8d4a4b8b48318ff08ad5489bd1ce52b357bf48c511968a302bc347b \
 			AS nginx
 
 ## Remove any nginx module but 'nginx' itself.
