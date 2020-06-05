@@ -25,7 +25,7 @@ update_version()
 	local	version="$1"
 	local	branch="$2"
 
-	sed "/branch_app=${branch}/s/${branch}/v${version}/"		\
+	sed "/branch_app=\"${branch}\"/s/${branch}/v${version}/"	\
 		-i ./bin/deploy_aws.sh
 	sed "/--branch ${branch}/s/${branch}/v${version}/"		\
 		-i ./etc/docker/http/arm64v8.Dockerfile			\

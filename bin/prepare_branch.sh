@@ -26,7 +26,7 @@ update_version()
 	local	v_future="$1"
 	local	branch="$2"
 
-	sed "/branch_app=v${v_old}/s/v${v_old}/${branch}/"		\
+	sed "/branch_app=\"v${v_old}\"/s/v${v_old}/${branch}/"		\
 		-i ./bin/deploy_aws.sh
 	sed "/version=\"${v_old}\"/s/${v_old}/${v_future}/"		\
 		-i ./bin/prepare_release.sh
