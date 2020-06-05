@@ -9,6 +9,8 @@
 ## Prepare the repo for imminent release
 ## =====================================
 ##
+## This script should be run just before creating a release (tag).
+##
 ##  - Remove the files that shouldn't go into the release
 ##  - Update version numbers
 ##
