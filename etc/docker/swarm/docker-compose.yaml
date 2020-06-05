@@ -25,7 +25,7 @@ services:
             mode: global
         image: "alejandrocolomar/www.alejandro-colomar:dns_0.7"
         ports:
-        -   "53:53/udp"
+        -   "5353:53/udp"
         secrets:
         -
             mode: 0440
