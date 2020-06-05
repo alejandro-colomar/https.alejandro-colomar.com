@@ -35,12 +35,12 @@ RecordSetName3=service-3
 RecordSetNameKube=service-kube
 s3name=docker-aws
 s3region=ap-south-1
-template=html.yaml
+template=https.yaml
 TypeManager=t3a.nano
 TypeWorker=t3a.nano
 ########################################
 apps=" docker-compose.yaml "
-branch=master
+branch_app=master
 repository_app=www.alejandro-colomar
 username_app=alejandro-colomar
 
