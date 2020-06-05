@@ -4,7 +4,7 @@
 #        SPDX-License-Identifier:  GPL-2.0-only                               #
 ###############################################################################
 
-FROM	alpine:3.12@sha256:90baa0922fe90624b05cb5766fa5da4e337921656c2f8e2b13bd3c052a0baac1 \
+FROM	alpine:3.12.0@sha256:90baa0922fe90624b05cb5766fa5da4e337921656c2f8e2b13bd3c052a0baac1 \
 			AS dns
 
 RUN	apk add	--no-cache --upgrade bind
