@@ -31,7 +31,7 @@ update_version()
 	sed "/--branch v${v_old}/s/v${v_old}/${branch}/"		\
 		-i ./etc/docker/http/arm64v8.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
-	sed "/www.alejandro-colomar:/s/${v_old}/${v_future}-testing/"	\
+	sed "/www.alejandro-colomar:/s/${v_old}/${branch}/"		\
 		-i ./etc/docker/swarm/docker-compose.arm64v8.yaml	\
 		-i ./etc/docker/swarm/docker-compose.yaml
 	sed "/v_old=\"${v_old}\"/s/${v_old}/${v_future}/"		\
