@@ -4,8 +4,7 @@
 #        SPDX-License-Identifier:  GPL-2.0-only                               #
 ###############################################################################
 
-##	alpine/git:latest
-FROM	alpine/git@sha256:8d2aedf3898243892d170f033603b40a55e0b0a8ab68ba9762f9c0dae40b5c8d \
+FROM	alpine/git:1.0.14@sha256:8d2aedf3898243892d170f033603b40a55e0b0a8ab68ba9762f9c0dae40b5c8d \
 			AS git
 
 RUN	git clone							\
@@ -16,7 +15,7 @@ RUN	git clone							\
 
 ###############################################################################
 
-FROM	nginx@sha256:676b8117782d9e8c20af8e1b19356f64acc76c981f3a65c66e33a9874877892a \
+FROM	nginx:alpine@sha256:fa24815c8e52981d8ef01249e17d46dc5367765814d6feed154f1043aa255b8e \
 			AS nginx
 
 ## Remove any nginx module but 'nginx' itself.

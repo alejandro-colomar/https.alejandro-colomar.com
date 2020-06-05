@@ -4,68 +4,89 @@
 ##       Copyright (C) 2020        Alejandro Colomar Andrés                  ##
 ##       SPDX-License-Identifier:  GPL-2.0-only                              ##
 ###############################################################################
+##
+## The template for this file is in:
+## https://github.com/secobau/docker-aws/share/templates/deploy_aws.template.sh
+##
+## Read it to learn how to configure it.
+##
 
 
 ################################################################################
 ##	variables							      ##
 ################################################################################
-apps=" web.yaml "
-branch=master
-debug=false
+branch_docker_aws=v4.3
 debug=true
-docker_branch=v1.0
+domain=raw.githubusercontent.com
 HostedZoneName=alejandro-colomar.com
+mode=swarm
+repository_docker_aws=docker-aws
+stack=web
+username_docker_aws=secobau
+########################################
+A=${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}
+########################################
 ## Identifier is the ID of the certificate in case you are using HTTPS
 Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c
-KeyName=mySSHpublicKey
 KeyName=proxy2aws
-mode=swarm
 RecordSetName1=www
 RecordSetName2=service-2
 RecordSetName3=service-3
-repository_app=www.alejandro-colomar
-stack=web
+RecordSetNameKube=service-kube
+s3name=docker-aws
+s3region=ap-south-1
+template=html.yaml
 TypeManager=t3a.nano
 TypeWorker=t3a.nano
+########################################
+apps=" docker-compose.yaml "
+branch=master
+repository_app=www.alejandro-colomar
 username_app=alejandro-colomar
 
 
 ################################################################################
 ##	export								      ##
 ################################################################################
-export apps
-export AWS=secobau/docker-aws/${docker_branch}
-export branch
+export branch_docker_aws
 export debug
-export docker_branch
-export domain=raw.githubusercontent.com
+export domain
 export HostedZoneName
+export mode
+export repository_docker_aws
+export stack
+export username_docker_aws
+########################################
+export A
+########################################
 export Identifier
 export KeyName
-export mode
 export RecordSetName1
 export RecordSetName2
 export RecordSetName3
-export repository_app
-export s3name=docker-aws
-export s3region=ap-south-1
-export stack
-export template=cloudformation-https.yaml
+export RecordSetNameKube
+export s3name
+export s3region
+export template
 export TypeManager
 export TypeWorker
-export username
+########################################
+export apps
+export branch_app
+export repository_app
+export username_app
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-fpath=${AWS}/bin
+fpath=${A}/bin
 fname=init.sh
 date=$( date +%F_%H%M )
 path=$HOME/.${repository_app}/var
 mkdir --parents ${path}/${date}
 cd ${path}/${date}
-curl --remote-name https://${domain}/${fpath}/${fname}
+curl --output ${fname} https://${domain}/${fpath}/${fname}?$( uuidgen )
 chmod +x ./${fname}
 nohup ./${fname} &
 
