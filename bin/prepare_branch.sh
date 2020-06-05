@@ -4,10 +4,12 @@
 ##	SPDX-License-Identifier:  GPL-2.0-only				      ##
 ################################################################################
 ##
-## Prepare the repo for imminent release
-## =====================================
+## Start working on a new version
+## ==============================
 ##
-##  - Remove the files that shouldn't go into the release
+## This script should be run just after a release has been made.
+##
+##  - Retake work in the current branch
 ##  - Update version numbers
 ##
 ################################################################################
@@ -16,6 +18,25 @@
 ################################################################################
 ##	functions							      ##
 ################################################################################
+update_version()
+{
+	local	v_old="0.8"
+	local	v_future="$1"
+	local	branch="$2"
+
+	sed "/branch_app=v${v_old}/s/v${v_old}/${branch}/"		\
+		-i ./bin/deploy_aws.sh
+	sed "/version=\"${v_old}\"/s/${v_old}/${v_future}/"		\
+		-i ./bin/prepare_release.sh
+	sed "/--branch v${v_old}/s/v${v_old}/${branch}/"		\
+		-i ./etc/docker/http/arm64v8.Dockerfile			\
+		-i ./etc/docker/http/Dockerfile
+	sed "/www.alejandro-colomar:/s/${v_old}/${v_future}-testing/"	\
+		-i ./etc/docker/swarm/docker-compose.arm64v8.yaml	\
+		-i ./etc/docker/swarm/docker-compose.yaml
+	sed "/v_old=\"${v_old}\"/s/${v_old}/${v_future}/"		\
+		-i ./bin/prepare_branch.sh
+}
 
 
 ################################################################################
@@ -23,31 +44,24 @@
 ################################################################################
 main()
 {
-	local	version="0.8"
-	local	branch=$(git branch --show-current)
+	local	future_version="$1"
+	local	branch_name=$(git branch --show-current)
 
-	sed "/branch_app=${branch}/s/${branch}/v${version}/"		\
-		-i ./bin/deploy_aws.sh
-	sed "/--branch ${branch}/s/${branch}/v${version}/"		\
-		-i ./etc/docker/http/arm64v8.Dockerfile			\
-		-i ./etc/docker/http/Dockerfile
-	sed "/www.alejandro-colomar:/s/-testing//"			\
-		-i ./etc/docker/swarm/docker-compose.arm64v8.yaml	\
-		-i ./etc/docker/swarm/docker-compose.yaml
+	update_version	"${future_version}" "${branch_name}"
 }
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-params=0
+params=1
 
 if [ "$#" -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
 
-main
+main	"$1"
 
 
 ################################################################################
