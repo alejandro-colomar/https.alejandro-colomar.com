@@ -1,6 +1,8 @@
 #!/bin/sh -x
+##	./bin/prepare_branch.sh	<future_version>
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
+##	Copyright (C) 2020	  Sebastian Francisco Colomar Bauza	      ##
 ##	SPDX-License-Identifier:  GPL-2.0-only				      ##
 ################################################################################
 ##
@@ -45,7 +47,7 @@ update_version()
 main()
 {
 	local	future_version="$1"
-	local	branch_name=$(git branch --show-current)
+	local	branch_name="$(git branch --show-current)"
 
 	update_version	"${future_version}" "${branch_name}"
 }

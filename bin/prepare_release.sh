@@ -1,6 +1,8 @@
 #!/bin/sh -x
+##	./bin/prepare_release.sh
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
+##	Copyright (C) 2020	  Sebastian Francisco Colomar Bauza	      ##
 ##	SPDX-License-Identifier:  GPL-2.0-only				      ##
 ################################################################################
 ##
@@ -16,15 +18,10 @@
 ################################################################################
 ##	functions							      ##
 ################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-main()
+update_version()
 {
-	local	version="0.8"
-	local	branch=$(git branch --show-current)
+	local	version="$1"
+	local	branch="$2"
 
 	sed "/branch_app=${branch}/s/${branch}/v${version}/"		\
 		-i ./bin/deploy_aws.sh
@@ -34,6 +31,18 @@ main()
 	sed "/www.alejandro-colomar:/s/${branch}/${version}/"		\
 		-i ./etc/docker/swarm/docker-compose_arm64v8.yaml	\
 		-i ./etc/docker/swarm/docker-compose.yaml
+}
+
+
+################################################################################
+##	main								      ##
+################################################################################
+main()
+{
+	local	version="0.8"
+	local	branch="$(git branch --show-current)"
+
+	update_version	"${version}" "${branch}"
 }
 
 
