@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -x
+##	./bin/deploy_aws.sh
 ###############################################################################
 ##       Copyright (C) 2020        Sebastian Francisco Colomar Bauza         ##
 ##       Copyright (C) 2020        Alejandro Colomar Andrés                  ##
@@ -15,34 +16,34 @@
 ################################################################################
 ##	variables							      ##
 ################################################################################
-branch_docker_aws=v4.3
+branch_docker_aws="v4.3"
 debug=true
-domain=raw.githubusercontent.com
-HostedZoneName=alejandro-colomar.com
-mode=swarm
-repository_docker_aws=docker-aws
-stack=web
-username_docker_aws=secobau
+domain="raw.githubusercontent.com"
+HostedZoneName="alejandro-colomar.com"
+mode="swarm"
+repository_docker_aws="docker-aws"
+stack="web"
+username_docker_aws="secobau"
 ########################################
-A=${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}
+A="${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}"
 ########################################
 ## Identifier is the ID of the certificate in case you are using HTTPS
-Identifier=8245427e-fbfa-4f2b-b23f-97f13d6d3e7c
-KeyName=proxy2aws
-RecordSetName1=www
-RecordSetName2=service-2
-RecordSetName3=service-3
-RecordSetNameKube=service-kube
-s3name=docker-aws
-s3region=ap-south-1
-template=https.yaml
-TypeManager=t3a.nano
-TypeWorker=t3a.nano
+Identifier="8245427e-fbfa-4f2b-b23f-97f13d6d3e7c"
+KeyName="proxy2aws"
+RecordSetName1="www"
+RecordSetName2="service-2"
+RecordSetName3="service-3"
+RecordSetNameKube="service-kube"
+s3name="docker-aws"
+s3region="ap-south-1"
+template="https.yaml"
+TypeManager="t3a.nano"
+TypeWorker="t3a.nano"
 ########################################
 apps=" docker-compose.yaml "
-branch_app=v0.7
-repository_app=www.alejandro-colomar
-username_app=alejandro-colomar
+branch_app="v0.7"
+repository_app="www.alejandro-colomar"
+username_app="alejandro-colomar"
 
 
 ################################################################################
@@ -80,10 +81,10 @@ export username_app
 ################################################################################
 ##	run								      ##
 ################################################################################
-fpath=${A}/bin
-fname=init.sh
-date=$( date +%F_%H%M )
-path=$HOME/.${repository_app}/var
+fpath="${A}/bin"
+fname="init.sh"
+date="$( date +%F_%H%M )"
+path="$HOME/.${repository_app}/var"
 mkdir --parents ${path}/${date}
 cd ${path}/${date}
 curl --output ${fname} https://${domain}/${fpath}/${fname}?$( uuidgen )

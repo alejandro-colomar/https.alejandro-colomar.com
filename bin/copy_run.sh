@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/sh -x
+##	./bin/copy_run.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -6,6 +7,7 @@
 ##
 ## Copy necessary files to /run
 ##
+################################################################################
 
 
 ################################################################################
@@ -24,7 +26,7 @@ main()
 ################################################################################
 params=0
 
-if [ "$#" -ne ${params} ]; then
+if [ $# -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi

@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/sh -x
+##	./bin/deploy_swarm.sh <swarm_name>
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -10,7 +11,7 @@
 ################################################################################
 deploy_stack()
 {
-	local	swarm_name=$1
+	local	swarm_name="$1"
 
 	local	path="etc/docker/swarm"
 	local	fname="docker-compose.yaml"
@@ -25,10 +26,10 @@ deploy_stack()
 ################################################################################
 main()
 {
-	local	swarm_name=$1
+	local	swarm_name="$1"
 
 	./bin/copy_run.sh
-	deploy_stack	${swarm_name}
+	deploy_stack	"${swarm_name}"
 }
 
 
@@ -37,7 +38,7 @@ main()
 ################################################################################
 params=1
 
-if [ "$#" -ne ${params} ]; then
+if [ $# -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
