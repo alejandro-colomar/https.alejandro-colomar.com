@@ -32,7 +32,7 @@ main()
 		-i ./etc/docker/http/arm64v8.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
 	sed "/www.alejandro-colomar:/s/${branch}/${version}/"		\
-		-i ./etc/docker/swarm/docker-compose.arm64v8.yaml	\
+		-i ./etc/docker/swarm/docker-compose_arm64v8.yaml	\
 		-i ./etc/docker/swarm/docker-compose.yaml
 }
 
