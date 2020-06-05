@@ -21,14 +21,19 @@ update_version()
 	local	old_version="0.6"
 	local	version=$1
 
-	sed "/branch=master/s/master/v${version}/"			\
-			-i ./bin/deploy_aws.sh
+	sed "/branch_app=master/s/master/v${version}/"			\
+		-i ./bin/deploy_aws.sh
 	sed "/--branch master/s/master/v${version}/"			\
-			-i ./etc/docker/Dockerfile
-	sed "/www.alejandro-colomar:v${old_version}/s/v${old_version}/v${version}/" \
-			-i ./etc/docker/swarm/release/web.yaml
+		-i ./etc/docker/http/arm64v8.Dockerfile			\
+		-i ./etc/docker/http/Dockerfile
+	sed "/www.alejandro-colomar:dns_${old_version}/s/${old_version}/${version}/" \
+		-i ./etc/docker/swarm/docker-compose.arm64v8.yaml	\
+		-i ./etc/docker/swarm/docker-compose.yaml
+	sed "/www.alejandro-colomar:http_${old_version}/s/${old_version}/${version}/" \
+		-i ./etc/docker/swarm/docker-compose.arm64v8.yaml	\
+		-i ./etc/docker/swarm/docker-compose.yaml
 	sed "/old_version=\"${old_version}\"/s/${old_version}/${version}/" \
-			-i ./bin/prepare_release.sh
+		-i ./bin/prepare_release.sh
 }
 
 
