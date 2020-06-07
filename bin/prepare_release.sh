@@ -1,5 +1,5 @@
 #!/bin/sh -x
-##	./bin/prepare_release.sh
+##	./bin/prepare_release.sh	<version>
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
 ##	Copyright (C) 2020	  Sebastian Francisco Colomar Bauza	      ##
@@ -23,16 +23,16 @@
 update_version()
 {
 	local	version="$1"
-	local	branch="$2"
 
-	sed "/branch_app=\"${branch}\"/s/${branch}/v${version}/"	\
-		-i ./bin/deploy_aws.sh
-	sed "/--branch ${branch}/s/${branch}/v${version}/"		\
+	sed "/branch_app=/s/\".*\"/\"v${version}\"/"			\
+		-i ./etc/docker-aws/config.sh
+	sed "/--branch/s/\".*\"/\"v${version}\"/"			\
 		-i ./etc/docker/http/aarch64.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
-	sed "/www.alejandro-colomar:/s/${branch}/${version}/"		\
-		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
+	sed "/www.alejandro-colomar:/s/_.*\"/_${version}\"/"		\
 		-i ./etc/docker/swarm/docker-compose.yaml
+	sed "/www.alejandro-colomar:/s/_.*_/_${version}_/"		\
+		-i ./etc/docker/swarm/docker-compose_aarch64.yaml
 }
 
 
@@ -41,24 +41,23 @@ update_version()
 ################################################################################
 main()
 {
-	local	version="0.9"
-	local	branch="$(git branch --show-current)"
+	local	version="$1"
 
-	update_version	"${version}" "${branch}"
+	update_version	"${version}"
 }
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-params=0
+params=1
 
 if [ "$#" -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
 
-main
+main	"$1"
 
 
 ################################################################################

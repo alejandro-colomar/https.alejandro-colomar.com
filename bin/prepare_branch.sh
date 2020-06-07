@@ -1,5 +1,5 @@
 #!/bin/sh -x
-##	./bin/prepare_branch.sh	<future_version>
+##	./bin/prepare_branch.sh
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
 ##	Copyright (C) 2020	  Sebastian Francisco Colomar Bauza	      ##
@@ -22,22 +22,17 @@
 ################################################################################
 update_version()
 {
-	local	v_old="0.8"
-	local	v_future="$1"
-	local	branch="$2"
+	local	branch="$(git branch --show-current)"
 
-	sed "/branch_app=\"v${v_old}\"/s/v${v_old}/${branch}/"		\
-		-i ./bin/deploy_aws.sh
-	sed "/version=\"${v_old}\"/s/${v_old}/${v_future}/"		\
-		-i ./bin/prepare_release.sh
-	sed "/--branch v${v_old}/s/v${v_old}/${branch}/"		\
+	sed "/branch_app=/s/\".*\"/\"${branch}\"/"			\
+		-i ./etc/docker-aws/config.sh
+	sed "/--branch/s/\".*\"/\"${branch}\"/"				\
 		-i ./etc/docker/http/aarch64.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
-	sed "/www.alejandro-colomar:/s/${v_old}/${branch}/"		\
-		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
+	sed "/www.alejandro-colomar:/s/_.*\"/_${branch}\"/"		\
 		-i ./etc/docker/swarm/docker-compose.yaml
-	sed "/v_old=\"${v_old}\"/s/${v_old}/${v_future}/"		\
-		-i ./bin/prepare_branch.sh
+	sed "/www.alejandro-colomar:/s/_.*_/_${branch}_/"		\
+		-i ./etc/docker/swarm/docker-compose_aarch64.yaml
 }
 
 
@@ -46,24 +41,22 @@ update_version()
 ################################################################################
 main()
 {
-	local	future_version="$1"
-	local	branch_name="$(git branch --show-current)"
 
-	update_version	"${future_version}" "${branch_name}"
+	update_version
 }
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-params=1
+params=0
 
 if [ "$#" -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
 
-main	"$1"
+main
 
 
 ################################################################################
