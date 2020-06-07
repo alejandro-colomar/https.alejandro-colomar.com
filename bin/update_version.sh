@@ -63,7 +63,7 @@ main()
 ################################################################################
 argc="$#"
 if [ ${argc} -gt ${MAX_ARGS} ]; then
-	echo	"Illegal number of parameters (Requires ${params})"
+	echo	"Illegal number of parameters (Accepts ${MAX_ARGS} or less)"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
 
