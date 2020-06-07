@@ -39,7 +39,7 @@ template="https.yaml"
 TypeManager="t3a.nano"
 TypeWorker="t3a.nano"
 ########################################
-apps=" docker-compose.yaml "
+apps=" docker-compose_amd64.yaml "
 branch_app="master"
 repository_app="www.alejandro-colomar"
 username_app="alejandro-colomar"

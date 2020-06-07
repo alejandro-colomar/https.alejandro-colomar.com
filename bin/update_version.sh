@@ -34,11 +34,10 @@ update_version()
 		-i ./etc/docker-aws/config.sh
 	sed "/--branch/s/\".*\"/\"${version}\"/"			\
 		-i ./etc/docker/http/aarch64.Dockerfile			\
-		-i ./etc/docker/http/Dockerfile
-	sed "/www.alejandro-colomar:/s/_.*\"/_${version}\"/"		\
-		-i ./etc/docker/swarm/docker-compose.yaml
+		-i ./etc/docker/http/amd64.Dockerfile
 	sed "/www.alejandro-colomar:/s/_.*_/_${version}_/"		\
-		-i ./etc/docker/swarm/docker-compose_aarch64.yaml
+		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
+		-i ./etc/docker/swarm/docker-compose_amd64.yaml
 }
 
 
