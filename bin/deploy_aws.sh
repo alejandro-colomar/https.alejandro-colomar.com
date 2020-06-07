@@ -14,82 +14,58 @@
 
 
 ################################################################################
-##	variables							      ##
+##	source								      ##
 ################################################################################
-branch_docker_aws="v4.3"
-debug=true
-domain="raw.githubusercontent.com"
-HostedZoneName="alejandro-colomar.es"
-mode="swarm"
-repository_docker_aws="docker-aws"
-stack="web"
-username_docker_aws="secobau"
-########################################
-A="${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}"
-########################################
-## Identifier is the ID of the certificate in case you are using HTTPS
-Identifier="8245427e-fbfa-4f2b-b23f-97f13d6d3e7c"
-KeyName="proxy2aws"
-RecordSetName1="www"
-RecordSetName2="service-2"
-RecordSetName3="service-3"
-RecordSetNameKube="service-kube"
-s3name="docker-aws"
-s3region="ap-south-1"
-template="https.yaml"
-TypeManager="t3a.nano"
-TypeWorker="t3a.nano"
-########################################
-apps=" docker-compose.yaml "
-branch_app="master"
-repository_app="www.alejandro-colomar"
-username_app="alejandro-colomar"
+source	etc/docker-aws/config.sh
 
 
 ################################################################################
-##	export								      ##
+##	functions							      ##
 ################################################################################
-export branch_docker_aws
-export debug
-export domain
-export HostedZoneName
-export mode
-export repository_docker_aws
-export stack
-export username_docker_aws
-########################################
-export A
-########################################
-export Identifier
-export KeyName
-export RecordSetName1
-export RecordSetName2
-export RecordSetName3
-export RecordSetNameKube
-export s3name
-export s3region
-export template
-export TypeManager
-export TypeWorker
-########################################
-export apps
-export branch_app
-export repository_app
-export username_app
+function create_new_dir()
+{
+	local	path="$HOME/.${repository_app}/var"
+	local	dname="$( date +%F_%H%M )"
+
+	mkdir	--parents ${path}/${dname}
+	cd	${path}/${dname}
+}
+
+function get_init_script()
+{
+	local	fpath="${A}/bin"
+	local	fname="$1"
+
+	curl	--output ${fname} https://${domain}/${fpath}/${fname}?$( uuidgen )
+	chmod	+x ./${fname}
+}
+
+
+################################################################################
+##	main								      ##
+################################################################################
+function main()
+{
+	local	fname="init.sh"
+
+	create_new_dir
+	get_init_script	${fname}
+
+	nohup ./${fname} &
+}
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-fpath="${A}/bin"
-fname="init.sh"
-date="$( date +%F_%H%M )"
-path="$HOME/.${repository_app}/var"
-mkdir --parents ${path}/${date}
-cd ${path}/${date}
-curl --output ${fname} https://${domain}/${fpath}/${fname}?$( uuidgen )
-chmod +x ./${fname}
-nohup ./${fname} &
+params=0
+
+if [ $# -ne ${params} ]; then
+	echo	"Illegal number of parameters (Requires ${params})"
+	exit	64	## EX_USAGE /* command line usage error */
+fi
+
+main
 
 
 ################################################################################
