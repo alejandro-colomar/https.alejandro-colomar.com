@@ -23,7 +23,7 @@ services:
             target: /etc/bind/named.conf
         deploy:
             mode: global
-        image: "alejandrocolomar/www.alejandro-colomar:dns_master"
+        image: "alejandrocolomar/www.alejandro-colomar:dns_0.8"
         ports:
         -   "5353:53/udp"
         secrets:
@@ -44,7 +44,7 @@ services:
             replicas: 3
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www.alejandro-colomar:http_master"
+        image: "alejandrocolomar/www.alejandro-colomar:http_0.8"
         ports:
         -   30001:80
 
