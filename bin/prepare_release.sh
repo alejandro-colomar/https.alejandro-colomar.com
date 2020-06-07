@@ -28,10 +28,10 @@ update_version()
 	sed "/branch_app=\"${branch}\"/s/${branch}/v${version}/"	\
 		-i ./bin/deploy_aws.sh
 	sed "/--branch ${branch}/s/${branch}/v${version}/"		\
-		-i ./etc/docker/http/arm64v8.Dockerfile			\
+		-i ./etc/docker/http/aarch64.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
 	sed "/www.alejandro-colomar:/s/${branch}/${version}/"		\
-		-i ./etc/docker/swarm/docker-compose_arm64v8.yaml	\
+		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
 		-i ./etc/docker/swarm/docker-compose.yaml
 }
 

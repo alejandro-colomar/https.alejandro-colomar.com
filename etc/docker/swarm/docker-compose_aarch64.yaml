@@ -23,7 +23,7 @@ services:
             target: /etc/bind/named.conf
         deploy:
             mode: global
-        image: "alejandrocolomar/www.alejandro-colomar:dns_master_arm64v8"
+        image: "alejandrocolomar/www.alejandro-colomar:dns_master_aarch64"
         ports:
         -   "5353:53/udp"
         secrets:
@@ -44,7 +44,7 @@ services:
             replicas: 3
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www.alejandro-colomar:http_master_arm64v8"
+        image: "alejandrocolomar/www.alejandro-colomar:http_master_aarch64"
         ports:
         -   30001:80
 
@@ -52,6 +52,6 @@ version: "3.8"
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c etc/docker/swarm/docker-compose.arm64v8.yaml web  ;
+#sudo docker stack deploy -c etc/docker/swarm/docker-compose_aarch64.yaml web  ;
 #sudo docker stack rm web                                                      ;
 ################################################################################

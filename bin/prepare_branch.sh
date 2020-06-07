@@ -31,10 +31,10 @@ update_version()
 	sed "/version=\"${v_old}\"/s/${v_old}/${v_future}/"		\
 		-i ./bin/prepare_release.sh
 	sed "/--branch v${v_old}/s/v${v_old}/${branch}/"		\
-		-i ./etc/docker/http/arm64v8.Dockerfile			\
+		-i ./etc/docker/http/aarch64.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
 	sed "/www.alejandro-colomar:/s/${v_old}/${branch}/"		\
-		-i ./etc/docker/swarm/docker-compose_arm64v8.yaml	\
+		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
 		-i ./etc/docker/swarm/docker-compose.yaml
 	sed "/v_old=\"${v_old}\"/s/${v_old}/${v_future}/"		\
 		-i ./bin/prepare_branch.sh
