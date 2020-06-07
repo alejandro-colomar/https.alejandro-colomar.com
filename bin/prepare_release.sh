@@ -41,7 +41,7 @@ update_version()
 ################################################################################
 main()
 {
-	local	version="0.8"
+	local	version="0.9"
 	local	branch="$(git branch --show-current)"
 
 	update_version	"${version}" "${branch}"
