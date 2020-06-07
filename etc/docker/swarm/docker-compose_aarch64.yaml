@@ -10,7 +10,7 @@ configs:
 
 secrets:
     forward:
-        file: /run/secrets/var/bind/master/alejandro-colomar.com
+        file: /run/secrets/var/bind/master/alejandro-colomar.es
     reverse:
         file: /run/secrets/var/bind/master/10.168
 
@@ -30,7 +30,7 @@ services:
         -
             mode: 0440
             source: forward
-            target: var/bind/master/alejandro-colomar.com
+            target: var/bind/master/alejandro-colomar.es
         -
             mode: 0440
             source: reverse
