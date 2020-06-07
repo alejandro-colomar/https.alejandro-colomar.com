@@ -11,7 +11,7 @@ RUN	apk add	--no-cache --upgrade git
 
 RUN	git clone							\
 	    --single-branch						\
-	    --branch "master"						\
+	    --branch "0.9"						\
 	    https://github.com/alejandro-colomar/www.alejandro-colomar.git \
 	    /repo
 
