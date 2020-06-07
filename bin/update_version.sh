@@ -1,20 +1,26 @@
 #!/bin/sh -x
-##	./bin/prepare_release.sh	<version>
+##	./bin/update_version.sh	[<version>]
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
-##	Copyright (C) 2020	  Sebastian Francisco Colomar Bauza	      ##
 ##	SPDX-License-Identifier:  GPL-2.0-only				      ##
 ################################################################################
 ##
-## Prepare the repo for imminent release
-## =====================================
+## Update version numbers
+## ======================
 ##
-## This script should be run just before creating a release (tag).
+## This script should be run just after a new branch has been created, a
+## release is imminent, or a release has been made.
+## The default value for the version is the branch name.
 ##
-##  - Remove the files that shouldn't go into the release
 ##  - Update version numbers
 ##
 ################################################################################
+
+
+################################################################################
+##	definitions							      ##
+################################################################################
+MAX_ARGS=1
 
 
 ################################################################################
@@ -24,9 +30,9 @@ update_version()
 {
 	local	version="$1"
 
-	sed "/branch_app=/s/\".*\"/\"v${version}\"/"			\
+	sed "/branch_app=/s/\".*\"/\"${version}\"/"			\
 		-i ./etc/docker-aws/config.sh
-	sed "/--branch/s/\".*\"/\"v${version}\"/"			\
+	sed "/--branch/s/\".*\"/\"${version}\"/"			\
 		-i ./etc/docker/http/aarch64.Dockerfile			\
 		-i ./etc/docker/http/Dockerfile
 	sed "/www.alejandro-colomar:/s/_.*\"/_${version}\"/"		\
@@ -42,6 +48,11 @@ update_version()
 main()
 {
 	local	version="$1"
+	local	argc="$2"
+
+	if [ ${argc} -eq 0 ]; then
+		version="$(git branch --show-current)"
+	fi
 
 	update_version	"${version}"
 }
@@ -50,14 +61,13 @@ main()
 ################################################################################
 ##	run								      ##
 ################################################################################
-params=1
-
-if [ "$#" -ne ${params} ]; then
+argc="$#"
+if [ ${argc} -gt ${MAX_ARGS} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
 	exit	64	## EX_USAGE /* command line usage error */
 fi
 
-main	"$1"
+main	"$1" "${argc}"
 
 
 ################################################################################
