@@ -11,11 +11,14 @@
 ##
 ## Read it to learn how to configure it.
 ##
+################################################################################
 
 
 ################################################################################
 ##	source								      ##
 ################################################################################
+source	lib/libalx/sh/sysexits.sh
+
 source	etc/docker-aws/config.sh
 
 
@@ -62,7 +65,7 @@ params=0
 
 if [ $# -ne ${params} ]; then
 	echo	"Illegal number of parameters (Requires ${params})"
-	exit	64	## EX_USAGE /* command line usage error */
+	exit	${EX_USAGE}
 fi
 
 main
