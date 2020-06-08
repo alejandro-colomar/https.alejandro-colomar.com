@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/bash -x
 ##	./bin/update_version.sh	[<version>]
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
