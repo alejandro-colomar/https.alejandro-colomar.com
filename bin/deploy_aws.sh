@@ -1,10 +1,10 @@
 #!/bin/bash -x
 ##	./bin/deploy_aws.sh
-###############################################################################
-##       Copyright (C) 2020        Sebastian Francisco Colomar Bauza         ##
-##       Copyright (C) 2020        Alejandro Colomar Andrés                  ##
-##       SPDX-License-Identifier:  GPL-2.0-only                              ##
-###############################################################################
+################################################################################
+##       Copyright (C) 2020        Sebastian Francisco Colomar Bauza          ##
+##       Copyright (C) 2020        Alejandro Colomar Andrés                   ##
+##       SPDX-License-Identifier:  GPL-2.0-only                               ##
+################################################################################
 ##
 ## The template for this file is in:
 ## https://github.com/secobau/docker-aws/share/templates/deploy_aws.template.sh
