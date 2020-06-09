@@ -39,8 +39,8 @@ update_version()
 	sed "/branch_app=/s/\".*\"/\"${version}\"/"			\
 		-i ./etc/docker-aws/config.sh
 	sed "/--branch/s/\".*\"/\"${version}\"/"			\
-		-i ./etc/docker/www/aarch64.Dockerfile			\
-		-i ./etc/docker/www/amd64.Dockerfile
+		-i ./etc/docker/build/aarch64.Dockerfile		\
+		-i ./etc/docker/build/amd64.Dockerfile
 	sed "/alejandrocolomar\/www:/s/www:.*_/www:${version}_/"	\
 		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
 		-i ./etc/docker/swarm/docker-compose_amd64.yaml
