@@ -13,7 +13,7 @@ RUN	git clone							\
 		--single-branch						\
 		--branch "master"					\
 		https://github.com/alejandro-colomar/www.git		\
-		/repo
+		/usr/local/src/www
 
 ###############################################################################
 
@@ -38,12 +38,12 @@ RUN	for package in $(						\
 	done
 
 ## configure nginx server
-COPY	--from=git	/repo/etc/nginx/nginx.conf	/etc/nginx/nginx.conf
-COPY	--from=git	/repo/etc/nginx/conf.d/		/etc/nginx/conf.d
+COPY	--from=git /usr/local/src/www/etc/nginx/nginx.conf	/etc/nginx/nginx.conf
+COPY	--from=git /usr/local/src/www/etc/nginx/conf.d/		/etc/nginx/conf.d
 
 ## copy web files
-COPY	--from=git	/repo/share/nginx/downloads/	/usr/share/nginx/downloads
-COPY	--from=git	/repo/share/nginx/html/		/usr/share/nginx/html
-COPY	--from=git	/repo/share/nginx/pictures/	/usr/share/nginx/pictures
+COPY	--from=git /usr/local/src/www/share/nginx/downloads/	/usr/share/nginx/downloads
+COPY	--from=git /usr/local/src/www/share/nginx/html/		/usr/share/nginx/html
+COPY	--from=git /usr/local/src/www/share/nginx/pictures/	/usr/share/nginx/pictures
 
 ###############################################################################
