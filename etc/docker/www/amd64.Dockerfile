@@ -9,7 +9,7 @@ FROM	alpine/git:1.0.14@sha256:8d2aedf3898243892d170f033603b40a55e0b0a8ab68ba9762
 
 RUN	git clone							\
 		--single-branch						\
-		--branch "0.11"					\
+		--branch "master"					\
 		https://github.com/alejandro-colomar/www.git		\
 		/repo
 

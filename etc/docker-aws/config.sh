@@ -40,7 +40,7 @@ TypeManager="t3a.nano"
 TypeWorker="t3a.nano"
 ########################################
 apps=" docker-compose_amd64.yaml "
-branch_app="0.11"
+branch_app="master"
 repository_app="www"
 username_app="alejandro-colomar"
 
