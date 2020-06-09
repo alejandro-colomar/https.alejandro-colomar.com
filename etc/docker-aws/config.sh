@@ -21,7 +21,7 @@ domain="raw.githubusercontent.com"
 HostedZoneName="alejandro-colomar.es"
 mode="swarm"
 repository_docker_aws="docker-aws"
-stack="web"
+stack="www"
 username_docker_aws="secobau"
 ########################################
 A="${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}"
