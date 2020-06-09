@@ -5,17 +5,28 @@
 ################################################################################
 
 configs:
-    named:
-        file: /run/configs/etc/bind/named.conf
-
-secrets:
-    forward:
-        file: /run/secrets/var/bind/master/alejandro-colomar.es
-    reverse:
-        file: /run/secrets/var/bind/master/10.168
+    nginx_conf:
+        file: /run/configs/etc/nginx/nginx.conf
+    nginx_conf_security_parameters:
+        file: /run/configs/etc/nginx/conf.d/security_parameters.conf
+    nginx_conf_server:
+        file: /run/configs/etc/nginx/conf.d/server.conf
 
 services:
     www:
+        configs:
+        -
+            mode: 0440
+            source: nginx_conf
+            target: /etc/nginx/nginx.conf
+        -
+            mode: 0440
+            source: nginx_conf_security_parameters
+            target: /etc/nginx/conf.d/security_parameters.conf
+        -
+            mode: 0440
+            source: nginx_conf_server
+            target: /etc/nginx/conf.d/server.conf
         deploy:
             placement:
                 constraints:
