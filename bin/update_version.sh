@@ -41,7 +41,7 @@ update_version()
 	sed "/--branch/s/\".*\"/\"${version}\"/"			\
 		-i ./etc/docker/http/aarch64.Dockerfile			\
 		-i ./etc/docker/http/amd64.Dockerfile
-	sed "/www.alejandro-colomar:/s/_.*_/_${version}_/"		\
+	sed "/alejandrocolomar\/www:/s/_.*_/_${version}_/"		\
 		-i ./etc/docker/swarm/docker-compose_aarch64.yaml	\
 		-i ./etc/docker/swarm/docker-compose_amd64.yaml
 }

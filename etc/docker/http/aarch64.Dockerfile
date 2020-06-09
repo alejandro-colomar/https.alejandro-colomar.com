@@ -10,10 +10,10 @@ FROM	alpine:3.12.0@sha256:3b3f647d2d99cac772ed64c4791e5d9b750dd5fe0b25db653ec497
 RUN	apk add	--no-cache --upgrade git
 
 RUN	git clone							\
-	    --single-branch						\
-	    --branch "master"						\
-	    https://github.com/alejandro-colomar/www.alejandro-colomar.git \
-	    /repo
+		--single-branch						\
+		--branch "master"					\
+		https://github.com/alejandro-colomar/www.git		\
+		/repo
 
 ###############################################################################
 
