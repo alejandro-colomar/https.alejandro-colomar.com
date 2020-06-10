@@ -14,6 +14,19 @@ configs:
 
 services:
     www:
+        configs:
+        -
+            mode: 0440
+            source: nginx_conf
+            target: /etc/nginx/nginx.conf
+        -
+            mode: 0440
+            source: nginx_conf_security_parameters
+            target: /etc/nginx/conf.d/security_parameters.conf
+        -
+            mode: 0440
+            source: nginx_conf_server
+            target: /etc/nginx/conf.d/server.conf
         deploy:
             placement:
                 constraints:
