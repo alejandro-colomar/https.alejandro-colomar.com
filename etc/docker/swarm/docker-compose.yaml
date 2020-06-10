@@ -34,7 +34,7 @@ services:
             replicas: 3
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www:0.12"
+        image: "alejandrocolomar/www:master"
         ports:
         -   30001:80
 
