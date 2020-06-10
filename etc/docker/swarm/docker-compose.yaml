@@ -1,7 +1,7 @@
 ################################################################################
-#        Copyright (C) 2020        Sebastian Francisco Colomar Bauza           #
-#        Copyright (C) 2020        Alejandro Colomar Andrés                    #
-#        SPDX-License-Identifier:  GPL-2.0-only                                #
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 
 configs:
@@ -34,7 +34,7 @@ services:
             replicas: 3
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www:master_amd64"
+        image: "alejandrocolomar/www:master"
         ports:
         -   30001:80
 
@@ -42,6 +42,6 @@ version: "3.8"
 
 ################################################################################
 #sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c etc/docker/swarm/docker-compose_amd64.yaml web    ;
+#sudo docker stack deploy -c etc/docker/swarm/docker-compose.yaml web          ;
 #sudo docker stack rm web                                                      ;
 ################################################################################
