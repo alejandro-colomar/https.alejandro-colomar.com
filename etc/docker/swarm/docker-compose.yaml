@@ -18,15 +18,15 @@ services:
         -
             mode: 0440
             source: nginx_conf
-            target: /run/configs/etc/nginx/nginx.conf
+            target: /etc/nginx/nginx.conf
         -
             mode: 0440
             source: nginx_conf_security-parameters
-            target: /run/configs/etc/nginx/conf.d/security-parameters.conf
+            target: /etc/nginx/conf.d/security-parameters.conf
         -
             mode: 0440
             source: nginx_conf_server
-            target: /run/configs/etc/nginx/conf.d/server.conf
+            target: /etc/nginx/conf.d/server.conf
         deploy:
             placement:
                 constraints:
