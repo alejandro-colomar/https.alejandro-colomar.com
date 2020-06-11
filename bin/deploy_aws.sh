@@ -17,9 +17,9 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh
+source	lib/libalx/sh/sysexits.sh;
 
-source	etc/docker-aws/config.sh
+source	etc/docker-aws/config.sh;
 
 
 ################################################################################
@@ -27,20 +27,20 @@ source	etc/docker-aws/config.sh
 ################################################################################
 function create_new_dir()
 {
-	local	path="$HOME/.${repository_app}/var"
-	local	dname="$( date +%F_%H%M )"
+	local	path="$HOME/.${repository_app}/var";
+	local	dname="$( date +%F_%H%M )";
 
-	mkdir	--parents ${path}/${dname}
-	cd	${path}/${dname}
+	mkdir	--parents ${path}/${dname};
+	cd	${path}/${dname};
 }
 
 function get_init_script()
 {
-	local	fpath="${A}/bin"
-	local	fname="$1"
+	local	fpath="${A}/bin";
+	local	fname="$1";
 
-	curl	--output ${fname} https://${domain}/${fpath}/${fname}?$( uuidgen )
-	chmod	+x ./${fname}
+	curl	--output ${fname} https://${domain}/${fpath}/${fname}?$(uuidgen);
+	chmod	+x ./${fname};
 }
 
 
@@ -49,10 +49,10 @@ function get_init_script()
 ################################################################################
 function main()
 {
-	local	fname="init.sh"
+	local	fname="init.sh";
 
-	create_new_dir
-	get_init_script	${fname}
+	create_new_dir;
+	get_init_script	${fname};
 
 	nohup ./${fname} &
 }
@@ -61,14 +61,14 @@ function main()
 ################################################################################
 ##	run								      ##
 ################################################################################
-params=0
+params=0;
 
 if [ $# -ne ${params} ]; then
-	echo	"Illegal number of parameters (Requires ${params})"
-	exit	${EX_USAGE}
+	echo	"Illegal number of parameters (Requires ${params})";
+	exit	${EX_USAGE};
 fi
 
-main
+main;
 
 
 ################################################################################

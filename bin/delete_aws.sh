@@ -9,9 +9,9 @@
 
 ################################################################################
 ## TO REMOVE THE CLOUDFORMATION STACK
-stack="web"
+stack="web";
 
-aws cloudformation delete-stack --stack-name ${stack}
+aws cloudformation delete-stack --stack-name ${stack};
 
 
 ################################################################################

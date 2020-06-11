@@ -20,13 +20,13 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh
+source	lib/libalx/sh/sysexits.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-MAX_ARGC=1
+MAX_ARGC=1;
 
 
 ################################################################################
@@ -34,14 +34,14 @@ MAX_ARGC=1
 ################################################################################
 update_version()
 {
-	local	version="$1"
+	local	version="$1";
 
 	sed "/branch_app=/s/\".*\"/\"${version}\"/"			\
-		-i ./etc/docker-aws/config.sh
+		-i ./etc/docker-aws/config.sh;
 	sed "/--branch/s/\".*\"/\"${version}\"/"			\
-		-i ./etc/docker/build/Dockerfile
+		-i ./etc/docker/build/Dockerfile;
 	sed "/alejandrocolomar\/www:/s/www:.*\"/www:${version}\"/"	\
-		-i ./etc/docker/swarm/docker-compose.yaml
+		-i ./etc/docker/swarm/docker-compose.yaml;
 }
 
 
@@ -50,27 +50,27 @@ update_version()
 ################################################################################
 main()
 {
-	local	version="$1"
-	local	argc="$2"
+	local	version="$1";
+	local	argc="$2";
 
 	if [ ${argc} -eq 0 ]; then
-		version="$(git branch --show-current)"
+		version="$(git branch --show-current)";
 	fi
 
-	update_version	"${version}"
+	update_version	"${version}";
 }
 
 
 ################################################################################
 ##	run								      ##
 ################################################################################
-argc=$#
+argc=$#;
 if [ ${argc} -gt ${MAX_ARGC} ]; then
-	echo	"Illegal number of parameters (Accepts ${MAX_ARGC} or less)"
-	exit	${EX_USAGE}
+	echo	"Illegal number of parameters (Accepts ${MAX_ARGC} or less)";
+	exit	${EX_USAGE};
 fi
 
-main	"$1" "${argc}"
+main	"$1" "${argc}";
 
 
 ################################################################################
