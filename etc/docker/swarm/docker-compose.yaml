@@ -10,7 +10,7 @@ configs:
     nginx_conf_security_parameters:
         file: /run/configs/etc/nginx/conf.d/security_parameters.conf
     nginx_conf_server:
-        file: /etc/nginx/conf.d/server.conf
+        file: /run/configs/etc/nginx/conf.d/server.conf
 
 services:
     www:
