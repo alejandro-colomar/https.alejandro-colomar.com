@@ -15,7 +15,7 @@ RUN									\
 RUN									\
 	git clone							\
 		--single-branch						\
-		--branch "master"					\
+		--branch "0.12.1"					\
 		https://github.com/alejandro-colomar/www.git		\
 		/usr/local/src/www
 
