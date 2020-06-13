@@ -20,7 +20,7 @@ RUN									\
 		/usr/local/src/www
 
 ################################################################################
-FROM	"alejandrocolomar/nginx:1.3.0"	AS nginx
+FROM	"alejandrocolomar/nginx:1.3.1"	AS nginx
 ################################################################################
 ## Copy web files
 COPY	--from=git	/usr/local/src/www/srv/				\
