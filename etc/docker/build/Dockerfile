@@ -23,11 +23,7 @@ RUN									\
 FROM	"alejandrocolomar/nginx:1.3.0"	AS nginx
 ################################################################################
 ## Copy web files
-COPY	--from=git	/usr/local/src/www/share/nginx/downloads/	\
-			/usr/share/nginx/downloads
-COPY	--from=git	/usr/local/src/www/share/nginx/html/		\
-			/usr/share/nginx/html
-COPY	--from=git	/usr/local/src/www/share/nginx/pictures/	\
-			/usr/share/nginx/pictures
+COPY	--from=git	/usr/local/src/www/srv/				\
+			/srv
 
 ################################################################################
