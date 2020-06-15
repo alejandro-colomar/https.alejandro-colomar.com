@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/update_version.sh	[<version>]
+##	./bin/release/version.sh	[<version>]
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
 ##	SPDX-License-Identifier:  GPL-2.0-only				      ##
