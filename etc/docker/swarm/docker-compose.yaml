@@ -36,7 +36,7 @@ services:
                 condition: any
         image: "alejandrocolomar/www:master"
         ports:
-        -   30001:80
+        -   "30001:80"
 
 version: "3.8"
 
