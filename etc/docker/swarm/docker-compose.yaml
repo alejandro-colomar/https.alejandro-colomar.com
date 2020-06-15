@@ -41,7 +41,8 @@ services:
 version: "3.8"
 
 ################################################################################
-#sudo docker swarm init                                                        ;
-#sudo docker stack deploy -c etc/docker/swarm/docker-compose.yaml web          ;
-#sudo docker stack rm web                                                      ;
+#$ docker swarm init;
+#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www_$(git describe --tags);
+#$ docker stack rm www_$(git describe --tags);
+#$ docker swarm leave;
 ################################################################################
