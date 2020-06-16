@@ -82,7 +82,7 @@ _`parent repository`: https://github.com/alejandro-colomar/alejandro-colomar.git
 
 Releases use port 30001.
 Release-critical pre-releases use port 31001.
-Experimental deployments use ports 3x001 (x >= 2).
+Experimental deployments use ports 32001.
 
 For a seamless deployment, the following steps need to be done:
 
