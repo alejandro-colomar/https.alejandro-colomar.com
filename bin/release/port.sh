@@ -30,7 +30,7 @@ function change_port()
 {
 	local	port="$1";
 
-	sed "/port/{n;s/\".*:/\"${port}:/}"				\
+	sed "/ports/{n;s/\".*:/\"${port}:/}"				\
 		-i ./etc/docker/swarm/docker-compose.yaml;
 }
 
