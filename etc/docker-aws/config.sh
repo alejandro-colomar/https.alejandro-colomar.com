@@ -18,7 +18,7 @@
 branch_docker_aws="v4.3"
 debug=true
 domain="raw.githubusercontent.com"
-HostedZoneName="alejandro-colomar.es"
+HostedZoneName="alejandro-colomar.com"
 mode="swarm"
 repository_docker_aws="docker-aws"
 stack="www"
