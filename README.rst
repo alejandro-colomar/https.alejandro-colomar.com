@@ -100,7 +100,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	## version should match $(git describe --tags)
+	## rc_version should match $(git describe --tags)
 	docker stack rm www_${rc_version};
 
 
@@ -122,7 +122,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	## version should end in ``-rcX``
+	## rc_version should end in ``-rcX``
 	docker stack rm www_${rc_version};
 
 
