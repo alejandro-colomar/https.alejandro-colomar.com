@@ -1,14 +1,14 @@
 #!/bin/bash -x
-##	./bin/release/rename_stack.sh	<suffix>
+##	./bin/release/stability.sh	<stability>
 ################################################################################
-##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
-##	SPDX-License-Identifier:  GPL-2.0-only				      ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Update stack name suffix
-## ========================
+## Update repository stability status
+## ==================================
 ##
-## The tack name has a suffix to help identify it: "stable", "rc" or "exp".
+## The stack name has a suffix to help identify it: "stable", "rc" or "exp".
 ##
 ################################################################################
 
@@ -30,14 +30,14 @@ ARGC=1;
 ################################################################################
 function update_suffix()
 {
-	local	suffix="$1";
+	local	stability="$1";
 
-	sed "/stack=/s/\".*\"/\"www_${suffix}\"/"			\
-		-i ./etc/docker-aws/config.sh;
-	sed "/docker stack deploy/s/www_.*\;/www_${suffix}\;/"		\
+	sed "/docker stack deploy/s/www_.*\;/www_${stability}\;/"		\
 		-i ./etc/docker/swarm/docker-compose.yaml;
-	sed "/docker stack rm/s/www_.*\;/www_${suffix}\;/"		\
+	sed "/docker stack rm/s/www_.*\;/www_${stability}\;/"		\
 		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/WWW_STABILITY=/s/\".*\"/\"${stability}\"/"			\
+		-i ./etc/www/config.sh;
 }
 
 

@@ -1,8 +1,8 @@
 #!/bin/bash -x
 ##	./bin/release/version.sh	[<version>]
 ################################################################################
-##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
-##	SPDX-License-Identifier:  GPL-2.0-only				      ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
 ## Update version numbers
@@ -36,12 +36,10 @@ function update_version()
 {
 	local	version="$1";
 
-	sed "/branch_app=/s/\".*\"/\"${version}\"/"			\
-		-i ./etc/docker-aws/config.sh;
-	sed "/--branch/s/\".*\"/\"${version}\"/"			\
-		-i ./etc/docker/build/Dockerfile;
 	sed "/alejandrocolomar\/www:/s/www:.*\"/www:${version}\"/"	\
 		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/WWW_VERSION=/s/\".*\"/\"${version}\"/"			\
+		-i ./etc/www/config.sh;
 }
 
 

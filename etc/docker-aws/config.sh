@@ -10,71 +10,46 @@
 ##
 ## Read it to learn how to configure it.
 ##
+################################################################################
 
 
 ################################################################################
-##	variables							      ##
+##	source								      ##
 ################################################################################
-branch_docker_aws="v4.3"
-debug=true
-domain="raw.githubusercontent.com"
-HostedZoneName="alejandro-colomar.com"
-mode="swarm"
-repository_docker_aws="docker-aws"
-stack="www_exp"
-username_docker_aws="secobau"
+source	etc/www/config.sh;
+
+
+################################################################################
+##	definitions							      ##
+################################################################################
+export branch_docker_aws="v4.3"
+export debug=true
+export domain="raw.githubusercontent.com"
+export HostedZoneName="alejandro-colomar.com"
+export mode="swarm"
+export repository_docker_aws="docker-aws"
+export stack="${WWW_STACK_BASENAME}_${WWW_STABILITY}"
+export username_docker_aws="secobau"
 ########################################
-A="${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}"
+export A="${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}"
 ########################################
 ## Identifier is the ID of the certificate in case you are using HTTPS
-Identifier="8245427e-fbfa-4f2b-b23f-97f13d6d3e7c"
-KeyName="proxy2aws"
-RecordSetName1="www"
-RecordSetName2="service-2"
-RecordSetName3="service-3"
-RecordSetNameKube="service-kube"
-s3name="docker-aws"
-s3region="ap-south-1"
-template="https.yaml"
-TypeManager="t3a.nano"
-TypeWorker="t3a.nano"
+export Identifier="8245427e-fbfa-4f2b-b23f-97f13d6d3e7c"
+export KeyName="proxy2aws"
+export RecordSetName1="${WWW_STACK_BASENAME}"
+export RecordSetName2="service-2"
+export RecordSetName3="service-3"
+export RecordSetNameKube="service-kube"
+export s3name="docker-aws"
+export s3region="ap-south-1"
+export template="https.yaml"
+export TypeManager="t3a.nano"
+export TypeWorker="t3a.nano"
 ########################################
-apps=" docker-compose.yaml "
-branch_app="master"
-repository_app="www"
-username_app="alejandro-colomar"
-
-
-################################################################################
-##	export								      ##
-################################################################################
-export branch_docker_aws
-export debug
-export domain
-export HostedZoneName
-export mode
-export repository_docker_aws
-export stack
-export username_docker_aws
-########################################
-export A
-########################################
-export Identifier
-export KeyName
-export RecordSetName1
-export RecordSetName2
-export RecordSetName3
-export RecordSetNameKube
-export s3name
-export s3region
-export template
-export TypeManager
-export TypeWorker
-########################################
-export apps
-export branch_app
-export repository_app
-export username_app
+export apps=" docker-compose.yaml "
+export branch_app="${WWW_VERSION}"
+export repository_app="www"
+export username_app="alejandro-colomar"
 
 
 ################################################################################

@@ -2,7 +2,7 @@
 ##	./bin/deploy/delete_rc_stack.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
-##      SPDX-License-Identifier:  BSD-2-Clause                                ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
 ## Delete rc stack
