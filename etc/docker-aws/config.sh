@@ -28,7 +28,7 @@ export domain="raw.githubusercontent.com"
 export HostedZoneName="alejandro-colomar.com"
 export mode="swarm"
 export repository_docker_aws="docker-aws"
-export stack="${WWW_STACK_BASENAME}_${WWW_STABILITY}"
+export stack="${WWW_STACK_BASENAME}-${WWW_STABILITY}"
 export username_docker_aws="secobau"
 ########################################
 export A="${username_docker_aws}/${repository_docker_aws}/${branch_docker_aws}"
