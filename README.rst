@@ -12,9 +12,10 @@ ________________________________________________________________________________
 Versioning
 ==========
 
-Releasing will create the docker image needed for the deployment.
-However, DockerHub only automates x86_64; for other architectures, the
-docker image has to be built manually.
+Releasing will create the x86_64 docker image.  However, DockerHub only
+automates x86_64; for other architectures, and for the multi-arch
+docker manifest, which is needed for the deployment, docker has to be
+run manually in a building machine.
 
 Start working on a new branch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
