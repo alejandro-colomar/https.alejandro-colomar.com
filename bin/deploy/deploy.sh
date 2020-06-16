@@ -32,7 +32,7 @@ function deploy_stack()
 {
 	local	stack_name="${WWW_STACK_BASENAME}_${WWW_STABILITY}";
 
-	docker stack deploy -c "${WWW_COMPOSE_FNAME}" ${stack_name}
+	docker stack deploy -c "${WWW_COMPOSE_FPATH}" ${stack_name}
 }
 
 
