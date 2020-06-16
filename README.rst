@@ -17,6 +17,10 @@ automates x86_64; for other architectures, and for the multi-arch
 docker manifest, which is needed for the deployment, docker has to be
 run manually in a building machine.
 
+The following scripts don't automate the push step to the remote git
+repository, as a caution.  Every automated commit should be checked by
+a human before pushing.
+
 Start working on a new branch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
