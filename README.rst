@@ -23,7 +23,7 @@ Experimental pre-releases are named ending with ``-aX`` or ``-bX``.
 
 .. code-block:: BASH
 
-	exp_version=<exp-version>
+	exp_version=<exp-version>;
 	./bin/release/version.sh ${exp_version};
 	./bin/release/port.sh 32001;
 	git commit -a -m "Pre-release ${exp_version}";
@@ -36,7 +36,7 @@ Release-critical pre-releases are named ending with ``-rcX``.
 
 .. code-block:: BASH
 
-	rc_version=<rc-version>
+	rc_version=<rc-version>;
 	./bin/release/version.sh ${rc_version};
 	./bin/release/port.sh 31001;
 	git commit -a -m "Pre-release ${rc_version}";
@@ -47,7 +47,7 @@ Release a stable version
 
 .. code-block:: BASH
 
-	version=<version>
+	version=<version>;
 	./bin/release/version.sh ${version};
 	./bin/release/port.sh 30001;
 	git commit -a -m "Release ${version}";
