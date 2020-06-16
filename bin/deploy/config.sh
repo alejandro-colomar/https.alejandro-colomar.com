@@ -29,13 +29,15 @@ ARGC=0;
 function prepare_configs()
 {
 
-	cp -rfvT	run/configs/	/run/configs
+	mkdir -pv	/run/configs/
+	cp -rfvT	run/configs/www/	/run/configs/www
 }
 
 function prepare_secrets()
 {
 
-	cp -rfvT	run/secrets/	/run/secrets
+	mkdir -pv	/run/secrets/
+	cp -rfvT	run/secrets/www/	/run/secrets/www
 }
 
 

@@ -6,11 +6,11 @@
 
 configs:
     nginx_conf:
-        file: /run/configs/etc/nginx/nginx.conf
+        file: /run/configs/www/etc/nginx/nginx.conf
     nginx_conf_security-parameters:
-        file: /run/configs/etc/nginx/conf.d/security-parameters.conf
+        file: /run/configs/www/etc/nginx/conf.d/security-parameters.conf
     nginx_conf_server:
-        file: /run/configs/etc/nginx/conf.d/server.conf
+        file: /run/configs/www/etc/nginx/conf.d/server.conf
 
 services:
     www:
