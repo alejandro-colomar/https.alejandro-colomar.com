@@ -38,7 +38,7 @@ function update_version()
 
 	sed "/alejandrocolomar\/www:/s/www:.*\"/www:${version}\"/"	\
 		-i ./etc/docker/swarm/docker-compose.yaml;
-	sed "/WWW_VERSION=/s/\".*\"/\"${version}\"/"			\
+	sed "/WWW_VERSION=/s/\".*\"\;/\"${version}\"\;/"		\
 		-i ./etc/www/config.sh;
 }
 

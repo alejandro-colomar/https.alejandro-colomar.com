@@ -32,11 +32,11 @@ function update_suffix()
 {
 	local	stability="$1";
 
-	sed "/docker stack deploy/s/www_.*\;/www_${stability}\;/"		\
+	sed "/docker stack deploy/s/www_.*\;/www_${stability}\;/"	\
 		-i ./etc/docker/swarm/docker-compose.yaml;
 	sed "/docker stack rm/s/www_.*\;/www_${stability}\;/"		\
 		-i ./etc/docker/swarm/docker-compose.yaml;
-	sed "/WWW_STABILITY=/s/\".*\"/\"${stability}\"/"			\
+	sed "/WWW_STABILITY=/s/\".*\"\;/\"${stability}\"\;/"		\
 		-i ./etc/www/config.sh;
 }
 
