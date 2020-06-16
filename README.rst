@@ -3,6 +3,12 @@ This project consists of an HTML static website powered by NginX.
 
 ________________________________________________________________________________
 
+All scripts in this repository are set up so that they have to be run
+from the root directory of this repository.
+
+
+________________________________________________________________________________
+
 Versioning
 ==========
 
