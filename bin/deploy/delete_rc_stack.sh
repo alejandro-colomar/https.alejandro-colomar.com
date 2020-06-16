@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy.sh
+##	./bin/deploy/delete_rc_stack.sh
 ################################################################################
-##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
-##	SPDX-License-Identifier:  GPL-2.0-only				      ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  BSD-2-Clause                                ##
 ################################################################################
 ##
-## Deploy stack
-## ============
+## Delete rc stack
+## ===============
 ##
 ################################################################################
 
@@ -28,11 +28,11 @@ ARGC=0;
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function deploy_stack()
+function delete_stack()
 {
-	local	stack_name="${WWW_STACK_BASENAME}_${WWW_STABILITY}";
+	local	stack_name="${WWW_STACK_BASENAME}_rc";
 
-	docker stack deploy -c "${WWW_COMPOSE_FNAME}" ${stack_name}
+	docker stack rm "${stack_name}";
 }
 
 
@@ -42,8 +42,7 @@ function deploy_stack()
 function main()
 {
 
-	./bin/deploy/config.sh;
-	deploy_stack;
+	delete_stack;
 }
 
 

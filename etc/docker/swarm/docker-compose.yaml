@@ -42,7 +42,7 @@ version: "3.8"
 
 ################################################################################
 #$ docker swarm init;
-#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www_$(git describe --tags);
-#$ docker stack rm www_$(git describe --tags);
+#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www_exp;
+#$ docker stack rm www_exp;
 #$ docker swarm leave;
 ################################################################################

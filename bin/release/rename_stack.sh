@@ -1,12 +1,14 @@
 #!/bin/bash -x
-##	./bin/deploy.sh
+##	./bin/release/rename_stack.sh	<suffix>
 ################################################################################
 ##	Copyright (C) 2020	  Alejandro Colomar Andrés		      ##
 ##	SPDX-License-Identifier:  GPL-2.0-only				      ##
 ################################################################################
 ##
-## Deploy stack
-## ============
+## Update stack name suffix
+## ========================
+##
+## The tack name has a suffix to help identify it: "stable", "rc" or "exp".
 ##
 ################################################################################
 
@@ -16,23 +18,26 @@
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
 
-source	etc/www/config.sh;
-
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=0;
+ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function deploy_stack()
+function update_suffix()
 {
-	local	stack_name="${WWW_STACK_BASENAME}_${WWW_STABILITY}";
+	local	suffix="$1";
 
-	docker stack deploy -c "${WWW_COMPOSE_FNAME}" ${stack_name}
+	sed "/stack=/s/\".*\"/\"www_${suffix}\"/"			\
+		-i ./etc/docker-aws/config.sh;
+	sed "/docker stack deploy/s/www_.*\;/www_${suffix}\;/"		\
+		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/docker stack rm/s/www_.*\;/www_${suffix}\;/"		\
+		-i ./etc/docker/swarm/docker-compose.yaml;
 }
 
 
@@ -41,9 +46,9 @@ function deploy_stack()
 ################################################################################
 function main()
 {
+	local	suffix="$1";
 
-	./bin/deploy/config.sh;
-	deploy_stack;
+	update_suffix	"${suffix}";
 }
 
 
@@ -56,7 +61,7 @@ if [ ${argc} -ne ${ARGC} ]; then
 	exit	${EX_USAGE};
 fi
 
-main;
+main	"$1";
 
 
 ################################################################################
