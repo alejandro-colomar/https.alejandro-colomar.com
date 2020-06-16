@@ -18,10 +18,7 @@ Start working in a new branch
 .. code-block:: BASH
 
 	git checkout -b <branch>;
-	./bin/release/port.sh 32001;
-	./bin/release/stability.sh "exp";
-	./bin/release/version.sh;
-	git commit -a -m "Branch $(git branch --show-current)";
+	./bin/branch.sh;
 
 Pre-release an experimental version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,12 +27,7 @@ Experimental pre-releases are named ending with ``-aX`` or ``-bX``.
 
 .. code-block:: BASH
 
-	exp_version=<exp-version>;
-	./bin/release/port.sh 32001;
-	./bin/release/stability.sh "exp";
-	./bin/release/version.sh "${exp_version}";
-	git commit -a -m "Pre-release ${exp_version}";
-	git tag ${exp_version};
+	./bin/release_exp.sh	<exp-version>;
 
 Pre-release a release-critical version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,34 +36,21 @@ Release-critical pre-releases are named ending with ``-rcX``.
 
 .. code-block:: BASH
 
-	rc_version=<rc-version>;
-	./bin/release/port.sh 31001;
-	./bin/release/stability.sh "rc";
-	./bin/release/version.sh "${rc_version}";
-	git commit -a -m "Pre-release ${rc_version}";
-	git tag -a ${rc_version} -m "";
+	./bin/release_rc.sh	<rc-version>;
 
 Release a stable version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	version=<version>;
-	./bin/release/port.sh 30001;
-	./bin/release/stability.sh "stable";
-	./bin/release/version.sh "${version}";
-	git commit -a -m "Release ${version}";
-	git tag -a ${version} -m "";
+	./bin/release_stable.sh	<version>;
 
 Continue working in the current branch after a release
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/release/port.sh 32001;
-	./bin/release/stability.sh "exp";
-	./bin/release/version.sh;
-	git commit -a -m "Branch $(git branch --show-current)";
+	./bin/branch.sh;
 
 
 ________________________________________________________________________________
