@@ -6,7 +6,7 @@
 
 
 ################################################################################
-FROM	"alejandrocolomar/nginx:1.3.1"	AS nginx
+FROM	"alejandrocolomar/nginx:1.5.0"	AS nginx
 ################################################################################
 RUN	rm -fv	/run/configs/etc/nginx/nginx.conf			&& \
 	rm -fv	/run/configs/etc/nginx/conf.d/default.conf
