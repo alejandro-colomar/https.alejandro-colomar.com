@@ -12,7 +12,11 @@ ________________________________________________________________________________
 Versioning
 ==========
 
-Start working in a new branch
+Releasing will create the docker image needed for the deployment.
+However, DockerHub only automates x86_64; for other architectures, the
+docker image has to be built manually.
+
+Start working on a new branch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
@@ -45,7 +49,7 @@ Release a stable version
 
 	./bin/release_stable.sh	<version>;
 
-Continue working in the current branch after a release
+Continue working on the current branch after a release
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
@@ -73,7 +77,11 @@ For a seamless deployment, the following steps need to be done:
 - Assuming there is an old stack deployed at port 30001.
 
 - Release a release-critical pre-release (see
-  `Pre-release a release-critical version`_).
+  `Pre-release a release-critical version`_):
+
+.. code-block:: BASH
+
+	./bin/release_rc.sh	<rc-version>;
 
 - Deploy the release-critical pre-release at port 31001:
 
@@ -85,18 +93,24 @@ For a seamless deployment, the following steps need to be done:
 - If the pre-release isn't good engough, that deployment has to be
   removed (see following command), and then work continues in the
   current branch (see
-  `Continue working in the current branch after a release`_).  The
+  `Continue working on the current branch after a release`_).  The
   current stable deployment is left untouched.
 
 .. code-block:: BASH
 
 	./bin/deploy/delete_rc_stack.sh
 
+	./bin/branch.sh;
+
 
 - Else, if the pre-release passes the tests, the published port will
   be forwarded to 31001 (this is done in the parent repository).
 
-- Release a new stable version (see `Release a stable version`_).
+- Release a new stable version (see `Release a stable version`_):
+
+.. code-block:: BASH
+
+	./bin/release_stable.sh	<version>;
 
 - Deploy the stable release at port 30001:
 
