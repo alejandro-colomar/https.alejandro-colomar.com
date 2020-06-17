@@ -8,9 +8,9 @@ configs:
     nginx_conf:
         file: /run/configs/www/etc/nginx/nginx.conf
     nginx_conf_security-parameters:
-        file: /run/configs/www/etc/nginx/conf.d/configs/security-parameters.conf
+        file: /run/configs/www/etc/nginx/conf.d/security-parameters.conf
     nginx_conf_server:
-        file: /run/configs/www/etc/nginx/conf.d/configs/server.conf
+        file: /run/configs/www/etc/nginx/conf.d/server.conf
 
 services:
     www:
@@ -22,11 +22,11 @@ services:
         -
             mode: 0440
             source: nginx_conf_security-parameters
-            target: /etc/nginx/conf.d/configs/security-parameters.conf
+            target: /etc/nginx/conf.d/security-parameters.conf
         -
             mode: 0440
             source: nginx_conf_server
-            target: /etc/nginx/conf.d/configs/server.conf
+            target: /etc/nginx/conf.d/server.conf
         deploy:
             placement:
                 constraints:
