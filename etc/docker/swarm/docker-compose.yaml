@@ -35,6 +35,7 @@ services:
             restart_policy:
                 condition: any
         image: "alejandrocolomar/www:0.15.0-a1"
+        network: "alejandro-colomar"
         ports:
         -   "32001:8080"
 
