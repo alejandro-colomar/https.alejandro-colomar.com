@@ -34,7 +34,7 @@ ARGC=0;
 function main()
 {
 
-	./bin/delete_stack.sh	"rc";
+	./bin/deploy/delete_stack.sh	"rc";
 }
 
 

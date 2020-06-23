@@ -34,7 +34,7 @@ ARGC=0;
 function main()
 {
 
-	./bin/delete_stack.sh	"exp";
+	./bin/deploy/delete_stack.sh	"exp";
 }
 
 
