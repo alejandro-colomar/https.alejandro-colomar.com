@@ -12,6 +12,9 @@ configs:
     nginx_conf_server:
         file: /run/configs/www/etc/nginx/conf.d/server.conf
 
+networks:
+    alejandro-colomar:
+
 services:
     www:
         configs:
@@ -35,7 +38,9 @@ services:
             restart_policy:
                 condition: any
         image: "alejandrocolomar/www:0.15.1-a1"
-        network: "alejandro-colomar"
+        networks:
+        -
+            "alejandro-colomar"
         ports:
         -   "32001:8080"
 
