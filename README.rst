@@ -109,7 +109,7 @@ For a seamless deployment, the following steps need to be done:
 
 
 - Else, if the pre-release passes the tests, the published port will
-  be forwarded to 31001 (this is done in the parent repository).
+  be forwarded to 31001 (this is done in the nlb repository).
 
 - Release a new stable version (see `Release a stable version`_):
 
@@ -124,7 +124,7 @@ For a seamless deployment, the following steps need to be done:
 	sudo ./bin/deploy/deploy.sh;
 
 - The published port will be forwarded back to 30001 (this is done in
-  the parent repository).
+  the nlb repository).
 
 - Remove the deployment at port 31001:
 
