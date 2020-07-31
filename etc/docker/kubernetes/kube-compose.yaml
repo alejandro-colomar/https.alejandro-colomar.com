@@ -47,15 +47,14 @@ spec:
                     sources:
                     -
                         configMap:
-                            items:
-                            -
-                                key: nginx-conf
-                                path: "nginx.conf"
-                            -
-                                key: nginx-conf-security-parameters
-                                path: "conf.d/security-parameters.conf"
-                            -
-                                key: nginx-conf-server
-                                path: "conf.d/server.conf"
-                            name: nginx_cm
+                            name: nginx-conf_cm
+                            path: "nginx.conf"
+                    -
+                        configMap:
+                            name: nginx-conf-security-parameters_cm
+                            path: "conf.d/security-parameters.conf"
+                    -
+                        configMap:
+                            name: nginx-conf-server_cm
+                            path: "conf.d/server.conf"
 ---
