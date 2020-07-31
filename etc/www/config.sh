@@ -23,7 +23,7 @@ WWW_PORT_RC=31001;
 WWW_PORT_STABLE=30001;
 WWW_STABILITY="exp";	## "stable", "rc", or "exp"
 WWW_STACK_BASENAME="www";
-WWW_VERSION="kube";	## tag name or branch name.
+WWW_VERSION="0.16-a5-kube";	## tag name or branch name.
 
 
 ################################################################################
