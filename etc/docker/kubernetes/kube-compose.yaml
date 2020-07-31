@@ -33,7 +33,7 @@ spec:
         spec:
             containers:
             -
-                name: www-img
+                name: www-container
                 image: "alejandrocolomar/www:kube"
                 volumeMounts:
                 -
