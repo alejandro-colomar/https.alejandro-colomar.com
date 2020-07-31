@@ -47,10 +47,10 @@ spec:
             volumes:
             -
                 configMap:
-                    name: nginx_conf
+                    name: nginx_conf-cm
                 name: nginx_conf
             -
                 configMap:
-                    name: nginx_conf_d
+                    name: nginx_conf_d-cm
                 name: nginx_conf_d
 ---
