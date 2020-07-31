@@ -3,20 +3,7 @@
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
----
-apiVersion: v1
-kind: Service
-metadata:
-    name: www
-spec:
-    ports:
-    -
-        nodePort: 32001
-        port: 8080
-    selector:
-        service: www_svc
-    type: NodePort
----
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,4 +44,4 @@ spec:
                         configMap:
                             name: nginx-conf-server_cm
                             path: "conf.d/server.conf"
----
+
