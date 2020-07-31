@@ -14,43 +14,43 @@ spec:
         nodePort: 32001
         port: 8080
     selector:
-        service: www-svc
+        service: www_svc
     type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: www-deploy
+    name: www_deploy
 spec:
     replicas: 3
     selector:
         matchLabels:
-            service: www-svc
+            service: www_svc
     template:
         metadata:
             labels:
-                service: www-svc
+                service: www_svc
         spec:
             containers:
             -
                 image: "alejandrocolomar/www:kube"
-                name: www-container
+                name: www_container
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/
-                    name: nginx_conf-volume
+                    name: nginx-conf_volume
                     readOnly: true
                 -
                     mountPath: /usr/local/etc/nginx/conf.d/
-                    name: nginx_conf_d-volume
+                    name: nginx-conf-d_volume
                     readOnly: true
             volumes:
             -
                 configMap:
-                    name: nginx_conf-cm
-                name: nginx_conf-volume
+                    name: nginx-conf_cm
+                name: nginx-conf_volume
             -
                 configMap:
-                    name: nginx_conf_d-cm
-                name: nginx_conf_d-volume
+                    name: nginx-conf-d_cm
+                name: nginx-conf-d_volume
 ---
