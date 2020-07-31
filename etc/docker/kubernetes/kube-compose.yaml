@@ -7,33 +7,33 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: www
+    name: www-srv
 spec:
     ports:
     -
         port: 8080
         nodePort: 32001
     selector:
-        service: www
+        service: www-srv
     type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: www
+    name: www-deploy
 spec:
     replicas: 3
     selector:
         matchLabels:
-            service: www
+            service: www-srv
     template:
         metadata:
             labels:
-                service: www
+                service: www-srv
         spec:
             containers:
             -
-                name: www
+                name: www-img
                 image: "alejandrocolomar/www:kube"
                 volumeMounts:
                 -
