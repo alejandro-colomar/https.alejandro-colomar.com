@@ -30,6 +30,8 @@ function change_port()
 {
 	local	port="$1";
 
+	sed "/nodePort:/s/:.*/: ${port}/"				\
+		-i ./etc/docker/kubernetes/kube-compose.yaml;
 	sed "/ports/{n;s/\".*:/\"${port}:/}"				\
 		-i ./etc/docker/swarm/docker-compose.yaml;
 }
