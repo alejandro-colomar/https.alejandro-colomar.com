@@ -41,11 +41,7 @@ spec:
                     mountPath: /usr/local/etc/nginx/
                     readOnly: true
                 -
-                    name: nginx_conf_security-parameters
-                    mountPath: /usr/local/etc/nginx/conf.d/
-                    readOnly: true
-                -
-                    name: nginx_conf_server
+                    name: nginx_conf_d
                     mountPath: /usr/local/etc/nginx/conf.d/
                     readOnly: true
             volumes:
@@ -54,11 +50,7 @@ spec:
                 configMap:
                     name: nginx_conf
             -
-                name: nginx_conf_security-parameters
+                name: nginx_conf_d
                 configMap:
-                    name: nginx_conf_security-parameters
-            -
-                name: nginx_conf_server
-                configMap:
-                    name: nginx_conf_server
+                    name: nginx_conf_d
 ---
