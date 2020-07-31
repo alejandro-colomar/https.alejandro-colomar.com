@@ -45,4 +45,5 @@ spec:
                 configMap:
                     name: nginx-conf_cm
                 name: nginx-conf_volume
+                projected:
 ---
