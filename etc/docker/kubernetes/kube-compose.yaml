@@ -7,14 +7,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: www-srv
+    name: www-svc
 spec:
     ports:
     -
         port: 8080
         nodePort: 32001
     selector:
-        service: www-srv
+        service: www-svc
     type: NodePort
 ---
 apiVersion: apps/v1
@@ -25,11 +25,11 @@ spec:
     replicas: 3
     selector:
         matchLabels:
-            service: www-srv
+            service: www-svc
     template:
         metadata:
             labels:
-                service: www-srv
+                service: www-svc
         spec:
             containers:
             -
