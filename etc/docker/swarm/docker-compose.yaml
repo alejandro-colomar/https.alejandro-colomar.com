@@ -7,7 +7,7 @@
 configs:
     nginx_conf:
         file: /run/configs/www/etc/nginx/nginx.conf
-    nginx_conf_security-parameters:
+    nginx_conf_security_parameters:
         file: /run/configs/www/etc/nginx/conf.d/security-parameters.conf
     nginx_conf_server:
         file: /run/configs/www/etc/nginx/conf.d/server.conf
@@ -24,7 +24,7 @@ services:
             target: /usr/local/etc/nginx/nginx.conf
         -
             mode: 0440
-            source: nginx_conf_security-parameters
+            source: nginx_conf_security_parameters
             target: /usr/local/etc/nginx/conf.d/security-parameters.conf
         -
             mode: 0440
