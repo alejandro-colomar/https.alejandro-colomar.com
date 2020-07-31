@@ -9,7 +9,7 @@ kind: Deployment
 metadata:
     name: www-deploy
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             service: www-svc
