@@ -38,15 +38,15 @@ spec:
                 volumeMounts:
                 -
                     name: nginx_conf
-                    mountPath: /usr/local/etc/nginx/nginx.conf
+                    mountPath: /usr/local/etc/nginx/
                     readOnly: true
                 -
                     name: nginx_conf_security-parameters
-                    mountPath: /usr/local/etc/nginx/conf.d/security-parameters.conf
+                    mountPath: /usr/local/etc/nginx/conf.d/
                     readOnly: true
                 -
                     name: nginx_conf_server
-                    mountPath: /usr/local/etc/nginx/conf.d/server.conf
+                    mountPath: /usr/local/etc/nginx/conf.d/
                     readOnly: true
             volumes:
             -
