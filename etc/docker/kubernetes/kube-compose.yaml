@@ -38,12 +38,24 @@ spec:
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/
-                    name: nginx-conf_volume
+                    name: nginx_volume
                     readOnly: true
             volumes:
             -
-                configMap:
-                    name: nginx-conf_cm
-                name: nginx-conf_volume
+                name: nginx_volume
                 projected:
+                    sources:
+                    -
+                        configMap:
+                            items:
+                            -
+                                key: nginx-conf
+                                path: "nginx.conf"
+                            -
+                                key: nginx-conf-security-parameters
+                                path: "conf.d/security-parameters.conf"
+                            -
+                                key: nginx-conf-server
+                                path: "conf.d/server.conf"
+                            name: nginx_cm
 ---
