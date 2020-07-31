@@ -11,8 +11,8 @@ metadata:
 spec:
     ports:
     -
-        port: 8080
         nodePort: 32001
+        port: 8080
     selector:
         service: www-svc
     type: NodePort
@@ -33,24 +33,24 @@ spec:
         spec:
             containers:
             -
-                name: www-container
                 image: "alejandrocolomar/www:kube"
+                name: www-container
                 volumeMounts:
                 -
-                    name: nginx_conf
                     mountPath: /usr/local/etc/nginx/
+                    name: nginx_conf
                     readOnly: true
                 -
-                    name: nginx_conf_d
                     mountPath: /usr/local/etc/nginx/conf.d/
+                    name: nginx_conf_d
                     readOnly: true
             volumes:
             -
-                name: nginx_conf
                 configMap:
                     name: nginx_conf
+                name: nginx_conf
             -
-                name: nginx_conf_d
                 configMap:
                     name: nginx_conf_d
+                name: nginx_conf_d
 ---
