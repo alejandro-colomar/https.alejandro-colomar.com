@@ -7,41 +7,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: www_deploy
+    name: www-deploy
 spec:
     replicas: 3
     selector:
         matchLabels:
-            service: www_svc
+            service: www-svc
     template:
         metadata:
             labels:
-                service: www_svc
+                service: www-svc
         spec:
             containers:
             -
                 image: "alejandrocolomar/www:kube"
-                name: www_container
+                name: www-container
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/
-                    name: nginx_volume
+                    name: nginx-volume
                     readOnly: true
             volumes:
             -
-                name: nginx_volume
+                name: nginx-volume
                 projected:
                     sources:
                     -
                         configMap:
-                            name: nginx-conf_cm
+                            name: nginx-conf-cm
                             path: "nginx.conf"
                     -
                         configMap:
-                            name: nginx-conf-security-parameters_cm
+                            name: nginx-conf-security-parameters-cm
                             path: "conf.d/security-parameters.conf"
                     -
                         configMap:
-                            name: nginx-conf-server_cm
+                            name: nginx-conf-server-cm
                             path: "conf.d/server.conf"
 

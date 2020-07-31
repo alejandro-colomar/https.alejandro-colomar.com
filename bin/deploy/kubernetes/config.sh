@@ -34,11 +34,11 @@ ARGC=0;
 function main()
 {
 
-	kubectl create configmap "nginx-conf_cm"			\
+	kubectl create configmap "nginx-conf-cm"			\
 		--from-file "/run/configs/www/etc/nginx/nginx.conf"
-	kubectl create configmap "nginx-conf-security-parameters_cm"	\
+	kubectl create configmap "nginx-conf-security-parameters-cm"	\
 		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf"
-	kubectl create configmap "nginx-conf-server_cm"			\
+	kubectl create configmap "nginx-conf-server-cm"			\
 		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf"
 }
 
