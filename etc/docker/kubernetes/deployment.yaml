@@ -25,11 +25,11 @@ spec:
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/
-                    name: nginx-volume
+                    name: etc-nginx-volume
                     readOnly: true
             volumes:
             -
-                name: nginx-volume
+                name: etc-nginx-volume
                 projected:
                     sources:
                     -
