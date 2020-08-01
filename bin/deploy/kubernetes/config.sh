@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/release/port.sh	<port>
+##	./bin/deploy/kubernetes/config.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Change port number
-## ==================
+## Generate the config maps
+## ========================
 ##
 ################################################################################
 
@@ -20,21 +20,12 @@ source	lib/libalx/sh/sysexits.sh;
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
+ARGC=0;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function change_port()
-{
-	local	port="$1";
-
-	sed "/nodePort:/s/:.*/: ${port}/"				\
-		-i ./etc/docker/kubernetes/service.yaml;
-	sed "/ports/{n;s/\".*:/\"${port}:/}"				\
-		-i ./etc/docker/swarm/docker-compose.yaml;
-}
 
 
 ################################################################################
@@ -42,9 +33,12 @@ function change_port()
 ################################################################################
 function main()
 {
-	local	port="$1";
 
-	change_port	"${port}";
+	kubectl create configmap "etc-nginx-cm"			\
+		--from-file "/run/configs/www/etc/nginx/nginx.conf"
+	kubectl create configmap "etc-nginx-confd-cm"			\
+		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
+		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf"
 }
 
 
@@ -53,11 +47,11 @@ function main()
 ################################################################################
 argc=$#;
 if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${MAX_ARGC})";
+	echo	"Illegal number of parameters (Requires ${ARGC})";
 	exit	${EX_USAGE};
 fi
 
-main	"$1";
+main;
 
 
 ################################################################################

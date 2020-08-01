@@ -37,7 +37,7 @@ services:
             replicas: 1
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www:master"
+        image: "alejandrocolomar/www:kube"
         networks:
         -
             "alejandro-colomar"

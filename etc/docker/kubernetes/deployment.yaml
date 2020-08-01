@@ -1,0 +1,74 @@
+################################################################################
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
+################################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: www-deploy
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            service: www-svc
+    template:
+        metadata:
+            labels:
+                service: www-svc
+        spec:
+            containers:
+            -
+                image: "alejandrocolomar/www:kube"
+                livenessProbe:
+                    httpGet:
+                        path: /
+                        port: 8080
+                    initialDelaySeconds: 10
+                name: www-container
+                ports:
+                -
+                    containerPort: 8080
+                readinessProbe:
+                    httpGet:
+                        path: /
+                        port: 8080
+                    initialDelaySeconds: 1
+                volumeMounts:
+                -
+                    mountPath: /usr/local/etc/nginx/
+                    name: etc-nginx-volume
+                    readOnly: true
+                -
+                    mountPath: /usr/local/etc/nginx/conf.d/
+                    name: etc-nginx-confd-volume
+                    readOnly: true
+                -
+                    mountPath: /var/cache/nginx/
+                    name: var-cache-nginx-volume
+                -
+                    mountPath: /var/log/nginx/
+                    name: var-log-nginx-volume
+                -
+                    mountPath: /var/run/
+                    name: var-run-volume
+            volumes:
+            -
+                name: etc-nginx-volume
+                configMap:
+                    name: etc-nginx-cm
+            -
+                name: etc-nginx-confd-volume
+                configMap:
+                    name: etc-nginx-confd-cm
+            -
+                name: var-cache-nginx-volume
+                emptyDir: {}
+            -
+                name: var-log-nginx-volume
+                emptyDir: {}
+            -
+                name: var-run-volume
+                emptyDir: {}
+
