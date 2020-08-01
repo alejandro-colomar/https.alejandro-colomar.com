@@ -38,19 +38,37 @@ spec:
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/
-                    name: nginx-conf-volume
+                    name: etc-nginx-volume
                     readOnly: true
                 -
                     mountPath: /usr/local/etc/nginx/conf.d/
-                    name: nginx-confd-volume
+                    name: etc-nginx-confd-volume
                     readOnly: true
+                -
+                    mountPath: /var/cache/nginx/
+                    name: var-cache-nginx-volume
+                -
+                    mountPath: /var/log/nginx/
+                    name: var-log-nginx-volume
+                -
+                    mountPath: /var/run/
+                    name: var-run-volume
             volumes:
             -
-                name: nginx-conf-volume
+                name: etc-nginx-volume
                 configMap:
-                    name: nginx-conf-cm
+                    name: etc-nginx-cm
             -
-                name: nginx-confd-volume
+                name: etc-nginx-confd-volume
                 configMap:
-                    name: nginx-confd-cm
+                    name: etc-nginx-confd-cm
+            -
+                name: var-cache-nginx-volume
+                emptyDir: {}
+            -
+                name: var-log-nginx-volume
+                emptyDir: {}
+            -
+                name: var-run-volume
+                emptyDir: {}
 
