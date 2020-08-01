@@ -20,7 +20,7 @@ spec:
         spec:
             containers:
             -
-                image: "alejandrocolomar/www:0.16-a6-kube"
+                image: "alejandrocolomar/www:kube"
                 name: www-container
                 volumeMounts:
                 -
