@@ -24,31 +24,20 @@ spec:
                 name: www-container
                 volumeMounts:
                 -
-                    mountPath: /usr/local/etc/nginx/nginx.conf
+                    mountPath: /usr/local/etc/nginx/
                     name: nginx-conf-volume
                     readOnly: true
-                    subPath: nginx.conf
                 -
-                    mountPath: /usr/local/etc/nginx/conf.d/security-parameters.conf
-                    name: nginx-confd-security-parameters-volume
+                    mountPath: /usr/local/etc/nginx/conf.d/
+                    name: nginx-confd-volume
                     readOnly: true
-                    subPath: security-parameters.conf
-                -
-                    mountPath: /usr/local/etc/nginx/conf.d/server.conf
-                    name: nginx-confd-server-volume
-                    readOnly: true
-                    subPath: server.conf
             volumes:
             -
                 name: nginx-conf-volume
                 configMap:
                     name: nginx-conf-cm
             -
-                name: nginx-confd-security-parameters-volume
+                name: nginx-confd-volume
                 configMap:
-                    name: nginx-confd-security-parameters-cm
-            -
-                name: nginx-confd-server-volume
-                configMap:
-                    name: nginx-confd-server-cm
+                    name: nginx-confd-cm
 
