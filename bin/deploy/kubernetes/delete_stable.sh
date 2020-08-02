@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/kubernetes/config.sh	"<namespace>"
+##	./bin/deploy/kubernetes/delete_stable.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Generate the config maps
-## ========================
+## Delete stable stack
+## ===================
 ##
 ################################################################################
 
@@ -20,7 +20,7 @@ source	lib/libalx/sh/sysexits.sh;
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
+ARGC=0;
 
 
 ################################################################################
@@ -33,12 +33,8 @@ ARGC=1;
 ################################################################################
 function main()
 {
-	local	namespace="$1";
 
-	kubectl create configmap "etc-nginx-confd-cm"			\
-		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
-		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf" \
-		-n "${namespace}"
+	./bin/deploy/kubernetes/delete.sh	"stable";
 }
 
 

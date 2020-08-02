@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/kubernetes/config.sh	"<namespace>"
+##	./bin/deploy/kubernetes/delete.sh	"<stability>"
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Generate the config maps
-## ========================
+## Delete stack
+## ============
 ##
 ################################################################################
 
@@ -15,6 +15,8 @@
 ##	source								      ##
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
+
+source	etc/www/config.sh;
 
 
 ################################################################################
@@ -26,6 +28,13 @@ ARGC=1;
 ################################################################################
 ##	functions							      ##
 ################################################################################
+function delete_stack()
+{
+	local	stability="$1";
+	local	namespace="${WWW_STACK_BASENAME}_${stability}";
+
+	kubectl delete namespace "${namespace}";
+}
 
 
 ################################################################################
@@ -33,12 +42,8 @@ ARGC=1;
 ################################################################################
 function main()
 {
-	local	namespace="$1";
 
-	kubectl create configmap "etc-nginx-confd-cm"			\
-		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
-		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf" \
-		-n "${namespace}"
+	delete_stack	"$1";
 }
 
 
@@ -51,7 +56,7 @@ if [ ${argc} -ne ${ARGC} ]; then
 	exit	${EX_USAGE};
 fi
 
-main;
+main	"$1";
 
 
 ################################################################################
