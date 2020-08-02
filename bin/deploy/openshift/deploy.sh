@@ -39,10 +39,10 @@ function main()
 
 	./bin/deploy/common/config.sh;
 
-	oc new-project "${namespace}"
-	./bin/deploy/openshift/config.sh;
-	oc apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}"
-	oc apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}"
+	oc new-project "${namespace}";
+	./bin/deploy/openshift/config.sh "${namespace}";
+	oc apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}";
+	oc apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}";
 }
 
 

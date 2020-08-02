@@ -39,10 +39,10 @@ function main()
 
 	./bin/deploy/common/config.sh;
 
-	kubectl create namespace "${namespace}"
-	./bin/deploy/kubernetes/config.sh;
-	kubectl apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}"
-	kubectl apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}"
+	kubectl create namespace "${namespace}";
+	./bin/deploy/kubernetes/config.sh "${namespace}";
+	kubectl apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}";
+	kubectl apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}";
 }
 
 
