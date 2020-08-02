@@ -35,7 +35,7 @@ function main()
 {
 	local	namespace="$1";
 
-	kubectl create configmap "etc-nginx-confd-cm"			\
+	oc create configmap "etc-nginx-confd-cm"			\
 		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
 		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf" \
 		-n "${namespace}"

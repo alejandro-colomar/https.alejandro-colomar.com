@@ -41,8 +41,8 @@ function main()
 
 	oc new-project "${namespace}"
 	./bin/deploy/openshift/config.sh;
-	kubectl apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}"
-	kubectl apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}"
+	oc apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}"
+	oc apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}"
 }
 
 
