@@ -37,10 +37,6 @@ spec:
                     initialDelaySeconds: 1
                 volumeMounts:
                 -
-                    mountPath: /usr/local/etc/nginx/
-                    name: etc-nginx-volume
-                    readOnly: true
-                -
                     mountPath: /usr/local/etc/nginx/conf.d/
                     name: etc-nginx-confd-volume
                     readOnly: true
@@ -54,10 +50,6 @@ spec:
                     mountPath: /var/run/
                     name: var-run-volume
             volumes:
-            -
-                name: etc-nginx-volume
-                configMap:
-                    name: etc-nginx-cm
             -
                 name: etc-nginx-confd-volume
                 configMap:
