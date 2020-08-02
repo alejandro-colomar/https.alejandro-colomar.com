@@ -17,7 +17,6 @@ WWW_CONFIG_H="/etc/www/config.sh included";
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-WWW_COMPOSE_FPATH="etc/docker/swarm/docker-compose.yaml";
 WWW_PORT_EXP=32001;
 WWW_PORT_RC=31001;
 WWW_PORT_STABLE=30001;

@@ -30,9 +30,10 @@ ARGC=0;
 ################################################################################
 function deploy_stack()
 {
+	local	compose_path="etc/docker/swarm/docker-compose.yaml"
 	local	stack_name="${WWW_STACK_BASENAME}_${WWW_STABILITY}";
 
-	docker stack deploy -c "${WWW_COMPOSE_FPATH}" ${stack_name}
+	docker stack deploy -c "${compose_path}" "${stack_name}"
 }
 
 
