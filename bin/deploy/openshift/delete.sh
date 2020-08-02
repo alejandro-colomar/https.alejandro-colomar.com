@@ -31,7 +31,7 @@ ARGC=1;
 function delete_stack()
 {
 	local	stability="$1";
-	local	namespace="${WWW_STACK_BASENAME}_${stability}";
+	local	namespace="${WWW_STACK_BASENAME}-${stability}";
 
 	oc delete project "${namespace}";
 }

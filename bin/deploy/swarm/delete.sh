@@ -31,7 +31,7 @@ ARGC=1;
 function delete_stack()
 {
 	local	stability="$1";
-	local	stack_name="${WWW_STACK_BASENAME}_${stability}";
+	local	stack_name="${WWW_STACK_BASENAME}-${stability}";
 
 	docker stack rm "${stack_name}";
 }

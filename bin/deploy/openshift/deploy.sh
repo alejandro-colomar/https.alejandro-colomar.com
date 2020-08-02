@@ -35,7 +35,7 @@ ARGC=0;
 ################################################################################
 function main()
 {
-	local	namespace="${WWW_STACK_BASENAME}_${WWW_STABILITY}";
+	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
 	./bin/deploy/common/config.sh;
 
