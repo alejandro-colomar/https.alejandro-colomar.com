@@ -1,14 +1,16 @@
 #!/bin/bash -x
-##	./bin/release/stability.sh	<stability>
+##	./bin/version/branch.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Update repository stability status
-## ==================================
+## Prepare a branch
+## ================
 ##
-## The stack name has a suffix to help identify it: "stable", "rc" or "exp".
+##  - Update version number
+##  - Update exposed port
+##  - Update stack name
 ##
 ################################################################################
 
@@ -18,27 +20,18 @@
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
 
+source	etc/www/config.sh;
+
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
+ARGC=0;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function update_suffix()
-{
-	local	stability="$1";
-
-	sed "/docker stack deploy/s/www_.*\;/www_${stability}\;/"	\
-		-i ./etc/docker/swarm/docker-compose.yaml;
-	sed "/docker stack rm/s/www_.*\;/www_${stability}\;/"		\
-		-i ./etc/docker/swarm/docker-compose.yaml;
-	sed "/WWW_STABILITY=/s/\".*\"\;/\"${stability}\"\;/"		\
-		-i ./etc/www/config.sh;
-}
 
 
 ################################################################################
@@ -46,9 +39,13 @@ function update_suffix()
 ################################################################################
 function main()
 {
-	local	suffix="$1";
+	local	branch="$(git branch --show-current)";
 
-	update_suffix	"${suffix}";
+	./bin/version/common/port.sh		${WWW_PORT_EXP};
+	./bin/version/common/stability.sh	"exp";
+	./bin/version/common/version.sh;
+
+	git commit -a -m "Branch: ${branch}";
 }
 
 
@@ -61,7 +58,7 @@ if [ ${argc} -ne ${ARGC} ]; then
 	exit	${EX_USAGE};
 fi
 
-main	"$1";
+main;
 
 
 ################################################################################

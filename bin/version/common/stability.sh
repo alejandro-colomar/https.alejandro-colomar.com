@@ -1,16 +1,14 @@
 #!/bin/bash -x
-##	./bin/release_rc.sh	<version>
+##	./bin/version/common/stability.sh	<stability>
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Release a release-critical version
+## Update repository stability status
 ## ==================================
 ##
-##  - Update version number
-##  - Update exposed port
-##  - Update stack name
+## The stack name has a suffix to help identify it: "stable", "rc" or "exp".
 ##
 ################################################################################
 
@@ -19,8 +17,6 @@
 ##	source								      ##
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
-
-source	etc/www/config.sh;
 
 
 ################################################################################
@@ -32,6 +28,17 @@ ARGC=1;
 ################################################################################
 ##	functions							      ##
 ################################################################################
+function update_suffix()
+{
+	local	stability="$1";
+
+	sed "/docker stack deploy/s/www_.*\;/www_${stability}\;/"	\
+		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/docker stack rm/s/www_.*\;/www_${stability}\;/"		\
+		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/WWW_STABILITY=/s/\".*\"\;/\"${stability}\"\;/"		\
+		-i ./etc/www/config.sh;
+}
 
 
 ################################################################################
@@ -39,14 +46,9 @@ ARGC=1;
 ################################################################################
 function main()
 {
-	local	rc_version="$1";
+	local	suffix="$1";
 
-	./bin/release/port.sh		${WWW_PORT_RC};
-	./bin/release/stability.sh	"rc";
-	./bin/release/version.sh	"${rc_version}";
-
-	git commit -a -m "Pre-release ${rc_version}";
-	git tag -a ${rc_version} -m "";
+	update_suffix	"${suffix}";
 }
 
 

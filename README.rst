@@ -27,7 +27,7 @@ Start working on a new branch
 .. code-block:: BASH
 
 	git checkout -b <branch>;
-	./bin/branch.sh;
+	./bin/version/branch.sh;
 
 Pre-release an experimental version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -36,7 +36,7 @@ Experimental pre-releases are named ending with ``-aX`` or ``-bX``.
 
 .. code-block:: BASH
 
-	./bin/release_exp.sh	<exp-version>;
+	./bin/version/release_exp.sh	<exp-version>;
 
 Pre-release a release-critical version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,21 +45,21 @@ Release-critical pre-releases are named ending with ``-rcX``.
 
 .. code-block:: BASH
 
-	./bin/release_rc.sh	<rc-version>;
+	./bin/version/release_rc.sh	<rc-version>;
 
 Release a stable version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/release_stable.sh	<version>;
+	./bin/version/release_stable.sh	<version>;
 
 Continue working on the current branch after a release
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/branch.sh;
+	./bin/version/branch.sh;
 
 
 ________________________________________________________________________________
@@ -86,7 +86,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/release_rc.sh	<rc-version>;
+	./bin/version/release_rc.sh	<rc-version>;
 
 - Deploy the release-critical pre-release at port 31001:
 
@@ -105,7 +105,7 @@ For a seamless deployment, the following steps need to be done:
 
 	./bin/deploy/swarm/delete_rc_stack.sh
 
-	./bin/branch.sh;
+	./bin/version/branch.sh;
 
 
 - Else, if the pre-release passes the tests, the published port will
@@ -115,7 +115,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/release_stable.sh	<version>;
+	./bin/version/release_stable.sh	<version>;
 
 - Deploy the stable release at port 30001:
 

@@ -1,12 +1,16 @@
 #!/bin/bash -x
-##	./bin/release/port.sh	<port>
+##	./bin/version/release_stable.sh	<version>
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Change port number
-## ==================
+## Release a stable version
+## ========================
+##
+##  - Update version number
+##  - Update exposed port
+##  - Update stack name
 ##
 ################################################################################
 
@@ -15,6 +19,8 @@
 ##	source								      ##
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
+
+source	etc/www/config.sh;
 
 
 ################################################################################
@@ -26,15 +32,6 @@ ARGC=1;
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function change_port()
-{
-	local	port="$1";
-
-	sed "/nodePort:/s/:.*/: ${port}/"				\
-		-i ./etc/docker/kubernetes/service.yaml;
-	sed "/ports/{n;s/\".*:/\"${port}:/}"				\
-		-i ./etc/docker/swarm/docker-compose.yaml;
-}
 
 
 ################################################################################
@@ -42,9 +39,14 @@ function change_port()
 ################################################################################
 function main()
 {
-	local	port="$1";
+	local	version="$1";
 
-	change_port	"${port}";
+	./bin/version/common/port.sh		${WWW_PORT_STABLE};
+	./bin/version/common/stability.sh	"stable";
+	./bin/version/common/version.sh		"${version}";
+
+	git commit -a -m "Release ${version}";
+	git tag -a ${version} -m "";
 }
 
 
@@ -53,7 +55,7 @@ function main()
 ################################################################################
 argc=$#;
 if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${MAX_ARGC})";
+	echo	"Illegal number of parameters (Requires ${ARGC})";
 	exit	${EX_USAGE};
 fi
 
