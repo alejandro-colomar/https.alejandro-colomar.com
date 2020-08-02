@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy_aws.sh
+##	./bin/deploy/aws/deploy.sh
 ################################################################################
 ##       Copyright (C) 2020        Sebastian Francisco Colomar Bauza          ##
 ##       Copyright (C) 2020        Alejandro Colomar Andrés                   ##
