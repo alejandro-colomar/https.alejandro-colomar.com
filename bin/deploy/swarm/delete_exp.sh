@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/swarm/delete_stack_stable.sh
+##	./bin/deploy/swarm/delete_exp.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stable stack
-## ===================
+## Delete exp stack
+## ================
 ##
 ################################################################################
 
@@ -34,7 +34,7 @@ ARGC=0;
 function main()
 {
 
-	./bin/deploy/swarm/delete_stack.sh	"stable";
+	./bin/deploy/swarm/delete.sh	"exp";
 }
 
 
