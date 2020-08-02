@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/delete_stack_exp.sh
+##	./bin/deploy/swarm/delete_stack_exp.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -34,7 +34,7 @@ ARGC=0;
 function main()
 {
 
-	./bin/deploy/delete_stack.sh	"exp";
+	./bin/deploy/swarm/delete_stack.sh	"exp";
 }
 
 

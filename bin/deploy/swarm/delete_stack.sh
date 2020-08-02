@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/delete_stack.sh	"<stability>"
+##	./bin/deploy/swarm/delete_stack.sh	"<stability>"
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##

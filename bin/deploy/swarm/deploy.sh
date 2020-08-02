@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/delete_stack_stable.sh
+##	./bin/deploy/swarm/deploy.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stable stack
-## ===================
+## Deploy stack
+## ============
 ##
 ################################################################################
 
@@ -15,6 +15,8 @@
 ##	source								      ##
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
+
+source	etc/www/config.sh;
 
 
 ################################################################################
@@ -26,6 +28,12 @@ ARGC=0;
 ################################################################################
 ##	functions							      ##
 ################################################################################
+function deploy_stack()
+{
+	local	stack_name="${WWW_STACK_BASENAME}_${WWW_STABILITY}";
+
+	docker stack deploy -c "${WWW_COMPOSE_FPATH}" ${stack_name}
+}
 
 
 ################################################################################
@@ -34,7 +42,8 @@ ARGC=0;
 function main()
 {
 
-	./bin/deploy/delete_stack.sh	"stable";
+	./bin/deploy/common/config.sh;
+	deploy_stack;
 }
 
 

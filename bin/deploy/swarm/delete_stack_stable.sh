@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/delete_stack_rc.sh
+##	./bin/deploy/swarm/delete_stack_stable.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete rc stack
-## ===============
+## Delete stable stack
+## ===================
 ##
 ################################################################################
 
@@ -34,7 +34,7 @@ ARGC=0;
 function main()
 {
 
-	./bin/deploy/delete_stack.sh	"rc";
+	./bin/deploy/swarm/delete_stack.sh	"stable";
 }
 
 
