@@ -1,0 +1,20 @@
+################################################################################
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
+################################################################################
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: www-netpol
+spec:
+    podSelector:
+        matchLabels:
+            service: www-svc
+    ingress:
+    -
+        ports:
+        -
+            port: 8080
+
