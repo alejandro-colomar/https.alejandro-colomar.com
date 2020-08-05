@@ -36,7 +36,7 @@ Experimental pre-releases are named ending with ``-aX`` or ``-bX``.
 
 .. code-block:: BASH
 
-	./bin/version/prerelease_exp.sh	<exp-version>;
+	./bin/version/release_exp.sh	<exp-version>;
 
 Pre-release a release-critical version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,14 +45,14 @@ Release-critical pre-releases are named ending with ``-rcX``.
 
 .. code-block:: BASH
 
-	./bin/version/prerelease_rc.sh	<rc-version>;
+	./bin/version/release_rc.sh	<rc-version>;
 
 Release a stable version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/version/release.sh	<version>;
+	./bin/version/release_stable.sh	<version>;
 
 Continue working on the current branch after a release
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,7 +86,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/version/prerelease_rc.sh	<rc-version>;
+	./bin/version/release_rc.sh	<rc-version>;
 
 - Deploy the release-critical pre-release at port 31001:
 
@@ -115,7 +115,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/version/release.sh	<version>;
+	./bin/version/release_stable.sh	<version>;
 
 - Deploy the stable release at port 30001:
 

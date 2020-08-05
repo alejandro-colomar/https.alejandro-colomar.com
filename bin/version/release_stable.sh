@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/version/prerelease_rc.sh	<version>
+##	./bin/version/release_stable.sh	<version>
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Release a release-critical version
-## ==================================
+## Release a stable version
+## ========================
 ##
 ##  - Update version number
 ##  - Update exposed port
@@ -39,14 +39,14 @@ ARGC=1;
 ################################################################################
 function main()
 {
-	local	rc_version="$1";
+	local	version="$1";
 
-	./bin/version/common/port.sh		${WWW_PORT_RC};
-	./bin/version/common/stability.sh	"rc";
-	./bin/version/common/version.sh		"${rc_version}";
+	./bin/version/common/port.sh		${WWW_PORT_STABLE};
+	./bin/version/common/stability.sh	"stable";
+	./bin/version/common/version.sh		"${version}";
 
-	git commit -a -m "Pre-release ${rc_version}";
-	git tag -a ${rc_version} -m "";
+	git commit -a -m "Release ${version}";
+	git tag -a ${version} -m "";
 }
 
 
