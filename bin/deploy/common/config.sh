@@ -30,14 +30,14 @@ function prepare_configs()
 {
 
 	mkdir -pv	/run/configs/;
-	cp -rfvT	run/configs/www/	/run/configs/www;
+	cp -fLrvT	run/configs/www/	/run/configs/www;
 }
 
 function prepare_secrets()
 {
 
 	mkdir -pv	/run/secrets/;
-	cp -rfvT	run/secrets/www/	/run/secrets/www;
+	cp -fLrvT	run/secrets/www/	/run/secrets/www;
 }
 
 
