@@ -4,7 +4,7 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 
-apiVersion: route.oopenshift.io/v1
+apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
     name: www-route
