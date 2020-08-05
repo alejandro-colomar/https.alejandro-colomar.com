@@ -36,7 +36,7 @@ Experimental pre-releases are named ending with ``-aX`` or ``-bX``.
 
 .. code-block:: BASH
 
-	./bin/version/release_exp.sh	<exp-version>;
+	./bin/version/prerelease_exp.sh	<exp-version>;
 
 Pre-release a release-critical version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,14 +45,14 @@ Release-critical pre-releases are named ending with ``-rcX``.
 
 .. code-block:: BASH
 
-	./bin/version/release_rc.sh	<rc-version>;
+	./bin/version/prerelease_rc.sh	<rc-version>;
 
 Release a stable version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/version/release_stable.sh	<version>;
+	./bin/version/release.sh	<version>;
 
 Continue working on the current branch after a release
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,7 +75,7 @@ _`parent repository`: https://github.com/alejandro-colomar/alejandro-colomar.git
 
 Releases use port 30001.
 Release-critical pre-releases use port 31001.
-Experimental deployments use ports 32001.
+Experimental deployments use port 32001.
 
 For a seamless deployment, the following steps need to be done:
 
@@ -86,7 +86,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/version/release_rc.sh	<rc-version>;
+	./bin/version/prerelease_rc.sh	<rc-version>;
 
 - Deploy the release-critical pre-release at port 31001:
 
@@ -103,34 +103,45 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/deploy/swarm/delete_rc_stack.sh
+	./bin/deploy/swarm/delete_rc.sh
 
 	./bin/version/branch.sh;
 
 
-- Else, if the pre-release passes the tests, the published port will
+- Else, if the pre-release passes the tests, the published port should
   be forwarded to 31001 (this is done in the nlb repository).
 
 - Release a new stable version (see `Release a stable version`_):
 
 .. code-block:: BASH
 
-	./bin/version/release_stable.sh	<version>;
+	./bin/version/release.sh	<version>;
 
 - Deploy the stable release at port 30001:
 
 .. code-block:: BASH
 
+	./bin/deploy/swarm/delete_stable.sh
 	sudo ./bin/deploy/swarm/deploy.sh;
 
-- The published port will be forwarded back to 30001 (this is done in
+- The published port should be forwarded back to 30001 (this is done in
   the nlb repository).
 
 - Remove the deployment at port 31001:
 
 .. code-block:: BASH
 
-	./bin/deploy/swarm/delete_rc_stack.sh
+	./bin/deploy/swarm/delete_rc.sh
+
+
+________________________________________________________________________________
+
+Kubernetes | OpenShift
+======================
+
+There are scripts to deploy using kubernetes or openshift.  The
+procedure is exactly the same as above, replacing the word "swarm" by
+"kubernetes" or "openshift" as needed.
 
 
 ________________________________________________________________________________
