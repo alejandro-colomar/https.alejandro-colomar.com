@@ -42,8 +42,8 @@ function main()
 	oc new-project "${namespace}";
 	./bin/deploy/openshift/config.sh "${namespace}";
 	oc apply -f "etc/docker/openshift/deployment.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/service.yaml" -n "${namespace}";
 	oc apply -f "etc/docker/openshift/network-policy.yaml" -n "${namespace}";
+	oc apply -f "etc/docker/openshift/service.yaml" -n "${namespace}";
 	oc apply -f "etc/docker/openshift/route.yaml" -n "${namespace}";
 }
 
