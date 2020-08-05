@@ -20,9 +20,9 @@ WWW_CONFIG_H="/etc/www/config.sh included";
 WWW_PORT_EXP=32001;
 WWW_PORT_RC=31001;
 WWW_PORT_STABLE=30001;
-WWW_STABILITY="stable";	## "stable", "rc", or "exp"
+WWW_STABILITY="exp";	## "stable", "rc", or "exp"
 WWW_STACK_BASENAME="www";
-WWW_VERSION="0.16.1";	## tag name or branch name.
+WWW_VERSION="master";	## tag name or branch name.
 
 
 ################################################################################
