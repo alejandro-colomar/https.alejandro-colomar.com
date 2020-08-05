@@ -44,6 +44,7 @@ function main()
 	oc apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}";
 	oc apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}";
 	oc apply -f "etc/docker/kubernetes/network-policy.yaml" -n "${namespace}";
+	oc apply -f "etc/docker/openshift/route.yaml" -n "${namespace}";
 }
 
 
