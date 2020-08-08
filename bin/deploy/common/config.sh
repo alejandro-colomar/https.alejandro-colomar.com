@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/config.sh
+##	./bin/deploy/common/config.sh
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
