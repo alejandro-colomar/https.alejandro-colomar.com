@@ -1,11 +1,9 @@
-#!/bin/bash -x
-##	./bin/deploy/swarm/delete.sh	"<stability>"
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stack
+## Deploy stack
 ## ============
 ##
 ################################################################################
@@ -14,49 +12,29 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
-
 source	etc/www/config.sh;
+
+source	lib/www/deploy/common/config.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function delete_stack()
+## sudo
+function swarm_deploy()
 {
-	local	stability="$1";
-	local	stack_name="${WWW_STACK_BASENAME}-${stability}";
+	local	compose_path="etc/docker/swarm/docker-compose.yaml"
+	local	stack_name="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
-	docker stack rm "${stack_name}";
+	prepare_configs;
+	#prepare_secrets;
+	docker stack deploy -c "${compose_path}" "${stack_name}";
 }
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
-{
-
-	delete_stack	"$1";
-}
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main	"$1";
 
 
 ################################################################################

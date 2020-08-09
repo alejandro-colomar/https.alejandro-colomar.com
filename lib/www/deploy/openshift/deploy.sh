@@ -1,16 +1,10 @@
-#!/bin/bash -x
-##	./bin/version/release_rc.sh	"<version>";
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Release a release-critical version
-## ==================================
-##
-##  - Update version number
-##  - Update exposed port
-##  - Update stack name
+## Deploy stack
+## ============
 ##
 ################################################################################
 
@@ -18,51 +12,33 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
-
 source	etc/www/config.sh;
-source	lib/www/version/port.sh;
-source	lib/www/version/stability.sh;
-source	lib/www/version/version.sh;
+source	lib/www/deploy/common/config.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
+## sudo
+function oc_deploy()
 {
-	local	rc_version="$1";
+	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
-	update_port		${WWW_PORT_RC};
-	update_stability	"rc";
-	update_version		"${rc_version}";
+	prepare_configs;
+	prepare_secrets;
 
-	git commit -a -m "Pre-release ${rc_version}";
-	git tag -a ${rc_version} -m "";
+	oc new-project "${namespace}";
+	oc_create_configmaps	"${namespace}";
+	oc apply -f "etc/docker/openshift/deployment.yaml" -n "${namespace}";
+	oc apply -f "etc/docker/openshift/network-policy.yaml" -n "${namespace}";
+	oc apply -f "etc/docker/openshift/service.yaml" -n "${namespace}";
+	oc apply -f "etc/docker/openshift/route.yaml" -n "${namespace}";
 }
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main	"$1";
 
 
 ################################################################################

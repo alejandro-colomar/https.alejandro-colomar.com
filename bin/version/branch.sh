@@ -21,6 +21,9 @@
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
+source	lib/www/version/port.sh;
+source	lib/www/version/stability.sh;
+source	lib/www/version/version.sh;
 
 
 ################################################################################
@@ -41,9 +44,9 @@ function main()
 {
 	local	branch="$(git branch --show-current)";
 
-	./bin/version/common/port.sh		${WWW_PORT_EXP};
-	./bin/version/common/stability.sh	"exp";
-	./bin/version/common/version.sh;
+	update_port		"${WWW_PORT_EXP}";
+	update_stability	"exp";
+	update_version		"${branch}";
 
 	git commit -a -m "Branch: ${branch}";
 }

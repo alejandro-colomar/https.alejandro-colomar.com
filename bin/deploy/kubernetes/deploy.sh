@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/kubernetes/deploy.sh
+##	sudo ./bin/deploy/kubernetes/deploy.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -16,7 +16,7 @@
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
 
-source	etc/www/config.sh;
+source	lib/www/deploy/kubernetes/deploy.sh;
 
 
 ################################################################################
@@ -35,15 +35,8 @@ ARGC=0;
 ################################################################################
 function main()
 {
-	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
-	./bin/deploy/common/config.sh;
-
-	kubectl create namespace "${namespace}";
-	./bin/deploy/kubernetes/config.sh "${namespace}";
-	kubectl apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}";
-	kubectl apply -f "etc/docker/kubernetes/network-policy.yaml" -n "${namespace}";
-	kubectl apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}";
+	kube_deploy;
 }
 
 

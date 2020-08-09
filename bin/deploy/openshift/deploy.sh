@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/openshift/deploy.sh
+##	sudo ./bin/deploy/openshift/deploy.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -16,7 +16,7 @@
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
 
-source	etc/www/config.sh;
+source	lib/www/deploy/openshift/deploy.sh;
 
 
 ################################################################################
@@ -35,16 +35,8 @@ ARGC=0;
 ################################################################################
 function main()
 {
-	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
-	./bin/deploy/common/config.sh;
-
-	oc new-project "${namespace}";
-	./bin/deploy/openshift/config.sh "${namespace}";
-	oc apply -f "etc/docker/openshift/deployment.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/network-policy.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/service.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/route.yaml" -n "${namespace}";
+	oc_deploy;
 }
 
 

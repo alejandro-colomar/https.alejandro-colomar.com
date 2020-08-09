@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/version/release_exp.sh	<version>
+##	./bin/version/release_exp.sh	"<version>";
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -21,6 +21,9 @@
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
+source	lib/www/version/port.sh;
+source	lib/www/version/stability.sh;
+source	lib/www/version/version.sh;
 
 
 ################################################################################
@@ -41,9 +44,9 @@ function main()
 {
 	local	exp_version="$1";
 
-	./bin/version/common/port.sh		${WWW_PORT_EXP};
-	./bin/version/common/stability.sh	"exp";
-	./bin/version/common/version.sh		"${exp_version}";
+	update_port		"${WWW_PORT_EXP}";
+	update_stability	"exp";
+	update_version		"${exp_version}";
 
 	git commit -a -m "Pre-release ${exp_version}";
 	git tag ${exp_version};

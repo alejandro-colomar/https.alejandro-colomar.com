@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/version/release_stable.sh	<version>
+##	./bin/version/release_stable.sh	"<version>";
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -21,6 +21,9 @@
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
+source	lib/www/version/port.sh;
+source	lib/www/version/stability.sh;
+source	lib/www/version/version.sh;
 
 
 ################################################################################
@@ -41,9 +44,9 @@ function main()
 {
 	local	version="$1";
 
-	./bin/version/common/port.sh		${WWW_PORT_STABLE};
-	./bin/version/common/stability.sh	"stable";
-	./bin/version/common/version.sh		"${version}";
+	update_port		${WWW_PORT_STABLE};
+	update_stability	"stable";
+	update_version		"${version}";
 
 	git commit -a -m "Release ${version}";
 	git tag -a ${version} -m "";

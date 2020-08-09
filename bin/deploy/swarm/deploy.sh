@@ -16,7 +16,7 @@
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
 
-source	etc/www/config.sh;
+source	lib/www/deploy/swarm/deploy.sh;
 
 
 ################################################################################
@@ -28,13 +28,6 @@ ARGC=0;
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function deploy_stack()
-{
-	local	compose_path="etc/docker/swarm/docker-compose.yaml"
-	local	stack_name="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
-
-	docker stack deploy -c "${compose_path}" "${stack_name}"
-}
 
 
 ################################################################################
@@ -43,8 +36,7 @@ function deploy_stack()
 function main()
 {
 
-	./bin/deploy/common/config.sh;
-	deploy_stack;
+	swarm_deploy;
 }
 
 

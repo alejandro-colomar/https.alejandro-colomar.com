@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/openshift/delete_exp.sh
+##	./bin/deploy/openshift/delete_exp.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -15,6 +15,8 @@
 ##	source								      ##
 ################################################################################
 source	lib/libalx/sh/sysexits.sh;
+
+source	lib/www/deploy/openshift/delete.sh;
 
 
 ################################################################################
@@ -34,7 +36,7 @@ ARGC=0;
 function main()
 {
 
-	./bin/deploy/openshift/delete.sh	"exp";
+	oc_delete	"exp";
 }
 
 

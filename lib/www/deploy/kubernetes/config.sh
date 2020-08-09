@@ -1,12 +1,10 @@
-#!/bin/bash -x
-##	./bin/version/common/port.sh	<port>
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Change port number
-## ==================
+## Generate the config maps
+## ========================
 ##
 ################################################################################
 
@@ -14,50 +12,31 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function change_port()
+## sudo
+function kube_create_configmaps()
 {
-	local	port="$1";
+	local	namespace="$1";
 
-	sed "/nodePort:/s/:.*/: ${port}/"				\
-		-i ./etc/docker/kubernetes/service.yaml;
-	sed "/ports/{n;s/\".*:/\"${port}:/}"				\
-		-i ./etc/docker/swarm/docker-compose.yaml;
+	kubectl create configmap "etc-nginx-confd-cm"			\
+		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
+		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf" \
+		-n "${namespace}";
 }
 
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
-{
-	local	port="$1";
-
-	change_port	"${port}";
-}
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${MAX_ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main	"$1";
+## sudo
+#function create_secrets()
+#{
+#}
 
 
 ################################################################################

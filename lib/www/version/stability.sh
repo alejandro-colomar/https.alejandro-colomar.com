@@ -1,16 +1,12 @@
-#!/bin/bash -x
-##	./bin/version/release_rc.sh	"<version>";
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Release a release-critical version
+## Update repository stability status
 ## ==================================
 ##
-##  - Update version number
-##  - Update exposed port
-##  - Update stack name
+## The stack name has a suffix to help identify it: "stable", "rc" or "exp".
 ##
 ################################################################################
 
@@ -18,51 +14,27 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
-
-source	etc/www/config.sh;
-source	lib/www/version/port.sh;
-source	lib/www/version/stability.sh;
-source	lib/www/version/version.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
+function update_stability()
 {
-	local	rc_version="$1";
+	local	stability="$1";
 
-	update_port		${WWW_PORT_RC};
-	update_stability	"rc";
-	update_version		"${rc_version}";
-
-	git commit -a -m "Pre-release ${rc_version}";
-	git tag -a ${rc_version} -m "";
+	sed "/docker stack deploy/s/www_.*\;/www_${stability}\;/"	\
+		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/docker stack rm/s/www_.*\;/www_${stability}\;/"		\
+		-i ./etc/docker/swarm/docker-compose.yaml;
+	sed "/WWW_STABILITY=/s/\".*\"\;/\"${stability}\"\;/"		\
+		-i ./etc/www/config.sh;
 }
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main	"$1";
 
 
 ################################################################################

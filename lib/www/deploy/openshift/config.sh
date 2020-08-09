@@ -1,5 +1,3 @@
-#!/bin/bash -x
-##	./bin/deploy/kubernetes/config.sh	"<namespace>"
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -14,44 +12,29 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
+source	lib/www/deploy/kubernetes/config.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
+## sudo
+function oc_create_configmaps()
 {
 	local	namespace="$1";
 
-	kubectl create configmap "etc-nginx-confd-cm"			\
-		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
-		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf" \
-		-n "${namespace}";
+	kube_create_configmaps	"${namespace}";
 }
 
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main	"$1";
+## sudo
+#function create_secrets()
+#{
+#}
 
 
 ################################################################################
