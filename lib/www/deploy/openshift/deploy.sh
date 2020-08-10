@@ -30,7 +30,7 @@ function oc_deploy()
 	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
 	prepare_configs;
-	prepare_secrets;
+	#prepare_secrets;
 
 	oc new-project "${namespace}";
 	oc_create_configmaps	"${namespace}";

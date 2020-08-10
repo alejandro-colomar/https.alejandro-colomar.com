@@ -33,6 +33,7 @@ function swarm_deploy()
 
 	prepare_configs;
 	#prepare_secrets;
+
 	docker stack deploy -c "${compose_path}" "${stack_name}";
 }
 

@@ -30,7 +30,7 @@ function kube_deploy()
 	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
 	prepare_configs;
-	prepare_secrets;
+	#prepare_secrets;
 
 	kubectl create namespace "${namespace}";
 	kube_create_configmaps	"${namespace}";
