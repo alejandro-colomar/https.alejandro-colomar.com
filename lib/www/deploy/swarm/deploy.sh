@@ -28,7 +28,7 @@ source	lib/www/deploy/common/config.sh;
 ## sudo
 function swarm_deploy()
 {
-	local	compose_path="etc/docker/swarm/docker-compose.yaml"
+	local	compose_path="etc/docker/swarm/docker-compose.yaml";
 	local	stack_name="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
 
 	prepare_configs;
