@@ -14,6 +14,7 @@
 ################################################################################
 source	etc/www/config.sh;
 source	lib/www/deploy/common/config.sh;
+source	lib/www/deploy/openshift/config.sh;
 
 
 ################################################################################
