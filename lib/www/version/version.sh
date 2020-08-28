@@ -38,6 +38,8 @@ function update_version()
 		-i ./etc/docker/swarm/docker-compose.yaml;
 	sed "/WWW_VERSION=/s/\".*\"\;/\"${version}\"\;/"		\
 		-i ./etc/www/config.sh;
+	sed "/Version:/s/ .*/ ${version}/"				\
+		-i ./srv/www/index.html;
 }
 
 
