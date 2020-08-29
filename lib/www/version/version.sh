@@ -3,14 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Update version numbers
-## ======================
-##
-## This script should be run just after a new branch has been created, a
-## release is imminent, or a release has been made.
-## The default value for the version is the branch name.
-##
-##  - Update version numbers
+## Update version number
+## =====================
 ##
 ################################################################################
 
