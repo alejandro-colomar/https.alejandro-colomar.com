@@ -21,6 +21,7 @@
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
+source	lib/www/version/date.sh;
 source	lib/www/version/port.sh;
 source	lib/www/version/stability.sh;
 source	lib/www/version/version.sh;
@@ -44,6 +45,7 @@ function main()
 {
 	local	branch="$(git branch --show-current)";
 
+	update_date;
 	update_port		"${WWW_PORT_EXP}";
 	update_stability	"exp";
 	update_version		"${branch}";

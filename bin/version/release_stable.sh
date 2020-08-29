@@ -21,6 +21,7 @@
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
+source	lib/www/version/date.sh;
 source	lib/www/version/port.sh;
 source	lib/www/version/stability.sh;
 source	lib/www/version/version.sh;
@@ -44,6 +45,7 @@ function main()
 {
 	local	version="$1";
 
+	update_date;
 	update_port		${WWW_PORT_STABLE};
 	update_stability	"stable";
 	update_version		"${version}";

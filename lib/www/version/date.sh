@@ -1,16 +1,16 @@
-#!/bin/bash -x
-##	./bin/version/release_exp.sh	"<version>";
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Release an experimental version
-## ===============================
+## Update version numbers
+## ======================
 ##
-##  - Update version number
-##  - Update exposed port
-##  - Update stack name
+## This script should be run just after a new branch has been created, a
+## release is imminent, or a release has been made.
+## The default value for the version is the branch name.
+##
+##  - Update version numbers
 ##
 ################################################################################
 
@@ -18,53 +18,23 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
-
-source	etc/www/config.sh;
-source	lib/www/version/date.sh;
-source	lib/www/version/port.sh;
-source	lib/www/version/stability.sh;
-source	lib/www/version/version.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=1;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
+function update_date()
 {
-	local	exp_version="$1";
+	local	date_str="$(date -u +%d/%b/%Y\ %H:%M:%S\ UTC)";
 
-	update_date;
-	update_port		"${WWW_PORT_EXP}";
-	update_stability	"exp";
-	update_version		"${exp_version}";
-
-	git commit -a -m "Pre-release ${exp_version}";
-	git tag ${exp_version};
+	sed "/Last modified:/s!: .*!: ${date_str}!"			\
+		-i ./srv/www/index.html;
 }
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main	"$1";
 
 
 ################################################################################
