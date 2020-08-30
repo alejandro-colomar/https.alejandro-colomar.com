@@ -22,7 +22,7 @@ WWW_PORT_RC=31001;
 WWW_PORT_STABLE=30001;
 WWW_STABILITY="stable";	## "stable", "rc", or "exp"
 WWW_STACK_BASENAME="www";
-WWW_VERSION="0.19.1";	## tag name or branch name.
+WWW_VERSION="0.20.0";	## tag name or branch name.
 
 
 ################################################################################
