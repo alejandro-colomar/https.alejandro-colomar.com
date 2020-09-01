@@ -31,7 +31,7 @@ services:
             replicas: 1
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www:0.23.1"
+        image: "alejandrocolomar/www:0.23.2"
         networks:
         -
             "alejandro-colomar"
