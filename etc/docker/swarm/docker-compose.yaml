@@ -31,18 +31,18 @@ services:
             replicas: 1
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www:0.23.2"
+        image: "alejandrocolomar/www:0.23.3-rc1"
         networks:
         -
             "alejandro-colomar"
         ports:
-        -   "30001:8080"
+        -   "31001:8080"
 
 version: "3.8"
 
 ################################################################################
 #$ docker swarm init;
-#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www_stable;
-#$ docker stack rm www_stable;
+#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www_rc;
+#$ docker stack rm www_rc;
 #$ docker swarm leave;
 ################################################################################
