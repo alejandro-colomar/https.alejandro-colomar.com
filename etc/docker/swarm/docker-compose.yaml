@@ -5,24 +5,24 @@
 ################################################################################
 
 configs:
-    nginx_conf_security_parameters:
+    config.nginx_conf_security_parameters.www:
         file: /run/configs/www/etc/nginx/conf.d/security-parameters.conf
-    nginx_conf_server:
+    config.nginx_conf_server.www:
         file: /run/configs/www/etc/nginx/conf.d/server.conf
 
 networks:
     alejandro-colomar:
 
 services:
-    www-svc:
+    www:
         configs:
         -
             mode: 0440
-            source: nginx_conf_security_parameters
+            source: config.nginx_conf_security_parameters.www
             target: /usr/local/etc/nginx/conf.d/security-parameters.conf
         -
             mode: 0440
-            source: nginx_conf_server
+            source: config.nginx_conf_server.www
             target: /usr/local/etc/nginx/conf.d/server.conf
         deploy:
             placement:
@@ -42,7 +42,7 @@ version: "3.8"
 
 ################################################################################
 #$ docker swarm init;
-#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www_exp;
-#$ docker stack rm www_exp;
+#$ docker stack deploy -c etc/docker/swarm/docker-compose.yaml www-exp;
+#$ docker stack rm www-exp;
 #$ docker swarm leave;
 ################################################################################

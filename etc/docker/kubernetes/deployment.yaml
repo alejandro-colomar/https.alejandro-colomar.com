@@ -7,16 +7,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: www-deploy
+    name: deploy.www
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: www
+            app: label.www
     template:
         metadata:
             labels:
-                app: www
+                app: label.www
         spec:
             containers:
             -
@@ -26,7 +26,7 @@ spec:
                         path: /
                         port: 8080
                     initialDelaySeconds: 10
-                name: www-container
+                name: container.www
                 ports:
                 -
                     containerPort: 8080
@@ -38,29 +38,29 @@ spec:
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/conf.d/
-                    name: etc-nginx-confd-volume
+                    name: volume.etc-nginx-confd.www
                     readOnly: true
                 -
                     mountPath: /var/cache/nginx/
-                    name: var-cache-nginx-volume
+                    name: volume.var-cache-nginx.www
                 -
                     mountPath: /var/log/nginx/
-                    name: var-log-nginx-volume
+                    name: volume.var-log-nginx.www
                 -
                     mountPath: /var/run/
-                    name: var-run-volume
+                    name: volume.var-run.www
             volumes:
             -
                 configMap:
-                    name: etc-nginx-confd-cm
-                name: etc-nginx-confd-volume
+                    name: cm.etc-nginx-confd.www
+                name: volume.etc-nginx-confd.www
             -
                 emptyDir: {}
-                name: var-cache-nginx-volume
+                name: volume.var-cache-nginx.www
             -
                 emptyDir: {}
-                name: var-log-nginx-volume
+                name: volume.var-log-nginx.www
             -
                 emptyDir: {}
-                name: var-run-volume
+                name: volume.var-run.www
 
