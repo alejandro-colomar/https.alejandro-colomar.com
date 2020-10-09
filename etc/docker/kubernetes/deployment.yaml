@@ -51,16 +51,16 @@ spec:
                     name: var-run-volume
             volumes:
             -
-                name: etc-nginx-confd-volume
                 configMap:
                     name: etc-nginx-confd-cm
+                name: etc-nginx-confd-volume
             -
+                emptyDir: {}
                 name: var-cache-nginx-volume
-                emptyDir: {}
             -
+                emptyDir: {}
                 name: var-log-nginx-volume
-                emptyDir: {}
             -
-                name: var-run-volume
                 emptyDir: {}
+                name: var-run-volume
 
