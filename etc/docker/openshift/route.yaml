@@ -7,6 +7,8 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
+    labels:
+        app: www
     name: www-route
 spec:
     port:
@@ -16,5 +18,5 @@ spec:
         termination: edge
     to:
         kind: Service
-        name: www
+        name: www-svc
 

@@ -12,11 +12,11 @@ spec:
     replicas: 1
     selector:
         matchLabels:
-            service: www-svc
+            app: www
     template:
         metadata:
             labels:
-                service: www-svc
+                app: www
         spec:
             containers:
             -

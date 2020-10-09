@@ -14,7 +14,7 @@ networks:
     alejandro-colomar:
 
 services:
-    www:
+    www-svc:
         configs:
         -
             mode: 0440
