@@ -35,6 +35,13 @@ spec:
                         path: /
                         port: 8080
                     initialDelaySeconds: 1
+#                resources:
+#                    limits:
+#                        cpu: '0.001'
+#                        memory: '32Mi'
+#                    requests:
+#                        cpu: '0.001'
+#                        memory: '16Mi'
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/conf.d/
