@@ -9,12 +9,12 @@ kind: NetworkPolicy
 metadata:
     name: www-netpol
 spec:
-    podSelector:
-        matchLabels:
-            service: www-svc
     ingress:
     -
         ports:
         -
             port: 8080
+    podSelector:
+        matchLabels:
+            service: www-svc
 
