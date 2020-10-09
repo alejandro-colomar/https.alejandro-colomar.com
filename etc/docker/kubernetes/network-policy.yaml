@@ -14,6 +14,7 @@ spec:
         ports:
         -
             port: 8080
+            protocol: TCP
     podSelector:
         matchLabels:
             service: www-svc
