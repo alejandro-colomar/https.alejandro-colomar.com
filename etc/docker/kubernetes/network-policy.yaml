@@ -9,7 +9,7 @@ kind: NetworkPolicy
 metadata:
     labels:
         app: www
-    name: www-netpol
+    name: netpol.www
 spec:
     ingress:
     -

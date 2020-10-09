@@ -9,7 +9,7 @@ kind: Route
 metadata:
     labels:
         app: www
-    name: www-route
+    name: route.www
 spec:
     port:
         targetPort: 8080
@@ -18,5 +18,5 @@ spec:
         termination: edge
     to:
         kind: Service
-        name: www-svc
+        name: svc.www
 
