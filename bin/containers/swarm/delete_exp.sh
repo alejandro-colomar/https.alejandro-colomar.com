@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/swarm/deploy.sh
+##	./bin/containers/swarm/delete_exp.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Deploy stack
-## ============
+## Delete exp stack
+## ================
 ##
 ################################################################################
 
@@ -14,9 +14,10 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
+source	lib/libalx/sh/containers/swarm/delete.sh;
 source	lib/libalx/sh/sysexits.sh;
 
-source	lib/www/deploy/swarm/deploy.sh;
+source	etc/www/config.sh;
 
 
 ################################################################################
@@ -35,8 +36,10 @@ ARGC=0;
 ################################################################################
 function main()
 {
+	local	project="${WWW_PROJECT}";
+	local	stack="${project}-exp";
 
-	swarm_deploy;
+	alx_swarm_delete	"${stack}";
 }
 
 

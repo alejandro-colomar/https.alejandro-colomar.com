@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/swarm/delete_stable.sh;
+##	./bin/containers/swarm/delete_stable.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -14,9 +14,10 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
+source	lib/libalx/sh/containers/swarm/delete.sh;
 source	lib/libalx/sh/sysexits.sh;
 
-source	lib/www/deploy/swarm/delete.sh;
+source	etc/www/config.sh;
 
 
 ################################################################################
@@ -35,8 +36,10 @@ ARGC=0;
 ################################################################################
 function main()
 {
+	local	project="${WWW_PROJECT}";
+	local	stack="${project}-stable";
 
-	swarm_delete	"stable";
+	alx_swarm_delete	"${stack}";
 }
 
 
