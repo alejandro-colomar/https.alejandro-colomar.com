@@ -23,19 +23,45 @@
 ##	functions							      ##
 ################################################################################
 ## sudo
-function prepare_configs()
+function alx_cp_configs()
 {
+	local	project="$1";
 
 	mkdir -pv	/run/configs/;
-	cp --remove-destination -LrvT	run/configs/www/	/run/configs/www;
+	cp --remove-destination -LrvT					\
+			run/configs/${project}/	/run/configs/${project};
 }
 
 ## sudo
-function prepare_secrets()
+function alx_shred_configs()
 {
+	local	project="$1";
+
+	for file in $(find "/run/configs/${project}/" -type f); do
+		shred -f --remove=wipe "${file}";
+	done
+	rm -rf /run/configs/${project};
+}
+
+## sudo
+function alx_cp_secrets()
+{
+	local	project="$1";
 
 	mkdir -pv	/run/secrets/;
-	cp --remove-destination -LrvT	run/secrets/www/	/run/secrets/www;
+	cp --remove-destination -LrvT					\
+			run/secrets/${project}/	/run/secrets/${project};
+}
+
+## sudo
+function alx_shred_secrets()
+{
+	local	project="$1";
+
+	for file in $(find "/run/secrets/${project}/" -type f); do
+		shred -f --remove=wipe "${file}";
+	done
+	rm -rf /run/secrets/${project};
 }
 
 
