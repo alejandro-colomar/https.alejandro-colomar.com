@@ -12,9 +12,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	etc/www/config.sh;
-
-source	lib/www/deploy/common/config.sh;
+source	lib/libalx/sh/containers/common/config.sh;
 
 
 ################################################################################
@@ -26,15 +24,19 @@ source	lib/www/deploy/common/config.sh;
 ##	functions							      ##
 ################################################################################
 ## sudo
-function swarm_deploy()
+function alx_swarm_deploy()
 {
-	local	compose_path="etc/docker/swarm/docker-compose.yaml";
-	local	stack_name="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
+	local	project="$1";
+	local	stack="$2";
+	local	compose="etc/docker/swarm/compose.yaml";
 
-	prepare_configs;
-	#prepare_secrets;
+	alx_cp_configs	"${project}";
+	alx_cp_secrets	"${project}";
 
-	docker stack deploy -c "${compose_path}" "${stack_name}";
+	docker stack deploy -c "${compose}" "${stack}";
+
+	alx_shred_secrets	"${project}";
+	alx_shred_configs	"${project}";
 }
 
 
