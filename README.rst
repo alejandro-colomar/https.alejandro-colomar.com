@@ -146,8 +146,8 @@ procedure is exactly the same as above, replacing the word "swarm" by
 
 ________________________________________________________________________________
 
-AWS
-===
+AWS (unmaintained temporarily)
+==============================
 
 The website can be deployed in AWS on a production-grade highly
 available and secure infrastructure consisting of private and public
