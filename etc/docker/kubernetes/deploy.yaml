@@ -45,29 +45,29 @@ spec:
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/conf.d/
-                    name: volume.etc-nginx-confd.www
+                    name: volume.etc_nginx_conf_d.www
                     readOnly: true
                 -
                     mountPath: /var/cache/nginx/
-                    name: volume.var-cache-nginx.www
+                    name: volume.var_cache_nginx.www
                 -
                     mountPath: /var/log/nginx/
-                    name: volume.var-log-nginx.www
+                    name: volume.var_log_nginx.www
                 -
                     mountPath: /var/run/
-                    name: volume.var-run.www
+                    name: volume.var_run.www
             volumes:
             -
                 configMap:
-                    name: cm.etc-nginx-confd.www
-                name: volume.etc-nginx-confd.www
+                    name: cm.etc_nginx_conf_d.www
+                name: volume.etc_nginx_conf_d.www
             -
                 emptyDir: {}
-                name: volume.var-cache-nginx.www
+                name: volume.var_cache_nginx.www
             -
                 emptyDir: {}
-                name: volume.var-log-nginx.www
+                name: volume.var_log_nginx.www
             -
                 emptyDir: {}
-                name: volume.var-run.www
+                name: volume.var_run.www
 

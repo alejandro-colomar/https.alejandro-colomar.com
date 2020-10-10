@@ -18,6 +18,6 @@ spec:
         protocol: TCP
         targetPort: 8080
     selector:
-        app: www
+        app: label.www
     type: NodePort      ## XXX  openshift ?
 
