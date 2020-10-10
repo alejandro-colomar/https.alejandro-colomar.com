@@ -38,9 +38,9 @@ function alx_shred_configs()
 	local	project="$1";
 
 	for file in $(find "/run/configs/${project}/" -type f); do
-		shred -f --remove=wipe "${file}";
+		shred -fv --remove=wipe "${file}";
 	done
-	rm -rf /run/configs/${project};
+	rm -rfv /run/configs/${project};
 }
 
 ## sudo
@@ -59,9 +59,9 @@ function alx_shred_secrets()
 	local	project="$1";
 
 	for file in $(find "/run/secrets/${project}/" -type f); do
-		shred -f --remove=wipe "${file}";
+		shred -fv --remove=wipe "${file}";
 	done
-	rm -rf /run/secrets/${project};
+	rm -rfv /run/secrets/${project};
 }
 
 
