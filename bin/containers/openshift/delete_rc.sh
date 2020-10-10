@@ -1,12 +1,12 @@
 #!/bin/bash -x
-##	./bin/deploy/openshift/delete_stable.sh;
+##	./bin/containers/openshift/delete_rc.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stable stack
-## ===================
+## Delete rc stack
+## ===============
 ##
 ################################################################################
 
@@ -14,9 +14,10 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
+source	lib/libalx/sh/containers/openshift/delete.sh;
 source	lib/libalx/sh/sysexits.sh;
 
-source	lib/www/deploy/openshift/delete.sh;
+source	etc/www/config.sh;
 
 
 ################################################################################
@@ -35,8 +36,10 @@ ARGC=0;
 ################################################################################
 function main()
 {
+	local	project="${WWW_PROJECT}";
+	local	stack="${project}-rc";
 
-	oc_delete	"stable";
+	alx_oc_delete	"${stack}";
 }
 
 
