@@ -20,9 +20,9 @@ WWW_PORT_EXP=32001;
 WWW_PORT_RC=31001;
 WWW_PORT_STABLE=30001;
 WWW_PROJECT="www";
-WWW_STABILITY="exp";	## "stable", "rc", or "exp"
+WWW_STABILITY="rc";	## "stable", "rc", or "exp"
 WWW_STACK="${WWW_PROJECT}-${WWW_STABILITY}";
-WWW_VERSION="0.25-a2";	## tag name or branch name.
+WWW_VERSION="0.25-rc1";	## tag name or branch name.
 
 
 ################################################################################
