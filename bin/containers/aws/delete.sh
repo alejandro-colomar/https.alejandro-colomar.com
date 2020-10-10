@@ -1,5 +1,5 @@
 #!/bin/bash -x
-##	./bin/deploy/aws/delete.sh
+##	./bin/containers/aws/delete.sh
 ###############################################################################
 ##       Copyright (C) 2020        Sebastian Francisco Colomar Bauza         ##
 ##       Copyright (C) 2020        Alejandro Colomar Andrés                  ##
