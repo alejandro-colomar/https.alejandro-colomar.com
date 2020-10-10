@@ -20,7 +20,7 @@ spec:
         spec:
             containers:
             -
-                image: "alejandrocolomar/www:0.25-a1"
+                image: "alejandrocolomar/www:0.25-a2"
                 livenessProbe:
                     httpGet:
                         path: /
