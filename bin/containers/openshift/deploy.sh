@@ -14,7 +14,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/openshift/delete.sh;
+source	lib/libalx/sh/containers/openshift/deploy.sh;
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;

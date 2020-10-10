@@ -14,7 +14,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/swarm/delete.sh;
+source	lib/libalx/sh/containers/swarm/deploy.sh;
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
