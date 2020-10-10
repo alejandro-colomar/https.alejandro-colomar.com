@@ -3,8 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stack
-## ============
+## Generate the configmaps and secrets
+## ===================================
 ##
 ################################################################################
 
@@ -12,7 +12,6 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	etc/www/config.sh;
 
 
 ################################################################################
@@ -23,12 +22,36 @@ source	etc/www/config.sh;
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function kube_delete()
+## sudo
+function alx_kube_create_configmaps()
 {
-	local	stability="$1";
-	local	namespace="${WWW_STACK_BASENAME}-${stability}";
+	local	project="$1";
+	local	stack="$2";
 
-	kubectl delete namespace "${namespace}";
+	for file in $(find /run/configs -type f); do
+		cm="${file#/run/configs/}";
+		cm="${cm//\//_}";
+		cm="${cm//./_}";
+		cm="cm.${cm}.${project}";
+		kubectl create configmap "${cm}" --from-file "${file}"	\
+				-n "${stack}";
+	done
+}
+
+## sudo
+function alx_kube_create_secrets()
+{
+	local	project="$1";
+	local	stack="$2";
+
+	for file in $(find /run/secrets -type f); do
+		secret="${file#/run/secrets/}";
+		secret="${secret//\//_}";
+		secret="${secret//./_}";
+		secret="secret.${secret}.${project}";
+		kubectl create secret generic "${secret}"		\
+				--from-file "${file}" -n "${stack}";
+	done
 }
 
 

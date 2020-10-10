@@ -3,8 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Generate the config maps
-## ========================
+## Delete stack
+## ============
 ##
 ################################################################################
 
@@ -22,21 +22,12 @@
 ################################################################################
 ##	functions							      ##
 ################################################################################
-## sudo
-function kube_create_configmaps()
+function alx_kube_delete()
 {
-	local	namespace="$1";
+	local	stack="$1";
 
-	kubectl create configmap "etc-nginx-confd-cm"			\
-		--from-file "/run/configs/www/etc/nginx/conf.d/security-parameters.conf" \
-		--from-file "/run/configs/www/etc/nginx/conf.d/server.conf" \
-		-n "${namespace}";
+	kubectl delete namespace "${stack}";
 }
-
-## sudo
-#function create_secrets()
-#{
-#}
 
 
 ################################################################################

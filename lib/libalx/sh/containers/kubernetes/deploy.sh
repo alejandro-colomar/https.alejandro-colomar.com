@@ -12,9 +12,8 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	etc/www/config.sh;
-source	lib/www/deploy/common/config.sh;
-source	lib/www/deploy/kubernetes/config.sh;
+source	lib/libalx/sh/containers/common/config.sh;
+source	lib/libalx/sh/containers/kubernetes/config.sh;
 
 
 ################################################################################
@@ -26,18 +25,29 @@ source	lib/www/deploy/kubernetes/config.sh;
 ##	functions							      ##
 ################################################################################
 ## sudo
-function kube_deploy()
+function alx_kube_deploy()
 {
-	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
+	local	project="$1";
+	local	stack="$2";
 
-	prepare_configs;
-	#prepare_secrets;
+	alx_cp_configs	"${project}";
+	alx_cp_secrets	"${project}";
 
-	kubectl create namespace "${namespace}";
-	kube_create_configmaps	"${namespace}";
-	kubectl apply -f "etc/docker/kubernetes/deployment.yaml" -n "${namespace}";
-	kubectl apply -f "etc/docker/kubernetes/network-policy.yaml" -n "${namespace}";
-	kubectl apply -f "etc/docker/kubernetes/service.yaml" -n "${namespace}";
+	kubectl create namespace "${stack}";
+	alx_kube_create_configmaps	"${project}" "${stack}";
+	alx_kube_create_secrets		"${project}" "${stack}";
+	for netpol in $(find "etc/docker/kubernetes/" -type f |grep "netpol"); do
+		kubectl apply -f "${netpol}" -n "${stack}";
+	done
+	for svc in $(find "etc/docker/kubernetes/" -type f |grep "svc"); do
+		kubectl apply -f "${svc}" -n "${stack}";
+	done
+	for deploy in $(find "etc/docker/kubernetes/" -type f |grep "deploy"); do
+		kubectl apply -f "${deploy}" -n "${stack}";
+	done
+
+	alx_shred_secrets	"${project}";
+	alx_shred_configs	"${project}";
 }
 
 
