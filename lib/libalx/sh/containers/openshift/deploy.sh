@@ -12,9 +12,8 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	etc/www/config.sh;
-source	lib/www/deploy/common/config.sh;
-source	lib/www/deploy/openshift/config.sh;
+source	lib/libalx/sh/containers/common/config.sh;
+source	lib/libalx/sh/containers/openshift/config.sh;
 
 
 ################################################################################
@@ -26,19 +25,32 @@ source	lib/www/deploy/openshift/config.sh;
 ##	functions							      ##
 ################################################################################
 ## sudo
-function oc_deploy()
+function alx_oc_deploy()
 {
-	local	namespace="${WWW_STACK_BASENAME}-${WWW_STABILITY}";
+	local	project="$1";
+	local	stack="$2";
 
-	prepare_configs;
-	#prepare_secrets;
+	alx_cp_configs	"${project}";
+	alx_cp_secrets	"${project}";
 
-	oc new-project "${namespace}";
-	oc_create_configmaps	"${namespace}";
-	oc apply -f "etc/docker/openshift/deployment.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/network-policy.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/service.yaml" -n "${namespace}";
-	oc apply -f "etc/docker/openshift/route.yaml" -n "${namespace}";
+	oc new-project "${stack}";
+	alx_oc_create_configmaps	"${project}" "${stack}";
+	alx_oc_create_secrets		"${project}" "${stack}";
+	for netpol in $(find "etc/docker/openshift/" -type f |grep "netpol"); do
+		kubectl apply -f "${netpol}" -n "${stack}";
+	done
+	for svc in $(find "etc/docker/openshift/" -type f |grep "svc"); do
+		kubectl apply -f "${svc}" -n "${stack}";
+	done
+	for route in $(find "etc/docker/openshift/" -type f |grep "route"); do
+		kubectl apply -f "${route}" -n "${stack}";
+	done
+	for deploy in $(find "etc/docker/openshift/" -type f |grep "deploy"); do
+		kubectl apply -f "${deploy}" -n "${stack}";
+	done
+
+	alx_shred_secrets	"${project}";
+	alx_shred_configs	"${project}";
 }
 
 

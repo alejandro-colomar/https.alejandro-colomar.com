@@ -3,8 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stack
-## ============
+## Generate the configmaps and secrets
+## ===================================
 ##
 ################################################################################
 
@@ -12,7 +12,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	etc/www/config.sh;
+source	lib/libalx/sh/containers/kubernetes/config.sh;
 
 
 ################################################################################
@@ -23,12 +23,22 @@ source	etc/www/config.sh;
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function oc_delete()
+## sudo
+function alx_oc_create_configmaps()
 {
-	local	stability="$1";
-	local	namespace="${WWW_STACK_BASENAME}-${stability}";
+	local	project="$1";
+	local	stack="$2";
 
-	oc delete project "${namespace}";
+	alx_kube_create_configmaps	"${project}" "${stack}";
+}
+
+## sudo
+function alx_oc_create_secrets()
+{
+	local	project="$1";
+	local	stack="$2";
+
+	alx_kube_create_secrets		"${project}" "${stack}";
 }
 
 
