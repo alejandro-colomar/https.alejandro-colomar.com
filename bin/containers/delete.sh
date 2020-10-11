@@ -13,7 +13,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/delete.sh;
+source	lib/libalx/sh/containers.sh;
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;

@@ -3,8 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Deploy stack
-## ============
+## Deploy/delete stack
+## =====================
 ##
 ################################################################################
 
@@ -12,8 +12,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/common/config.sh;
-source	lib/libalx/sh/containers/kubernetes/deploy.sh;
+source	lib/libalx/sh/containers/common.sh;
 
 
 ################################################################################
@@ -25,36 +24,26 @@ source	lib/libalx/sh/containers/kubernetes/deploy.sh;
 ##	functions							      ##
 ################################################################################
 ## sudo
-function alx_oc_create_configmaps__()
+function alx_swarm_deploy()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	compose="etc/docker/swarm/compose.yaml";
 
-	alx_kube_create_configmaps__	"${project}" "${stack}";
+	alx_cp_configs	"${project}";
+	alx_cp_secrets	"${project}";
+
+	docker stack deploy -c "${compose}" "${stack}";
+
+	alx_shred_secrets	"${project}";
+	alx_shred_configs	"${project}";
 }
 
-## sudo
-function alx_oc_create_secrets__()
+function alx_swarm_delete()
 {
-	local	project="$1";
-	local	stack="$2";
+	local	stack="$1";
 
-	alx_kube_create_secrets__	"${project}" "${stack}";
-}
-
-## sudo
-function alx_oc_deploy()
-{
-	local	project="$1";
-	local	stack="$2";
-	local	yaml_files=$(find "etc/docker/openshift/" -type f |sort);
-
-	oc new-project "${stack}";
-	alx_oc_create_configmaps__	"${project}" "${stack}";
-	alx_oc_create_secrets__		"${project}" "${stack}";
-	for file in ${yaml_files}; do
-		oc apply -f "${file}" -n "${stack}";
-	done
+	docker stack rm "${stack}";
 }
 
 

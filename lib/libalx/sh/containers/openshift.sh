@@ -3,8 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stack
-## ============
+## Deploy/delete stack
+## ===================
 ##
 ################################################################################
 
@@ -12,9 +12,8 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/kubernetes/delete.sh;
-source	lib/libalx/sh/containers/openshift/delete.sh;
-source	lib/libalx/sh/containers/swarm/delete.sh;
+source	lib/libalx/sh/containers/common.sh;
+source	lib/libalx/sh/containers/kubernetes.sh;
 
 
 ################################################################################
@@ -25,22 +24,44 @@ source	lib/libalx/sh/containers/swarm/delete.sh;
 ################################################################################
 ##	functions							      ##
 ################################################################################
-function alx_stack_delete()
+## sudo
+function alx_oc_create_configmaps__()
 {
-	local	mode="$1";	## "swarm", "kubernetes", or "openshift"
+	local	project="$1";
 	local	stack="$2";
 
-	case "${mode}" in
-	"kubernetes")
-		alx_kube_delete		"${stack}";
-		;;
-	"openshift")
-		alx_oc_delete		"${stack}";
-		;;
-	"swarm")
-		alx_swarm_delete	"${stack}";
-		;;
-	esac
+	alx_kube_create_configmaps__	"${project}" "${stack}";
+}
+
+## sudo
+function alx_oc_create_secrets__()
+{
+	local	project="$1";
+	local	stack="$2";
+
+	alx_kube_create_secrets__	"${project}" "${stack}";
+}
+
+## sudo
+function alx_oc_deploy()
+{
+	local	project="$1";
+	local	stack="$2";
+	local	yaml_files=$(find "etc/docker/openshift/" -type f |sort);
+
+	oc new-project "${stack}";
+	alx_oc_create_configmaps__	"${project}" "${stack}";
+	alx_oc_create_secrets__		"${project}" "${stack}";
+	for file in ${yaml_files}; do
+		oc apply -f "${file}" -n "${stack}";
+	done
+}
+
+function alx_oc_delete()
+{
+	local	stack="$1";
+
+	oc delete project "${stack}";
 }
 
 

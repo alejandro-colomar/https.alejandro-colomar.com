@@ -3,8 +3,8 @@
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Deploy stack
-## ============
+## Deploy/delete stack
+## ===================
 ##
 ################################################################################
 
@@ -12,9 +12,9 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/kubernetes/deploy.sh;
-source	lib/libalx/sh/containers/openshift/deploy.sh;
-source	lib/libalx/sh/containers/swarm/deploy.sh;
+source	lib/libalx/sh/containers/kubernetes.sh;
+source	lib/libalx/sh/containers/openshift.sh;
+source	lib/libalx/sh/containers/swarm.sh;
 
 
 ################################################################################
@@ -41,6 +41,24 @@ function alx_stack_deploy()
 		;;
 	"swarm")
 		alx_swarm_deploy	"${project}" "${stack}";
+		;;
+	esac
+}
+
+function alx_stack_delete()
+{
+	local	mode="$1";	## "swarm", "kubernetes", or "openshift"
+	local	stack="$2";
+
+	case "${mode}" in
+	"kubernetes")
+		alx_kube_delete		"${stack}";
+		;;
+	"openshift")
+		alx_oc_delete		"${stack}";
+		;;
+	"swarm")
+		alx_swarm_delete	"${stack}";
 		;;
 	esac
 }
