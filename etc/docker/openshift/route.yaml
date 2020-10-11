@@ -8,8 +8,8 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
     labels:
-        app: label.www
-    name: route.www
+        app: www.label
+    name: www.route
 spec:
     port:
         targetPort: 8080

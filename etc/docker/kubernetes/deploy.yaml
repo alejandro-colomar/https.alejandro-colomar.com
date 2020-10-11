@@ -7,16 +7,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: deploy.www
+    name: www.deploy
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: label.www
+            app: www.label
     template:
         metadata:
             labels:
-                app: label.www
+                app: www.label
         spec:
             containers:
             -
@@ -26,7 +26,7 @@ spec:
                         path: /
                         port: 8080
                     initialDelaySeconds: 30
-                name: container.www
+                name: www.container
                 ports:
                 -
                     containerPort: 8080
@@ -45,29 +45,29 @@ spec:
                 volumeMounts:
                 -
                     mountPath: /usr/local/etc/nginx/conf.d/
-                    name: volume.etc_nginx_conf_d.www
+                    name: etc_nginx_conf_d.www.volume
                     readOnly: true
                 -
                     mountPath: /var/cache/nginx/
-                    name: volume.var_cache_nginx.www
+                    name: var_cache_nginx.www.volume
                 -
                     mountPath: /var/log/nginx/
-                    name: volume.var_log_nginx.www
+                    name: var_log_nginx.www.volume
                 -
                     mountPath: /var/run/
-                    name: volume.var_run.www
+                    name: var_run.www.volume
             volumes:
             -
                 configMap:
-                    name: cm.etc_nginx_conf_d.www
-                name: volume.etc_nginx_conf_d.www
+                    name: etc_nginx_conf_d.www.cm
+                name: etc_nginx_conf_d.www.volume
             -
                 emptyDir: {}
-                name: volume.var_cache_nginx.www
+                name: var_cache_nginx.www.volume
             -
                 emptyDir: {}
-                name: volume.var_log_nginx.www
+                name: var_log_nginx.www.volume
             -
                 emptyDir: {}
-                name: volume.var_run.www
+                name: var_run.www.volume
 

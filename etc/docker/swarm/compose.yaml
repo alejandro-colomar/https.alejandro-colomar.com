@@ -5,9 +5,9 @@
 ################################################################################
 
 configs:
-    config.etc_nginx_conf_d_security-parameters_conf.www:
+    etc_nginx_conf_d_security-parameters_conf.www.config:
         file: /run/configs/www/etc/nginx/conf.d/security-parameters.conf
-    config.etc_nginx_conf_d_server.www:
+    etc_nginx_conf_d_server.www.config:
         file: /run/configs/www/etc/nginx/conf.d/server.conf
 
 networks:
@@ -18,11 +18,11 @@ services:
         configs:
         -
             mode: 0440
-            source: config.etc_nginx_conf_d_security-parameters_conf.www
+            source: etc_nginx_conf_d_security-parameters_conf.www.config
             target: /usr/local/etc/nginx/conf.d/security-parameters.conf
         -
             mode: 0440
-            source: config.etc_nginx_conf_d_server.www
+            source: etc_nginx_conf_d_server.www.config
             target: /usr/local/etc/nginx/conf.d/server.conf
         deploy:
             placement:
