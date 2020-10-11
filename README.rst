@@ -64,8 +64,8 @@ Continue working on the current branch after a release
 
 ________________________________________________________________________________
 
-Local deployment
-================
+Deployment
+==========
 
 This repository assumes a docker swarm is already running.  See
 the `parent repository`_ to know how to prepare the machines for docker
@@ -142,36 +142,3 @@ Kubernetes | OpenShift
 There are scripts to deploy using kubernetes or openshift.  The
 procedure is exactly the same as above, replacing the word "swarm" by
 "kubernetes" or "openshift" as needed.
-
-
-________________________________________________________________________________
-
-AWS (unmaintained temporarily)
-==============================
-
-The website can be deployed in AWS on a production-grade highly
-available and secure infrastructure consisting of private and public
-subnets, NAT gateways, security groups and application load balancers
-in order to ensure the isolation and resilience of the different
-components.
-
-You can set up your infrastructure in AWS running the following
-script from a terminal in a Cloud9 environment with enough
-privileges:
-
-.. code-block:: BASH
-
-	./bin/aws/deploy.sh
-
-You may also reconfigure the variables so as to customize the setup:
-
-.. code-block:: BASH
-
-	etc/docker-aws/config.sh
-
-You can optionally remove the AWS infrastructure created in
-CloudFormation otherwise you might be charged for any created object:
-
-.. code-block:: BASH
-
-	./bin/aws/delete.sh
