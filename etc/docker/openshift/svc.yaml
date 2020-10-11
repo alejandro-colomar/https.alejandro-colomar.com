@@ -1,1 +1,22 @@
-../kubernetes/svc.yaml
+################################################################################
+##      Copyright (C) 2020        Sebastian Francisco Colomar Bauza           ##
+##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
+##      SPDX-License-Identifier:  GPL-2.0-only                                ##
+################################################################################
+
+apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: label.www
+    name: www
+spec:
+    ports:
+    -
+        port: 8080
+        protocol: TCP
+        targetPort: 8080
+    selector:
+        app: label.www
+    type: ClusterIP
+
