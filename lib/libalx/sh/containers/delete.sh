@@ -1,12 +1,10 @@
-#!/bin/bash -x
-##	./bin/containers/swarm/delete_exp.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete exp stack
-## ================
+## Delete stack
+## ============
 ##
 ################################################################################
 
@@ -14,45 +12,36 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
+source	lib/libalx/sh/containers/kubernetes/delete.sh;
+source	lib/libalx/sh/containers/openshift/delete.sh;
 source	lib/libalx/sh/containers/swarm/delete.sh;
-source	lib/libalx/sh/sysexits.sh;
-
-source	etc/www/config.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=0;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
+function alx_stack_delete()
 {
-	local	project="${WWW_PROJECT}";
-	local	stack="${project}-exp";
+	local	mode="$1";	## "swarm", "kubernetes", or "openshift"
+	local	stack="$2";
 
-	alx_swarm_delete	"${stack}";
+	case "${mode}" in
+	"kubernetes")
+		alx_kube_delete		"${stack}";
+		;;
+	"openshift")
+		alx_oc_delete		"${stack}";
+		;;
+	"swarm")
+		alx_swarm_delete	"${stack}";
+		;;
+	esac
 }
-
-
-################################################################################
-##	run								      ##
-################################################################################
-argc=$#;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
-main;
 
 
 ################################################################################

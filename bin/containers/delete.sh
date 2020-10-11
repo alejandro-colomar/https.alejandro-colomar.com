@@ -1,10 +1,11 @@
+#!/bin/bash -x
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Generate the configmaps and secrets
-## ===================================
+## Delete stack
+## ============
 ##
 ################################################################################
 
@@ -12,47 +13,57 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
+source	lib/libalx/sh/containers/delete.sh;
+source	lib/libalx/sh/sysexits.sh;
+
+source	etc/www/config.sh;
 
 
 ################################################################################
 ##	definitions							      ##
 ################################################################################
+ARGC=2;
 
 
 ################################################################################
 ##	functions							      ##
 ################################################################################
-## sudo
-function alx_kube_create_configmaps()
-{
-	local	project="$1";
-	local	stack="$2";
 
-	for file in $(find /run/configs -type f); do
-		cm="${file#/run/configs/}";
-		cm="${cm//\//_}";
-		cm="${cm//./_}";
-		cm="${cm}.${project}.cm";
-		kubectl create configmap "${cm}" --from-file "${file}"	\
-				-n "${stack}";
-	done
+
+################################################################################
+##	main								      ##
+################################################################################
+function main()
+{
+	local	mode="$1";
+	local	stability="$2";
+	local	project="${WWW_PROJECT}";
+	local	stack="${project}-${stability}";
+
+	alx_stack_delete	"${mode}" "${stack}";
 }
 
-## sudo
-function alx_kube_create_secrets()
-{
-	local	project="$1";
-	local	stack="$2";
 
-	for file in $(find /run/secrets -type f); do
-		secret="${file#/run/secrets/}";
-		secret="${secret//\//_}";
-		secret="${secret//./_}";
-		secret="${secret}.${project}.secret";
-		kubectl create secret generic "${secret}"		\
-				--from-file "${file}" -n "${stack}";
-	done
-}
+################################################################################
+##	run								      ##
+################################################################################
+argc=$#;
+if [ ${argc} -ne ${ARGC} ]; then
+	echo								\
+'Usage: ./bin/containers/delete mode stack_stability
+Mode:
+	kubernetes
+	openshift
+	swarm
+Stack stability:
+	A suffix string that will be appended
+	to the project name to create the stack name.
+	Usually, it should be one of the following:
+	"exp", "rc", or "stable".';
+	exit	${EX_USAGE};
+fi
+
+main	"$1" "$2";
 
 
 ################################################################################

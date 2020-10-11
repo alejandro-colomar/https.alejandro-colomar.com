@@ -1,12 +1,11 @@
 #!/bin/bash -x
-##	./bin/containers/kubernetes/delete_stable.sh;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
 ################################################################################
 ##
-## Delete stable stack
-## ===================
+## Deploy stack
+## ============
 ##
 ################################################################################
 
@@ -14,7 +13,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/containers/kubernetes/delete.sh;
+source	lib/libalx/sh/containers/deploy.sh;
 source	lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
@@ -23,7 +22,7 @@ source	etc/www/config.sh;
 ################################################################################
 ##	definitions							      ##
 ################################################################################
-ARGC=0;
+ARGC=1;
 
 
 ################################################################################
@@ -36,10 +35,11 @@ ARGC=0;
 ################################################################################
 function main()
 {
+	local	mode="$1";
 	local	project="${WWW_PROJECT}";
-	local	stack="${project}-stable";
+	local	stack="${WWW_STACK}";
 
-	alx_kube_delete	"${stack}";
+	alx_stack_deploy	"${mode}" "${project}" "${stack}";
 }
 
 
@@ -48,11 +48,16 @@ function main()
 ################################################################################
 argc=$#;
 if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
+	echo								\
+'Usage: ./bin/containers/deploy mode
+Mode:
+	kubernetes
+	openshift
+	swarm';
 	exit	${EX_USAGE};
 fi
 
-main;
+main	"$1";
 
 
 ################################################################################

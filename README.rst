@@ -92,7 +92,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	sudo ./bin/deploy/swarm/deploy.sh;
+	sudo ./bin/containers/deploy.sh	"swarm";
 
 
 - If the pre-release isn't good engough, that deployment has to be
@@ -103,7 +103,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/deploy/swarm/delete_rc.sh
+	./bin/containers/delete.sh	"swarm" "rc";
 
 	./bin/version/branch.sh;
 
@@ -121,8 +121,8 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/deploy/swarm/delete_stable.sh
-	sudo ./bin/deploy/swarm/deploy.sh;
+	./bin/containers/delete.sh		"swarm" "stable";
+	sudo ./bin/containers/deploy.sh;	"swarm";
 
 - The published port should be forwarded back to 30001 (this is done in
   the nlb repository).
@@ -131,7 +131,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/deploy/swarm/delete_rc.sh
+	./bin/containers/delete.sh	"swarm" "rc";
 
 
 ________________________________________________________________________________
