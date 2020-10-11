@@ -29,10 +29,7 @@ function alx_kube_deploy()
 {
 	local	project="$1";
 	local	stack="$2";
-	local	yaml_files=$(find "etc/docker/kubernetes/" -type f);
-	local	deploy_files=$(echo ${yaml_files} |grep "deploy");
-	local	netpol_files=$(echo ${yaml_files} |grep "netpol");
-	local	svc_files=$(echo ${yaml_files} |grep "svc");
+	local	yaml_files=$(find "etc/docker/kubernetes/" -type f |sort);
 
 	alx_cp_configs	"${project}";
 	alx_cp_secrets	"${project}";
@@ -40,13 +37,7 @@ function alx_kube_deploy()
 	kubectl create namespace "${stack}";
 	alx_kube_create_configmaps	"${project}" "${stack}";
 	alx_kube_create_secrets		"${project}" "${stack}";
-	for file in ${netpol_files}; do
-		kubectl apply -f "${file}" -n "${stack}";
-	done
-	for file in ${svc_files}; do
-		kubectl apply -f "${file}" -n "${stack}";
-	done
-	for file in ${deploy_files}; do
+	for file in ${yaml_files}; do
 		kubectl apply -f "${file}" -n "${stack}";
 	done
 
