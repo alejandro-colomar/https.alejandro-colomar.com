@@ -49,7 +49,7 @@ function main()
 ################################################################################
 argc=$#;
 if [ ${argc} -ne ${ARGC} ]; then
-	echo								\
+	echo >&2							\
 'Usage: ./bin/containers/delete mode stack_stability
 Mode:
 	kubernetes

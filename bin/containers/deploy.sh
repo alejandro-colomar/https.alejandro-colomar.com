@@ -48,7 +48,7 @@ function main()
 ################################################################################
 argc=$#;
 if [ ${argc} -ne ${ARGC} ]; then
-	echo								\
+	echo >&2							\
 'Usage: ./bin/containers/deploy mode
 Mode:
 	kubernetes
