@@ -36,7 +36,7 @@ function alx_kube_create_configmaps__()
 		cm="${cm//\//-}";
 		cm="${cm//./-}";
 		cm="${cm//_/-}";
-		cm="${cm}.${project}.cm";
+		cm="${cm}-${project}-cm";
 		kubectl create configmap "${cm}" --from-file "${file}"	\
 				-n "${stack}";
 	done
@@ -57,7 +57,7 @@ function alx_kube_create_secrets__()
 		secret="${secret//\//-}";
 		secret="${secret//./-}";
 		secret="${secret//_/-}";
-		secret="${secret}.${project}.secret";
+		secret="${secret}-${project}-secret";
 		kubectl create secret generic "${secret}"		\
 				--from-file "${file}" -n "${stack}";
 	done
