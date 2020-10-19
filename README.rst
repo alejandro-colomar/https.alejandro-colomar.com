@@ -121,8 +121,8 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/containers/delete.sh		"swarm" "stable";
-	sudo ./bin/containers/deploy.sh;	"swarm";
+	./bin/containers/delete.sh	"swarm" "stable";
+	sudo ./bin/containers/deploy.sh	"swarm";
 
 - The published port should be forwarded back to 30001 (this is done in
   the nlb repository).
