@@ -22,7 +22,7 @@ WWW_PORT_STABLE=30001;
 WWW_PROJECT="www";
 WWW_STABILITY="stable";	## "stable", "rc", or "exp"
 WWW_STACK="${WWW_PROJECT}-${WWW_STABILITY}";
-WWW_VERSION="0.27.0";	## tag name or branch name.
+WWW_VERSION="0.27.1";	## tag name or branch name.
 
 
 ################################################################################
