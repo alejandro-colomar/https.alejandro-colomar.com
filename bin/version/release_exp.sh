@@ -18,7 +18,7 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	lib/libalx/sh/sysexits.sh;
+source	/usr/local/lib/libalx/sh/sysexits.sh;
 
 source	etc/www/config.sh;
 source	lib/www/version/date.sh;
