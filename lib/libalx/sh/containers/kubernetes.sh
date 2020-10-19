@@ -33,8 +33,9 @@ function alx_kube_create_configmaps__()
 
 	for file in $(find -L /run/configs -type f); do
 		cm="${file#/run/configs/}";
-		cm="${cm//\//_}";
-		cm="${cm//./_}";
+		cm="${cm//\//-}";
+		cm="${cm//./-}";
+		cm="${cm//_/-}";
 		cm="${cm}.${project}.cm";
 		kubectl create configmap "${cm}" --from-file "${file}"	\
 				-n "${stack}";
@@ -53,8 +54,9 @@ function alx_kube_create_secrets__()
 
 	for file in $(find -L /run/secrets -type f); do
 		secret="${file#/run/secrets/}";
-		secret="${secret//\//_}";
-		secret="${secret//./_}";
+		secret="${secret//\//-}";
+		secret="${secret//./-}";
+		secret="${secret//_/-}";
 		secret="${secret}.${project}.secret";
 		kubectl create secret generic "${secret}"		\
 				--from-file "${file}" -n "${stack}";
