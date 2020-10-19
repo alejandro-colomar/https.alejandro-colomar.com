@@ -47,7 +47,7 @@ function alx_oc_deploy()
 {
 	local	project="$1";
 	local	stack="$2";
-	local	yaml_files=$(find "etc/docker/openshift/" -L -type f |sort);
+	local	yaml_files=$(find -L "etc/docker/openshift/" -type f |sort);
 
 	oc new-project "${stack}";
 	alx_oc_create_configmaps__	"${project}" "${stack}";
