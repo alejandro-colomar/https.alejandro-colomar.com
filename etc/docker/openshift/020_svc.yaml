@@ -9,7 +9,7 @@ kind: Service
 metadata:
     labels:
         app: www-label
-    name: www
+    name: www-svc
 spec:
     ports:
     -
