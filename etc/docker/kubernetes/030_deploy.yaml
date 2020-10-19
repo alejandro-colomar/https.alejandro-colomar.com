@@ -44,9 +44,15 @@ spec:
 #                        memory: '16Mi'
                 volumeMounts:
                 -
-                    mountPath: /usr/local/etc/nginx/conf.d/
-                    name: etc-nginx-conf-d-www-volume
+                    mountPath: /usr/local/etc/nginx/conf.d/security-parameters.conf
+                    name: etc-nginx-conf-d-security-parameters-conf-www-volume
                     readOnly: true
+                    subPath: security-parameters.conf
+                -
+                    mountPath: /usr/local/etc/nginx/conf.d/server.conf
+                    name: etc-nginx-conf-d-server-conf-www-volume
+                    readOnly: true
+                    subPath: server.conf
                 -
                     mountPath: /var/cache/nginx/
                     name: var-cache-nginx-www-volume
@@ -59,8 +65,12 @@ spec:
             volumes:
             -
                 configMap:
-                    name: etc-nginx-conf-d-www-cm
-                name: etc-nginx-conf-d-www-volume
+                    name: etc-nginx-conf-d-security-parameters-conf-www-cm
+                name: etc-nginx-conf-d-security-parameters-conf-www-volume
+            -
+                configMap:
+                    name: etc-nginx-conf-d-server-conf-www-cm
+                name: etc-nginx-conf-d-server-conf-www-volume
             -
                 emptyDir: {}
                 name: var-cache-nginx-www-volume
