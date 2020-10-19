@@ -27,7 +27,7 @@ function update_version()
 	local	version="$1";
 
 	sed "/alejandrocolomar\/www:/s/www:.*\"/www:${version}\"/"	\
-		-i ./etc/docker/kubernetes/deploy.yaml;
+		-i ./etc/docker/kubernetes/030_deploy.yaml;
 	sed "/alejandrocolomar\/www:/s/www:.*\"/www:${version}\"/"	\
 		-i ./etc/docker/swarm/compose.yaml;
 	sed "/WWW_VERSION=/s/\".*\"\;/\"${version}\"\;/"		\

@@ -27,7 +27,7 @@ function update_port()
 	local	port="$1";
 
 	sed "/nodePort:/s/:.*/: ${port}/"				\
-		-i ./etc/docker/kubernetes/svc.yaml;
+		-i ./etc/docker/kubernetes/020_svc.yaml;
 	sed "/ports/{n;s/\".*:/\"${port}:/}"				\
 		-i ./etc/docker/swarm/compose.yaml;
 }
