@@ -28,11 +28,11 @@ function alx_swarm_deploy()
 {
 	local	project="$1";
 	local	stack="$2";
-	local	compose="etc/docker/swarm/compose.yaml";
 
 	alx_cp_configs	"${project}";
 	alx_cp_secrets	"${project}";
 
+	local	compose="etc/docker/swarm/compose.yaml";
 	docker stack deploy -c "${compose}" "${stack}";
 
 	alx_shred_secrets	"${project}";

@@ -72,11 +72,12 @@ function alx_kube_deploy()
 {
 	local	project="$1";
 	local	stack="$2";
-	local	yaml_files=$(find -L "etc/docker/kubernetes/" -type f |sort);
 
 	kubectl create namespace "${stack}";
 	alx_kube_create_configmaps__	"${project}" "${stack}";
 	alx_kube_create_secrets__	"${project}" "${stack}";
+
+	local	yaml_files=$(find -L "etc/docker/kubernetes/" -type f |sort);
 	for file in ${yaml_files}; do
 		kubectl apply -f "${file}" -n "${stack}";
 	done

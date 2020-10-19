@@ -37,8 +37,9 @@ function alx_shred_configs()
 {
 	local	project="$1";
 
-	for file in $(find -L "/run/configs/${project}/" -type f); do
-		shred -fv --remove=wipe "${file}";
+	local	config_files=$(find -L "/run/configs/${project}/" -type f);
+	for file in ${config_files}; do
+		shred -f --remove=wipe "${file}";
 	done
 	rm -rfv /run/configs/${project};
 }
@@ -58,8 +59,9 @@ function alx_shred_secrets()
 {
 	local	project="$1";
 
-	for file in $(find -L "/run/secrets/${project}/" -type f); do
-		shred -fv --remove=wipe "${file}";
+	local	secret_files=$(find -L "/run/secrets/${project}/" -type f);
+	for file in ${secret_files}; do
+		shred -f --remove=wipe "${file}";
 	done
 	rm -rfv /run/secrets/${project};
 }
