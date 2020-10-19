@@ -28,11 +28,12 @@ function alx_kube_create_configmaps__()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	cm_files=$(find -L "/run/configs/${project}/" -type f);
 
 	alx_cp_configs	"${project}";
 
-	for file in $(find -L /run/configs -type f); do
-		cm="${file#/run/configs/}";
+	for file in ${cm_files}; do
+		cm="${file#/run/configs/${project}/}";
 		cm="${cm//\//-}";
 		cm="${cm//./-}";
 		cm="${cm//_/-}";
@@ -49,11 +50,12 @@ function alx_kube_create_secrets__()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	secret_files=$(find -L "/run/secrets/${project}/" -type f);
 
 	alx_cp_secrets	"${project}";
 
-	for file in $(find -L /run/secrets -type f); do
-		secret="${file#/run/secrets/}";
+	for file in ${secret_files}; do
+		secret="${file#/run/secrets/${project}/}";
 		secret="${secret//\//-}";
 		secret="${secret//./-}";
 		secret="${secret//_/-}";
