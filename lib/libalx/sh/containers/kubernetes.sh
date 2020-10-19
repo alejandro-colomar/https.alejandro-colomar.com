@@ -28,6 +28,7 @@ function alx_kube_create_configmaps__()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	kubectl="$3";
 
 	alx_cp_configs	"${project}";
 
@@ -50,6 +51,7 @@ function alx_kube_create_secrets__()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	kubectl="$3";
 
 	alx_cp_secrets	"${project}";
 
@@ -72,10 +74,11 @@ function alx_kube_deploy()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	kubectl="kubectl";
 
 	kubectl create namespace "${stack}";
-	alx_kube_create_configmaps__	"${project}" "${stack}";
-	alx_kube_create_secrets__	"${project}" "${stack}";
+	alx_kube_create_configmaps__	"${project}" "${stack}" "${kubectl}";
+	alx_kube_create_secrets__	"${project}" "${stack}" "${kubectl}";
 
 	local	yaml_files=$(find -L "etc/docker/kubernetes/" -type f |sort);
 	for file in ${yaml_files}; do

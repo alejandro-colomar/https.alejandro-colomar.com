@@ -13,6 +13,7 @@
 ##	source								      ##
 ################################################################################
 source	lib/libalx/sh/containers/common.sh;
+source	lib/libalx/sh/containers/kubernetes.sh;
 
 
 ################################################################################
@@ -28,21 +29,9 @@ function alx_oc_create_configmaps__()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	kubectl="oc";
 
-	alx_cp_configs	"${project}";
-
-	local	cm_files=$(find -L "/run/configs/${project}/" -type f);
-	for file in ${cm_files}; do
-		cm="${file#/run/configs/${project}/}";
-		cm="${cm//\//-}";
-		cm="${cm//./-}";
-		cm="${cm//_/-}";
-		cm="${cm}-${project}-cm";
-		oc create configmap "${cm}" --from-file "${file}"	\
-				-n "${stack}";
-	done
-
-	alx_shred_configs	"${project}";
+	alx_kube_create_configmaps__	"${project}" "${stack}" "${kubectl}";
 }
 
 ## sudo
@@ -50,21 +39,9 @@ function alx_oc_create_secrets__()
 {
 	local	project="$1";
 	local	stack="$2";
+	local	kubectl="oc";
 
-	alx_cp_secrets	"${project}";
-
-	local	secret_files=$(find -L "/run/secrets/${project}/" -type f);
-	for file in ${secret_files}; do
-		secret="${file#/run/secrets/${project}/}";
-		secret="${secret//\//-}";
-		secret="${secret//./-}";
-		secret="${secret//_/-}";
-		secret="${secret}-${project}-secret";
-		oc create secret generic "${secret}"		\
-				--from-file "${file}" -n "${stack}";
-	done
-
-	alx_shred_secrets	"${project}";
+	alx_kube_create_secrets__	"${project}" "${stack}" "${kubectl}";
 }
 
 ## sudo
