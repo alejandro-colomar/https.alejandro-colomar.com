@@ -18,12 +18,12 @@ services:
         configs:
         -
             mode: 0440
-            source: etc-nginx-conf-d-security-parameters-conf-www-config
-            target: /usr/local/etc/nginx/conf.d/security-parameters.conf
+            source:  etc-nginx-conf-d-security-parameters-conf-www-config
+            target: /etc/nginx/conf.d/security-parameters.conf
         -
             mode: 0440
-            source: etc-nginx-conf-d-server-www-config
-            target: /usr/local/etc/nginx/conf.d/server.conf
+            source:  etc-nginx-conf-d-server-www-config
+            target: /etc/nginx/conf.d/server.conf
         deploy:
             placement:
                 constraints:

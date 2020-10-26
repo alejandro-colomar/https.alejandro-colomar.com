@@ -7,6 +7,7 @@ jobs:
     swarm:
         env:
             compose: etc/docker/swarm/compose.yaml
+            mode: swarm
             project: www
         runs-on: ubuntu-20.04
         steps:
@@ -29,22 +30,21 @@ jobs:
             name: docker build
             run: |
                 branch=$(git branch --show-current);
-                docker build -t "alejandrocolomar/www:${branch}" .;
+                docker build -t "alejandrocolomar/${project}:${branch}" .;
         -
             name: init swarm
             run: docker swarm init;
         -
             name: Fix swarm compose for a single machine
-            run: sed -i "s/worker/manager/" ${compose};
+            run: sed -i "s/worker/manager/" "${compose}";
         -
             name: deploy
-            run: sudo ./bin/containers/deploy.sh "swarm";
+            run: sudo ./bin/containers/deploy.sh "${mode}";
         -
             name: wait Up
             run: |
                 while true; do
                     sleep 1;
-                    docker service ls;
                     docker service ls |                                 \
                             grep '\([0-9]\)/\1' &&                      \
                             break;

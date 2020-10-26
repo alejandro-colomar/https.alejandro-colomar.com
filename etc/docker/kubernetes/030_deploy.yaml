@@ -44,12 +44,12 @@ spec:
 #                        memory: '16Mi'
                 volumeMounts:
                 -
-                    mountPath: /usr/local/etc/nginx/conf.d/security-parameters.conf
+                    mountPath: /etc/nginx/conf.d/security-parameters.conf
                     name: etc-nginx-conf-d-security-parameters-conf-www-volume
                     readOnly: true
                     subPath: security-parameters.conf
                 -
-                    mountPath: /usr/local/etc/nginx/conf.d/server.conf
+                    mountPath: /etc/nginx/conf.d/server.conf
                     name: etc-nginx-conf-d-server-conf-www-volume
                     readOnly: true
                     subPath: server.conf
