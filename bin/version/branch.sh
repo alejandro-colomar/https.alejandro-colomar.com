@@ -43,7 +43,7 @@ ARGC=0;
 ################################################################################
 function main()
 {
-	local	branch="$(git branch --show-current)";
+	local	branch=$(git branch --show-current);
 
 	update_date;
 	update_port		"${WWW_PORT_EXP}";
