@@ -1,0 +1,60 @@
+name: CI-docker-swarm
+
+on:
+    push:
+    pull_request:
+jobs:
+    swarm:
+        env:
+            compose: etc/docker/swarm/compose.yaml
+            project: www
+        runs-on: ubuntu-20.04
+        steps:
+        -
+            name: clone libalx
+            run: sudo git -C /usr/local/src clone http://github.com/alejandro-colomar/libalx.git;
+        -
+            name: install libalx
+            run: sudo make -C /usr/local/src/libalx install-sh;
+        -
+            name: checkout
+            uses: actions/checkout@v2
+        -
+            name: config branch
+            run: |
+                git config --global user.email "ci@test.com";
+                git config --global user.name "CI test";
+                ./bin/version/branch.sh;
+        -
+            name: docker build
+            run: |
+                branch=$(git branch --show-current);
+                docker build -t "alejandrocolomar/www:${branch}" .;
+        -
+            name: init swarm
+            run: docker swarm init;
+        -
+            name: Fix swarm compose for a single machine
+            run: sed -i "s/worker/manager/" ${compose};
+        -
+            name: deploy
+            run: sudo ./bin/containers/deploy.sh "swarm";
+        -
+            name: wait Up
+            run: |
+                while true; do
+                    sleep 1;
+                    docker service ls;
+                    docker service ls |                                 \
+                            grep '\([0-9]\)/\1' &&                      \
+                            break;
+                done
+        -
+            name: curl
+            run: |
+                while true; do
+                    sleep 1;
+                    curl localhost:32001 -I |                           \
+                            grep 200 && break;
+                done
+
