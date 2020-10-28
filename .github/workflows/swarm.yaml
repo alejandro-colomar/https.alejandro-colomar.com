@@ -54,7 +54,7 @@ jobs:
             run: |
                 while true; do
                     sleep 1;
-                    curl 127.0.0.1:32001 -I |                           \
+                    curl --ipv4 -I localhost:32001 |                    \
                             grep 200 && break;
                 done
 
