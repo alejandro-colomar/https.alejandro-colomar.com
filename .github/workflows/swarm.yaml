@@ -33,7 +33,7 @@ jobs:
                 docker build -t "alejandrocolomar/${project}:${branch}" .;
         -
             name: init swarm
-            run: docker swarm init;
+            run: docker swarm init --advertise-addr 127.0.0.1;
         -
             name: Fix swarm compose for a single machine
             run: sed -i "s/worker/manager/" "${compose}";
