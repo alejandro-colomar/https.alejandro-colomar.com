@@ -8,15 +8,6 @@ jobs:
         runs-on: ubuntu-20.04
         steps:
         -
-            name: clone libalx
-            run: sudo git -C /usr/local/src clone http://github.com/alejandro-colomar/libalx.git;
-        -
-            name: install libalx
-            run: sudo make -C /usr/local/src/libalx install-sh;
-        -
-            name: source libalx
-            run: source /usr/local/lib/libalx/sh/containers.sh;
-        -
             name: checkout
             uses: actions/checkout@v2
         -
