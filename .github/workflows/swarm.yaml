@@ -13,7 +13,10 @@ jobs:
         steps:
         -
             name: clone libalx
-            run: sudo git -C /usr/local/src clone http://github.com/alejandro-colomar/libalx.git;
+            run: |
+                sudo git -C /usr/local/src                              \
+                        clone --single-branch --branch "1.0-b25"        \
+                        http://github.com/alejandro-colomar/libalx.git;
         -
             name: install libalx
             run: sudo make -C /usr/local/src/libalx install-sh;
