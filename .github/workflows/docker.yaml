@@ -1,5 +1,10 @@
 name: CI-push-or-PR
 
+env:
+    compose: etc/docker/swarm/compose.yaml
+    mode: swarm
+    project: www
+    tag: ci
 on:
     push:
     pull_request:
@@ -20,10 +25,6 @@ jobs:
                 repository: alejandro-colomar/www/www
                 tag_with_ref: true
     swarm:
-        env:
-            compose: etc/docker/swarm/compose.yaml
-            mode: swarm
-            project: www
         needs: docker-build
         runs-on: ubuntu-20.04
         steps:
@@ -47,12 +48,10 @@ jobs:
             run: |
                 git config --global user.email "ci@test.com";
                 git config --global user.name "CI test";
-                ./bin/version/branch.sh;
+                ./bin/version/release_exp.sh "${tag}";
         -
             name: docker build
-            run: |
-                branch=$(git branch --show-current);
-                docker build -t "alejandrocolomar/${project}:${branch}" .;
+            run: docker build -t "alejandrocolomar/${project}:${tag}" .;
         -
             name: init swarm
             run: docker swarm init --advertise-addr lo;
