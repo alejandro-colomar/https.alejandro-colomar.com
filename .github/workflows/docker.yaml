@@ -1,4 +1,4 @@
-name: CI
+name: CI-push-or-PR
 
 on:
     push:
@@ -11,8 +11,14 @@ jobs:
             name: checkout
             uses: actions/checkout@v2
         -
-            name: docker build
-            run: docker build -t test .;
+            name: Push to GitHub Packages
+            uses: docker/build-push-action@v1
+            with:
+                username: ${{ github.actor }}
+                password: ${{ secrets.GITHUB_TOKEN }}
+                registry: docker.pkg.github.com
+                repository: alejandro-colomar/www/www
+                tag_with_ref: true
     swarm:
         env:
             compose: etc/docker/swarm/compose.yaml
