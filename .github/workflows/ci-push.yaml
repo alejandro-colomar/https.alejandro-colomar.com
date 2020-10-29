@@ -1,4 +1,4 @@
-name: CI-push-or-PR
+name: CI-push
 
 env:
     compose: etc/docker/swarm/compose.yaml
