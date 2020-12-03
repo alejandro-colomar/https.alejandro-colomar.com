@@ -1,4 +1,5 @@
-#!/bin/bash -x
+#!/bin/bash
+set -Eeo pipefail;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
@@ -13,10 +14,9 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	/usr/local/lib/libalx/sh/containers.sh;
-source	/usr/local/lib/libalx/sh/sysexits.sh;
+.	/usr/local/lib/libalx/sh/sysexits.sh;
 
-source	etc/www/config.sh;
+.	etc/www/config.sh;
 
 
 ################################################################################
@@ -40,7 +40,7 @@ function main()
 	local	project="${WWW_PROJECT}";
 	local	stack="${project}-${stability}";
 
-	alx_stack_delete	"${mode}" "${stack}";
+	/usr/local/libexec/libalx/stach_delete.sh	"${mode}" "${stack}";
 }
 
 

@@ -18,13 +18,13 @@
 ################################################################################
 ##	source								      ##
 ################################################################################
-source	/usr/local/lib/libalx/sh/sysexits.sh;
+.	/usr/local/lib/libalx/sh/sysexits.sh;
 
-source	etc/www/config.sh;
-source	lib/www/version/date.sh;
-source	lib/www/version/port.sh;
-source	lib/www/version/stability.sh;
-source	lib/www/version/version.sh;
+.	etc/www/config.sh;
+.	lib/www/version/date.sh;
+.	lib/www/version/port.sh;
+.	lib/www/version/stability.sh;
+.	lib/www/version/version.sh;
 
 
 ################################################################################
