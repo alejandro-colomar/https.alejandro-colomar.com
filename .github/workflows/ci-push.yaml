@@ -35,11 +35,11 @@ jobs:
             name: clone libalx
             run: |
                 sudo git -C /usr/local/src                              \
-                        clone --single-branch --branch "1.0-b26"        \
+                        clone --single-branch --branch "1.0-b27"        \
                         http://github.com/alejandro-colomar/libalx.git;
         -
             name: install libalx
-            run: sudo make -C /usr/local/src/libalx install-sh;
+            run: sudo make -C /usr/local/src/libalx install-sh install-libexec;
         -
             name: checkout
             uses: actions/checkout@v2
