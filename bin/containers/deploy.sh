@@ -39,7 +39,7 @@ function main()
 	local	project="${WWW_PROJECT}";
 	local	stack="${WWW_STACK}";
 
-	/usr/local/libexec/libalx/stach_deploy.sh	"${mode}" "${project}" "${stack}";
+	/usr/local/libexec/libalx/stack_deploy.sh	"${mode}" "${project}" "${stack}";
 }
 
 
