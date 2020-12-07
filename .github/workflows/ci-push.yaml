@@ -35,7 +35,7 @@ jobs:
             name: clone libalx
             run: |
                 sudo git -C /usr/local/src                              \
-                        clone --single-branch --branch "1.0-b27"        \
+                        clone --single-branch --branch "1.0-b28"        \
                         http://github.com/alejandro-colomar/libalx.git;
         -
             name: install libalx
