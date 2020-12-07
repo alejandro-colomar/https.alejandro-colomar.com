@@ -40,7 +40,7 @@ function main()
 	local	project="${WWW_PROJECT}";
 	local	stack="${project}-${stability}";
 
-	/usr/local/libexec/libalx/stach_delete.sh	"${mode}" "${stack}";
+	/usr/local/libexec/libalx/stack_delete.sh	"${mode}" "${stack}";
 }
 
 
