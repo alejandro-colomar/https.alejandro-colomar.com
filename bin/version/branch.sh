@@ -1,5 +1,5 @@
-#!/bin/bash -x
-##	./bin/version/branch.sh
+#!/bin/bash
+set -Eeo pipefail;
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
 ##      SPDX-License-Identifier:  GPL-2.0-only                                ##
