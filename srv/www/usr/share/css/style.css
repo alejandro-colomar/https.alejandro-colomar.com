@@ -1,0 +1,26 @@
+
+html, body {
+	background-color: black;
+	font-family: georgia, serif;
+	color: white;
+}
+
+a:link {
+	color: orange;
+	text-decoration: none;
+}
+
+a:visited {
+	color: green;
+	text-decoration: none;
+}
+
+a:hover {
+	color: yellow;
+	text-decoration: underline;
+}
+
+a:active {
+	color: blue;
+	text-decoration: underline;
+}
