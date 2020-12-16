@@ -1,4 +1,5 @@
-#!/bin/bash -x
+#!/bin/bash
+set -Eeo pipefail;
 ##	./bin/version/release_exp.sh	"<version>";
 ################################################################################
 ##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
@@ -15,56 +16,29 @@
 ################################################################################
 
 
-################################################################################
-##	source								      ##
-################################################################################
-source	etc/www/config.sh;
-source	lib/www/version/date.sh;
-source	lib/www/version/port.sh;
-source	lib/www/version/stability.sh;
-source	lib/www/version/version.sh;
-
-
-################################################################################
-##	definitions							      ##
-################################################################################
 ARGC=1;
-
-EX_USAGE=64;
-
-
-################################################################################
-##	functions							      ##
-################################################################################
-
-
-################################################################################
-##	main								      ##
-################################################################################
-function main()
-{
-	local	exp_version="$1";
-
-	update_date;
-	update_port		"${WWW_PORT_EXP}";
-	update_stability	"exp";
-	update_version		"${exp_version}";
-
-	git commit -a -m "Pre-release ${exp_version}";
-	git tag ${exp_version};
-}
-
-
-################################################################################
-##	run								      ##
-################################################################################
 argc=$#;
+version="$1";
+EX_USAGE=64;
 if [ ${argc} -ne ${ARGC} ]; then
 	echo	"Illegal number of parameters (Requires ${ARGC})";
 	exit	${EX_USAGE};
 fi
 
-main	"$1";
+
+. etc/www/config.sh;
+. lib/www/version/date.sh;
+. lib/www/version/port.sh;
+. lib/www/version/stability.sh;
+. lib/www/version/version.sh;
+
+update_date;
+update_port		"${WWW_PORT_EXP}";
+update_stability	"exp";
+update_version		"${version}";
+
+git commit -a -m "Pre-release ${version}";
+git tag ${version};
 
 
 ################################################################################
