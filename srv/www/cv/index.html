@@ -4,630 +4,549 @@
 <!--    Copyright (C)             Alejandro Colomar Andrés           -->
 <!--    SPDX-License-Identifier:  BSD-3-Clause                       -->
 <!--=================================================================-->
+
+<!-- All URIs in this file should be absolute. -->
+<!-- CSS is embedded to avoid dependencies. -->
+
 <head>
-<title>CV - Alejandro Colomar</title>
-<meta charset="utf-8">
-<link rel="icon" href="http://www.alejandro-colomar.es/usr/share/pictures/alx.ico"/>
-<link rel="stylesheet" type="text/css" href="http://www.alejandro-colomar.es/usr/share/css/style.css" title="style">
+	<meta charset="utf-8">
+	<style>
+		html, body {background-color: black; font-family: serif; color: white;}
+		h1, h2, h3, h4, h5, h6 {font-family: sans-serif;}
+		h1 {margin-left: 0.5em;}
+		h4 {margin-top: 0.2em; margin-bottom: 0.2em;}
+		h5 {margin-top: 0.1em; margin-bottom: 0.1em;}
+		h6 {margin-top: 0.05em; margin-bottom: 0.05em;}
+		a:link {color: orange; text-decoration: none;}
+		a:visited {color: green; text-decoration: none;}
+		a:hover {color: yellow; text-decoration: underline;}
+		a:active {color: blue; text-decoration: underline;}
+		li.bullet {font-size: smaller;}
+		p.TP {margin-top: 0.5em; margin-left: 1.5em;}
+		.bullet {font-family: sans-serif;}
+		.br {margin-bottom: 1em;}
+		.code {font-family: monospace;}
+		.date {font-family: sans-serif; font-size: smaller; font-style: italic;}
+		.inl {display: inline;}
+		.name {font-family: sans-serif; font-style: italic;}
+		.src {font-family: monospace;}
+		.sh {font-family: monospace;}
+		.uri {font-family: monospace;}
+	</style>
+	<link rel="icon" href="http://www.alejandro-colomar.es/usr/share/pictures/alx.ico"/>
+	<title>CV - Alejandro Colomar</title>
 </head>
 
 
 <body>
 
 
-<!--=================================================================-->
-<!-- Header                                                          -->
-<!--=================================================================-->
-<h1>Alejandro Colomar</h1>
+<div id="header">
+	<h1>Alejandro Colomar</h1>
+</div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Contact                                                         -->
-<!--=================================================================-->
-<tt>
-<a href="mailto:Alejandro Colomar <alejandro.colomar@gmail.com>">
-		&lt;alejandro.colomar@gmail.com&gt;</a>
-<br/>
-<a href="https://github.com/alejandro-colomar/">
-		github.com/alejandro-colomar/</a>
-<br/>
-<a href="https://hub.docker.com/u/alejandrocolomar/">
-		hub.docker.com/u/alejandrocolomar/</a>
-</tt>
+<div id="contact">
+	<h4><span class="uri"><a href="mailto:Alejandro Colomar <alejandro.colomar@gmail.com>">&lt;alejandro.colomar@gmail.com&gt;</a></span></h4>
+	<h4><span class="uri"><a href="https://github.com/alejandro-colomar/">github.com/alejandro-colomar/</a></span></h4>
+	<h4><span class="uri"><a href="https://hub.docker.com/u/alejandrocolomar/">hub.docker.com/u/alejandrocolomar/</a></span></h4>
+</div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Contents                                                        -->
-<!--=================================================================-->
-<a href="#brief">Brief</a>
-|
-<a href="#experience">Experience</a>
-|
-<a href="#projects">Projects</a>
-|
-<a href="#education">Education</a>
-|
-<a href="#languages">Languages</a>
-|
-<a href="#footer">Footer</a>
+<div id="contents">
+	<h3 class="inl"><a href="#brief">Brief</a></h3> |
+	<h3 class="inl"><a href="#experience">Experience</a></h3> |
+	<h3 class="inl"><a href="#projects">Projects</a></h3> |
+	<h3 class="inl"><a href="#education">Education</a></h3> |
+	<h3 class="inl"><a href="#languages">Languages</a></h3> |
+	<h3 class="inl"><a href="#footer">Footer</a></h3> |
+</div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Brief                                                           -->
-<!--=================================================================-->
 <div id="brief">
-<h3>
-<a href="#top">^</a>
-BRIEF
-</h3>
+	<h2><a href="#top">^</a> BRIEF</h2>
 
-<p>
-C, Git, Shell, Linux, Docker.
-</p>
+	<p class="bullet">C, Git, Shell, Linux, Docker.</p>
 </div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Experience                                                      -->
-<!--=================================================================-->
 <div id="experience">
-<h3>
-<a href="#top">^</a>
-EXPERIENCE
-</h3>
+	<h2><a href="#top">^</a> EXPERIENCE</h2>
 
-
-<ul>
-<li>
-<tt>
-<a href="https://www.kernel.org/doc/man-pages/"
-		>Linux man-pages comaintainer @ Linux</a>
-<i>(2020 - present)</i>
-</tt>
-</li>
 	<ul>
-	<li>
-	<tt>
-	Review incoming patches and bug reports.
-	</tt>
-	</li>
+		<li>
+			<h4 class="inl"><a href="https://www.kernel.org/doc/man-pages/">Linux man-pages comaintainer @ <span class="name">Linux</span></a></h4>
+			<span class="date">(2020 - present)</span>
+			<ul>
+				<li class="bullet">Review and merge incoming patches and bug reports.</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl">Linux man-pages contributor @ <span class="name">Linux</span></h4>
+			<span class="date">(2020)</span>
+			<ul>
+				<li class="bullet">Test the Linux kernel and C library APIs.</li>
+				<li class="bullet">Write technical documentation about the APIs.</li>
+				<li class="bullet">Develop example programs using the APIs.</li>
+				<li class="bullet">Review existing technical documentation.</li>
+				<li class="bullet">Report detected bugs to the Linux kernel or C library.</li>
+				<li class="bullet"><a href="https://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html">man-pages-5.09 release.</a></li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl"><a href="https://www.sqli.com/">DevOps engineer @ <span class="name">SQLI</span></a></h4>
+			<span class="date">(2020 - present)</span>
+			<ul>
+				<li class="bullet">CI/CD; Jenkins</li>
+				<li class="bullet">Source control; Git</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl"><a href="http://academia-online.org">DevOps engineer @ <span class="name">Academia-Online.ORG</span></a></h4>
+			<span class="date">(2018 - 2020)</span>
+			<ul>
+				<li class="bullet">Source control; Git</li>
+				<li class="bullet">Shell scripting; Bash</li>
+				<li class="bullet">Programming; C, C++</li>
+				<li class="bullet">Linux maintenance</li>
+				<li class="bullet">Containers; Docker, Kubernetes, Openshift 4</li>
+				<li class="bullet">CI/CD; GitHub</li>
+				<li class="bullet">Cloud; AWS</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl">Baseball coach @ <span class="name">Béisbol Astros Valencia</span></h4>
+			<span class="date">(2017 - 2018)</span>
+			<ul>
+				<li class="bullet">Coach the U-13 children team.</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl"><a href="http://ejercitodelaire.defensa.gob.es">Airman/Soldier @ <span class="name">Spanish Air Force</span></a></h4>
+			<span class="date">(2011 - 2017)</span>
+			<ul>
+				<li class="bullet">Aircraft maintenance (military helicopters)</li>
+				<li class="bullet">Force protection (military training)</li>
+			</ul>
+		</li>
 	</ul>
-<li>
-<tt>
-Linux man-pages contributor @ Linux
-<i>(2020)</i>
-</tt>
-<br/>
-	<ul>
-	<li>
-	<tt>
-	Test the Linux kernel and C library APIs.
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Write technical documentation about the APIs.
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Develop example programs using the APIs.
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Review existing technical documentation.
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Report detected bugs to the Linux kernel or C library.
-	</tt>
-	</li>
-	<li>
-	<tt>
-	<a href="https://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html">
-	man-pages-5.09 release.
-	</a>
-	</tt>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-<tt>
-<a href="https://www.sqli.com/"
-		>DevOps engineer @ SQLI</a>
-<i>(2020 - present)</i>
-</tt>
-<br/>
-	<ul>
-	<li>
-	<tt>
-	CI/CD; Jenkins
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Source control; Git
-	</tt>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-<tt>
-<a href="http://academia-online.org"
-		>DevOps engineer @ Academia-Online.ORG</a>
-<i>(2018 - 2020)</i>
-</tt>
-<br/>
-	<ul>
-	<li>
-	<tt>
-	Source control; Git
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Shell scripting; Bash
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Programming; C, C++
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Linux maintenance
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Containers; Docker, Kubernetes, Openshift 4
-	</tt>
-	</li>
-	<li>
-	<tt>
-	CI/CD; GitHub
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Cloud; AWS
-	</tt>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-<tt>
-Baseball coach @ Béisbol Astros Valencia
-<i>(2017 - 2018)</i>
-</tt>
-<br/>
-	<ul>
-	<li>
-	<tt>
-	Coach the U-13 children team.
-	</tt>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-<tt>
-<a href="http://ejercitodelaire.defensa.gob.es"
-		>Airman/Soldier @ Spanish Air Force</a>
-<i>(2011 - 2017)</i>
-</tt>
-<br/>
-	<ul>
-	<li>
-	<tt>
-	Aircraft maintenance (military helicopters)
-	</tt>
-	</li>
-	<li>
-	<tt>
-	Force protection (military training)
-	</tt>
-	</li>
-	</ul>
-</li>
-</ul>
 </div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Projects                                                        -->
-<!--=================================================================-->
 <div id="projects">
-<h3>
-<a href="#top">^</a>
-PROJECTS
-</h3>
+	<h2><a href="#top">^</a> PROJECTS</h2>
 
-
-<ul>
-<li>
-<tt>
-<a href="https://www.robotminor.nl/robust-internet-services-node/"
-		>Robust internet services node</a>
-<i>(2020 - present) A. Colomar, S. Colomar</i>
-</tt>
-<br/>
-High availability & high security server.
-</li>
-<br/>
-<li>
-<tt>
-rob_cam
-<i>(2020 - present) A. Colomar, S. Colomar</i>
-</tt>
-<br/>
-Project to control a system that has cameras and robots (e.g.:
-a production line) in a high availability manner.  The programs are
-written in C and deployed using Docker & Kubernetes.
 	<ul>
-	<li>
-	<tt>
-	<a href="http://www.alejandro-colomar.es/usr/share/videos/20200221_love_c.mp4">love.c</a>
-	<i>(2020) A. Colomar</i>
-	</tt>
-	</li>
+		<li class="br">
+			<h4 class="inl"><a href="https://www.robotminor.nl/robust-internet-services-node/">Robust internet services node</a></h4>
+			<span class="date">(2020 - present)</span>
+			<span class="name">A. Colomar</span>,
+			<span class="name">S. Colomar</span>
+			<p class="TP">
+				High availability & high security server.
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl">rob_cam</h4>
+			<span class="date">(2020 - present)</span>
+			<span class="name">A. Colomar</span>,
+			<span class="name">S. Colomar</span>
+			<p class="TP">
+				Project to control a system that has cameras and robots (e.g.:
+				a production line) in a high availability manner.  The programs are
+				written in C and deployed using Docker & Kubernetes.
+			</p>
+			<ul>
+				<li class="bullet">
+					<span class="uri"><a href="http://www.alejandro-colomar.es/usr/share/videos/20200221_love_c.mp4">love.c</a></span>
+					<span class="date">(2020)</span>
+					<span class="name">A. Colomar</span>
+				</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl"><span class="name"><a href="http://www.alejandro-colomar.es/libalx/">libalx</a></span></h4>
+			<span class="date">(2017 - present)</span>
+			<span class="name">A. Colomar</span>
+			<p class="TP">
+				C & C++ library providing useful extensions to common libraries.
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl"><a href="https://github.com/alejandro-colomar/mine-sweeper">mine-sweeper</a></h4>
+			<span class="date">(2015 - present)</span>
+			<span class="name">A. Colomar</span>
+			<p class="TP">
+				Simple game written in C.  Based on the 1990 game 'Mine'
+				by CurtJ, LarryH, RobD at Duff Software.
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl">
+				<a href="http://www.europeanprojectsemester.eu/">European Project Semester</a>:
+				<a href="https://www.robotminor.nl/laundry-symbol-reader/">Laundry symbol reader</a>
+			</h4>
+			<span class="date">(2020)</span>
+			<span class="name">A. Colomar</span>,
+			<span class="name">T. Ruis</span>
+			<p class="TP">
+				Project to analyze clothing labels and allow laundry
+				automation, programmed in C (prototypes in C++ and Python).
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl">Coins</h4>
+			<span class="date">(2018 - 2019)</span>
+			<span class="name">A. Colomar</span>
+			<p class="TP">
+				Project to accurately count money from photos of coins,
+				programmed in C (prototype in C++).
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl"><a href="https://www.youtube.com/watch?v=F_p8_HlpJNo">stm32l4-project-plane</a></h4>
+			<span class="date">(2018 - 2019)</span>
+			<span class="name">A. Colomar</span>,
+			<span class="name">F. J. García Pedroche</span>,
+			<span class="name">S. Junquera Carrero</span>
+			<p class="TP">
+				Project to demonstrate CAN communication to control an
+				embedded system, programmed in C.
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl">PNP-Solver</h4>
+			<span class="date">(2012 - 2019)</span>
+			<span class="name">A. Colomar</span>
+			<p class="TP">
+				Program that solves small NP-Complete problems, written
+				in C.  Used to test the performance of the algorithm it implements.
+			</p>
+		</li>
+		<li class="br">
+			<h4 class="inl">
+				<a href="http://www.upv.es/contenidos/PRAKTIKUM/">Praktikum UPV (Spanish)</a>:
+				<a href="https://media.upv.es/#/portal/video/5275fb43-f4d5-e34e-a64b-df865bb7c6b0">Control Automatico</a>
+			</h4>
+			<span class="date">(2010)</span>
+			<span class="name">A. Colomar</span>
+			<p class="TP">
+				Program to control a helicopter-like system using a Wii Remote.
+			</p>
+			<ul>
+				<li class="bullet"><a href="https://praktikumupv.wordpress.com/praktikum2010/">Project overview</a></li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl">Open-source contributions:</h4>
+			<ul>
+				<li><h5><span class="name"><a href="https://www.kernel.org/doc/man-pages/">Linux man-pages</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://www.kernel.org/">Linux kernel</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://www.gnu.org/software/libc/">Glibc</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://gcc.gnu.org/">GCC</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://llvm.org/">LLVM/Clang</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://www.debian.org/">Debian</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://www.freebsd.org/">FreeBSD</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://stackoverflow.com/">Stack Overflow</a></span></h5></li>
+				<li><h5><span class="name"><a href="https://stackexchange.com/">Stack Exchange</a></span></h5></li>
+				<li>...</li>
+			</ul>
+			<p class="TP">
+				I've contributed to the above projects with patches, bug reports, testing, reviews, suggestions, Q&A, etc.
+			</p>
+		</li>
 	</ul>
-</li>
-<br/>
-<li>
-<tt>
-<a href="http://www.alejandro-colomar.es/libalx/">libalx</a>
-<i>(2017 - present) A. Colomar</i>
-</tt>
-<br/>
-C & C++ library providing useful extensions to common libraries.
-</li>
-<br/>
-<li>
-<tt>
-<a href="https://github.com/alejandro-colomar/mine-sweeper"
-		>Mine-sweeper</a>
-<i>(2015 - present) A. Colomar</i>
-</tt>
-<br/>
-Simple game written in C.  Based on the 1990 game 'Mine'
-by CurtJ, LarryH, RobD at Duff Software.
-</li>
-<br/>
-<li>
-<tt>
-<a href="http://www.europeanprojectsemester.eu/"
-		>European Project Semester</a>:
-<a href="https://www.robotminor.nl/laundry-symbol-reader/"
-		>Laundry symbol reader</a>
-<i>(2020) A. Colomar, T. Ruis</i>
-</tt>
-<br/>
-Project to analyze clothing labels and allow laundry
-automation, programmed in C (prototypes in C++ and Python).
-</li>
-<br/>
-<li>
-<tt>
-Coins
-<i>(2018 - 2019) A. Colomar</i>
-</tt>
-<br/>
-Project to accurately count money from photos of coins,
-programmed in C (prototype in C++).
-</li>
-<br/>
-<li>
-<tt>
-<a href="https://www.youtube.com/watch?v=F_p8_HlpJNo"
-		>stm32l4-project-plane</a>
-<i>(2018 - 2019) A. Colomar, F. J. García Pedroche, S. Junquera Carrero</i>
-</tt>
-<br/>
-Project to demonstrate CAN communication to control an
-embedded system, programmed in C.
-</li>
-<br/>
-<li>
-<tt>
-PNP-Solver
-<i>(2012 - 2019) A. Colomar</i>
-</tt>
-<br/>
-Program that solves small NP-Complete problems, written
-in C.  Used to test the performance of the algorithm it implements.
-</li>
-<br/>
-<li>
-<tt>
-<a href="http://www.upv.es/contenidos/PRAKTIKUM/"
-		>Praktikum UPV (Spanish)</a>:
-<a href="https://media.upv.es/#/portal/video/5275fb43-f4d5-e34e-a64b-df865bb7c6b0"
-		>Control Automatico</a>
-<i>(2010) A. Colomar</i>
-</tt>
-<br/>
-Program to control a helicopter-like system using a Wii Remote.
-	<ul>
-	<li>
-	<tt>
-	<a href="https://praktikumupv.wordpress.com/praktikum2010/"
-			>Project overview</a>
-	</tt>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-Open-source/community contributions:
-<ul>
-<li>
-<tt>
-<a href="https://www.kernel.org/doc/man-pages/">Linux man-pages</a>
-</tt>
-</li>
-<li>
-<tt>
-<a href="https://www.gnu.org/software/libc/">GNU C library (glibc)</a>
-</tt>
-</li>
-<li>
-<tt>
-<a href="https://stackoverflow.com/">Stack Overflow</a>
-</tt>
-</li>
-</ul>
-</ul>
 </div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Education                                                       -->
-<!--=================================================================-->
 <div id="education">
-<h3>
-<a href="#top">^</a>
-EDUCATION
-</h3>
+	<h2><a href="#top">^</a> EDUCATION</h2>
 
-
-<tt>
-<ul>
-<li>
-Smart Manufacturing & Robotics Delft Minor
-- European Project Semester
-<i>(2020)</i>
-<br/>
-The Hague University of Applied Sciences (THUAS), The Netherlands
-</li>
-<br/>
-<li>
-BEng Electronic & Computer Engineering
-- Erasmus Semester
-<i>(2019)</i>
-<br/>
-Institute of Technology Sligo (ITS), Ireland
-</li>
-<br/>
-<li>
-BEng Industrial Electronics and Automation Engineering
-<i>(2017 - 2020)</i>
-<br/>
-Universitat Politècnica de València (UPV), Spain
 	<ul>
-	<li>Minor: Industrial computing</li>
-	<li>High academic preformance group (Grupo ARA)</li>
-	<li>Special mention: Computer Vision</li>
-	<li>Special mention: Embedded Systems</li>
-	<li>Special mention: Industrial Computing I</li>
-	<li>Special mention: Digital Electronics</li>
-	<li>Special mention: Analog Electronics</li>
-	<li>Special mention: Electronic Technology</li>
+		<li class="br">
+			<h4 class="inl">Smart Manufacturing & Robotics Delft Minor</h4> -
+			European Project Semester
+			<span class="date">(2020)</span>
+			<br/>
+			<h5 class="inl"><span class="name">The Hague University of Applied Sciences (THUAS)</span></h5>,
+			<span class="name">The Netherlands</span>
+		</li>
+		<li class="br">
+			<h4 class="inl">BEng Electronic & Computer Engineeringr</h4> -
+			Erasmus Semester
+			<span class="date">(2019)</span>
+			<br/>
+			<h5 class="inl"><span class="name">Institute of Technology Sligo (ITS)</span></h5>,
+			<span class="name">Ireland</span>
+		</li>
+		<li class="br">
+			<h4 class="inl">BEng Industrial Electronics and Automation Engineering</h4>
+			<span class="date">(2017 - 2020)</span>
+			<br/>
+			<h5 class="inl"><span class="name">Universitat Politècnica de València (UPV)</span></h5>,
+			<span class="name">Spain</span>
+			<ul>
+				<li class="bullet">Minor: Industrial computing</li>
+				<li class="bullet">High academic preformance group (Grupo ARA)</li>
+				<li class="bullet">Special mention: Computer Vision</li>
+				<li class="bullet">Special mention: Embedded Systems</li>
+				<li class="bullet">Special mention: Industrial Computing I</li>
+				<li class="bullet">Special mention: Digital Electronics</li>
+				<li class="bullet">Special mention: Analog Electronics</li>
+				<li class="bullet">Special mention: Electronic Technology</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl">BEng Industrial Organization Engineering</h4>
+			<span class="date">(2014 - 2016)</span>
+			<br/>
+			<h5 class="inl">
+				<span class="name">Universidad Politécnica de Cartagena (UPCT)</span> /
+				<span class="name">Centro Universitario de la Defensa (CUD)</span>
+			</h5> -
+			<h5 class="inl"><span class="name">Spanish Air Force</span></h5>,
+			<span class="name">Spain</span>
+			<ul>
+				<li class="bullet">Special mention: Computer Science</li>
+			</ul>
+		</li>
+		<li class="br">
+			<h4 class="inl">Technician in Telecommunication and Computer Systems</h4>
+			<span class="date">(2013 - 2014)</span>
+			<br/>
+			<h5 class="inl"><span class="name">Academia Básica del Aire (ABA)</span></h5> -
+			<h5 class="inl"><span class="name">Spanish Air Force</span></h5>,
+			<span class="name">Spain</span>
+		</li>
+		<li class="br">
+			<h4 class="inl">BEng Mechanical Engineering</h4>
+			<span class="date">(2012 - 2013)</span>
+			<br/>
+			<h5 class="inl"><span class="name">Universidad Nacional de Educación a Distancia (UNED)</span></h5>,
+			<span class="name">Spain</span>
+		</li>
+		<li class="br">
+			<h4 class="inl">MOOCs</h4>
+			<span class="date">(2012 - present)</span>:
+			<br/><br/>
+			<ul>
+				<li class="br">
+					<h5 class="inl"><span class="name"><a href="https://cognitiveclass.ai/">Cognitive Class</a></span></h5>:
+					<ul>
+						<li>
+							<h5 class="inl"><span class="name">IBM</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">PY0101EN</span>]:&thinsp;
+									<a href="https://courses.cognitiveclass.ai/certificates/ee4b0a1630b646418d0d1a0a66d1a65b">Python 101 for Data Science</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="br">
+					<h5 class="inl"><span class="name"><a href="https://www.coursera.org/">Coursera</a></span></h5>:
+					<ul>
+						<li>
+							<h5 class="inl"><span class="name">UPenn</span></h5>:
+							<ul>
+								<li class="bullet">Single Variable Calculus</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="br">
+					<h5 class="inl"><span class="name"><a href="https://www.edx.org/">EdX</a></span></h5>:
+					<ul>
+						<li>
+							<h5 class="inl"><span class="name">AnahuacX</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">IEST-CP1-2x</span>]:&thinsp;
+									Introducción a la Inteligencia Artificial
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">Dartmouth_IMTx</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">DART.IMT.C</span>]:&thinsp;
+									C Programming with Linux
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">DelftX</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">AE1110x</span>]:&thinsp;
+									Introduction to Aeronautical Engineering
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">IITBombayX</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">ME209.1x</span>]:&thinsp;
+									<a href="https://s3.amazonaws.com/verify.edx.org/downloads/54ad0eedabec47fbbe27be60334da757/Certificate.pdf">Thermodynamics</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">LinuxFoundationX</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">LFS101x</span>]:&thinsp;
+									Introduction to Linux
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">Microsoft</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">DAT204x</span>]:&thinsp;
+									<a href="https://www.datacamp.com/statement-of-accomplishment/course/56a60439dc262dd35c6783f96d7766816fbcae16">Introduction to R for Data Science</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">MITx</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">2.008x</span>]:&thinsp;
+									Fundamentals of Manufacturing Processes
+								</li>
+								<li class="bullet">
+									[<span class="code">3.15.1x</span>]:&thinsp;
+									Electronic Materials and Devices
+								</li>
+								<li class="bullet">
+									[<span class="code">3.15.2x</span>]:&thinsp;
+									Optical Materials and Devices
+								</li>
+								<li class="bullet">
+									[<span class="code">3.15.3x</span>]:&thinsp;
+									Magnetic Materials and Devices
+								</li>
+								<li class="bullet">
+									[<span class="code">3.032.1x</span>]:&thinsp;
+									<a href="https://courses.edx.org/certificates/b36556f21747414eac575af7016f7252">Mechanical Behavior of Materials: Linear Elastic Behavior</a>
+								</li>
+								<li class="bullet">
+									[<span class="code">3.032.2x</span>]:&thinsp;
+									Mechanical Behavior of Materials: Stress Transformations, Beams, Columns, and Cellular Solids
+								</li>
+								<li class="bullet">
+									[<span class="code">3.091x</span>]:&thinsp;
+									Introduction to Solid State Chemistry
+								</li>
+								<li class="bullet">
+									[<span class="code">6.002.1x</span>]:&thinsp;
+									Circuits and Electronics 1: Basic Circuit Analysis
+								</li>
+								<li class="bullet">
+									[<span class="code">6.002.2x</span>]:&thinsp;
+									Circuits and Electronics 2: Amplification, Speed, and Delay
+								</li>
+								<li class="bullet">
+									[<span class="code">6.004.1x</span>]:&thinsp;
+									Computation Structures 1: Digital Circuits
+								</li>
+								<li class="bullet">
+									[<span class="code">8.MReVx</span>]:&thinsp;
+									<a href="http://www.alejandro-colomar.es/usr/share/documents/cert/edx_mitx_8mrevx.pdf">Mechanics ReView</a>
+								</li>
+								<li class="bullet">
+									[<span class="code">8.01.1x</span>]:&thinsp;
+									Mechanics: Kinematics and Dynamics
+								</li>
+								<li class="bullet">
+									[<span class="code">8.01.2x</span>]:&thinsp;
+									Mechanics: Momentum and Energy
+								</li>
+								<li class="bullet">
+									[<span class="code">8.01.3x</span>]:&thinsp;
+									Mechanics: Rotational Dynamics
+								</li>
+								<li class="bullet">
+									[<span class="code">8.02x</span>]:&thinsp;
+									<a href="https://s3.amazonaws.com/verify.edx.org/downloads/34e8b08829d6431c8b94bfba0dcafdd1/Certificate.pdf">Physics II (Electricity and Magnetism)</a>
+								</li>
+								<li class="bullet">
+									[<span class="code">16.00x</span>]:&thinsp;
+									Introduction to Aerospace Engineering: Astronautics and Human Spaceflight
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">TenarisUX</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">STEEL101x</span>]:&thinsp;
+									Introduction to Steel
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">UPValenciaX</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">DC201x</span>]:&thinsp;
+									Dynamics and Control
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="inl"><span class="name">UQx</span></h5>:
+							<ul>
+								<li class="bullet">
+									[<span class="code">Hypers301x</span>]:&thinsp;
+									Hypersonics - from shock waves to scramjets
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
 	</ul>
-</li>
-<br/>
-<li>
-BEng Industrial Organization Engineering
-<i>(2014 - 2016)</i>
-<br/>
-Universidad Politécnica de Cartagena (UPCT) /
-Centro Universitario de la Defensa (CUD) - Spanish Air Force, Spain
-	<ul>
-	<li>Special mention: Computer Science</li>
-	</ul>
-</li>
-<br/>
-<li>
-Technician in Telecommunication and Computer Systems
-<i>(2013 - 2014)</i>
-<br/>
-Academia Básica del Aire (ABA) - Spanish Air Force, Spain
-</li>
-<br/>
-<li>
-BEng Mechanical Engineering
-<i>(2012 - 2013)</i>
-<br/>
-Universidad Nacional de Educación a Distancia (UNED), Spain
-</li>
-<br/>
-<li>
-Various MOOC courses
-<i>(2012 - present)</i>:
-<br/>
-<br/>
-<ul>
-<li>
-<a href="https://cognitiveclass.ai/">Cognitive Class</a>:
-	<ul>
-	<li>
-	IBM:
-		<ul>
-		<li>[PY0101EN]: <a href="https://courses.cognitiveclass.ai/certificates/ee4b0a1630b646418d0d1a0a66d1a65b"
-				>Python 101 for Data Science</a></li>
-		</ul>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-<a href="https://www.coursera.org/">Coursera</a>:
-	<ul>
-	<li>
-	UPenn:
-		<ul>
-		<li>Single Variable Calculus</li>
-		</ul>
-	</li>
-	</ul>
-</li>
-<br/>
-<li>
-<a href="https://www.edx.org/">EdX</a>:
-	<ul>
-	<li>
-	AnahuacX:
-		<ul>
-		<li>[IEST-CP1-2x]: Introducción a la
-				Inteligencia Artificial</li>
-		</ul>
-	</li>
-	<li>
-	Dartmouth_IMTx:
-		<ul>
-		<li>[DART.IMT.C]: C Programming with Linux</li>
-		</ul>
-	</li>
-	<li>
-	DelftX:
-		<ul>
-		<li>[AE1110x]: Introduction to
-				Aeronautical Engineering</li>
-		</ul>
-	</li>
-	<li>
-	IITBombayX:
-		<ul>
-		<li>[ME209.1x]: <a href="https://s3.amazonaws.com/verify.edx.org/downloads/54ad0eedabec47fbbe27be60334da757/Certificate.pdf"
-				>Thermodynamics</a></li>
-		</ul>
-	</li>
-	<li>
-	LinuxFoundationX:
-		<ul>
-		<li>[LFS101x]: Introduction to Linux</li>
-		</ul>
-	</li>
-	<li>
-	Microsoft:
-		<ul>
-		<li>[DAT204x]: <a href="https://www.datacamp.com/statement-of-accomplishment/course/56a60439dc262dd35c6783f96d7766816fbcae16"
-				>Introduction to R for
-				Data Science</a></li>
-		</ul>
-	</li>
-	<li>
-	MITx:
-		<ul>
-		<li>[2.008x]: Fundamentals of Manufacturing
-				Processes</li>
-		<li>[3.15.1x]: Electronic Materials and Devices</li>
-		<li>[3.15.2x]: Optical Materials and Devices</li>
-		<li>[3.15.3x]: Magnetic Materials and Devices</li>
-		<li>[3.032.1x]: <a href="https://courses.edx.org/certificates/b36556f21747414eac575af7016f7252"
-				>Mechanical Behavior of Materials:
-				Linear Elastic Behavior</a></li>
-		<li>[3.032.2x]: Mechanical Behavior of Materials:
-				Stress Transformations, Beams, Columns,
-				and Cellular Solids</li>
-		<li>[3.091x]: Introduction to Solid State Chemistry</li>
-		<li>[6.002.1x]: Circuits and Electronics 1:
-				Basic Circuit Analysis</li>
-		<li>[6.002.2x]: Circuits and Electronics 2:
-				Amplification, Speed, and Delay</li>
-		<li>[6.004.1x]: Computation Structures 1:
-				Digital Circuits</li>
-		<li>[8.MReVx]: <a href="http://www.alejandro-colomar.es/usr/share/documents/cert/edx_mitx_8mrevx.pdf"
-				>Mechanics ReView</a></li>
-		<li>[8.01.1x]: Mechanics: Kinematics and Dynamics</li>
-		<li>[8.01.2x]: Mechanics: Momentum and Energy</li>
-		<li>[8.01.3x]: Mechanics: Rotational Dynamics</li>
-		<li>[8.02x]: <a href="https://s3.amazonaws.com/verify.edx.org/downloads/34e8b08829d6431c8b94bfba0dcafdd1/Certificate.pdf"
-				>Physics II
-				(Electricity and Magnetism)</a></li>
-		<li>[16.00x]: Introduction to Aerospace Engineering:
-				Astronautics and Human Spaceflight</li>
-		</ul>
-	</li>
-	<li>
-	TenarisUX:
-		<ul>
-		<li>[STEEL101x]: Introduction to Steel</li>
-		</ul>
-	</li>
-	<li>
-	UPValenciaX:
-		<ul>
-		<li>[DC201x]: Dynamics and Control</li>
-		</ul>
-	</li>
-	<li>
-	UQx:
-		<ul>
-		<li>[Hypers301x]: Hypersonics -
-				from shock waves to scramjets</li>
-		</ul>
-	</li>
-	</ul>
-</li>
-</ul>
-</tt>
 </div>
 <hr/>
 
 
-<!--=================================================================-->
-<!-- Languages                                                       -->
-<!--=================================================================-->
 <div id="languages">
-<h3>
-<a href="#top">^</a>
-LANGUAGES
-</h3>
+	<h2><a href="#top">^</a> LANGUAGES</h2>
 
-<ul>
-<li>Catalan: Native</li>
-<li>Spanish: Native</li>
-<li>English: Full professional proficiency</li>
-</ul>
+	<ul>
+		<li>Catalan: Native</li>
+		<li>Spanish: Native</li>
+		<li>English: Full professional proficiency</li>
+	</ul>
 </div>
 <hr/>
 
-<!--=================================================================-->
-<!-- Footer                                                          -->
-<!--=================================================================-->
+
 <div id="footer">
-<h3>
-<a href="#top">^</a>
-</h3>
-<pre>
-The latest version of this CV can be found at <a href="https://cv.alejandro-colomar.es"
-		>https://cv.alejandro-colomar.es</a>
-Last modified: 09/Dec/2020
-Alejandro Colomar
-</pre>
+	<h2><a href="#top">^</a></h2>
+
+	<p>
+		The latest version of this CV can be found at
+		<span class="uri"><a href="https://cv.alejandro-colomar.es">https://cv.alejandro-colomar.es</a></span>
+		<br/>
+		Last modified: <span class="date">16/Dec/2020</span>
+		<br/>
+		Alejandro Colomar
+	</p>
+</div>
 <hr/>
 
 
