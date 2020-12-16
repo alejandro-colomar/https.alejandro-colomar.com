@@ -1,8 +1,31 @@
 
 html, body {
 	background-color: black;
-	font-family: georgia, serif;
+	font-family: serif;
 	color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+}
+
+h1 {
+	margin-left: 0.5em;
+}
+
+h4 {
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+
+h5 {
+	margin-top: 0.1em;
+	margin-bottom: 0.1em;
+}
+
+h6 {
+	margin-top: 0.05em;
+	margin-bottom: 0.05em;
 }
 
 a:link {
@@ -23,4 +46,48 @@ a:hover {
 a:active {
 	color: blue;
 	text-decoration: underline;
+}
+
+li.bullet {
+	font-size: smaller;
+}
+
+p.TP {
+	margin-top: 0.5em;
+	margin-left: +1.5em;
+}
+
+.bullet {
+	font-family: sans-serif;
+}
+
+.code {
+	font-family: monospace;
+}
+
+.date {
+	font-family: sans-serif;
+	font-size: smaller;
+	font-style: italic;
+}
+
+.inl {
+	display: inline;
+}
+
+.name {
+	font-family: sans-serif;
+	font-style: italic;
+}
+
+.src {
+	font-family: monospace;
+}
+
+.sh {
+	font-family: monospace;
+}
+
+.uri {
+	font-family: monospace;
 }
