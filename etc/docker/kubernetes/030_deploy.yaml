@@ -15,6 +15,7 @@ spec:
             app: www-label
     template:
         metadata:
+            name: www-pod
             labels:
                 app: www-label
         spec:
