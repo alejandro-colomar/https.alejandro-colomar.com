@@ -10,6 +10,7 @@
 
 <head>
 	<meta charset="utf-8">
+	<title>CV - Alejandro Colomar</title>
 	<style>
 		html, body {background-color: black; font-family: serif; color: white;}
 		h1, h2, h3, h4, h5, h6 {font-family: sans-serif;}
@@ -27,6 +28,7 @@
 		.br {margin-bottom: 1em;}
 		.code {font-family: monospace;}
 		.date {font-family: sans-serif; font-size: smaller; font-style: italic;}
+		.footer {font-size: small;}
 		.inl {display: inline;}
 		.name {font-family: sans-serif; font-style: italic;}
 		.src {font-family: monospace;}
@@ -34,7 +36,6 @@
 		.uri {font-family: monospace;}
 	</style>
 	<link rel="icon" href="http://www.alejandro-colomar.es/usr/share/pictures/alx.ico"/>
-	<title>CV - Alejandro Colomar</title>
 </head>
 
 
@@ -42,7 +43,7 @@
 
 
 <div id="header">
-	<h1>Alejandro Colomar</h1>
+	<h1><span class="name">Alejandro Colomar</span></h1>
 </div>
 <hr/>
 
@@ -69,7 +70,13 @@
 <div id="brief">
 	<h2><a href="#top">^</a> BRIEF</h2>
 
-	<p class="bullet">C, Git, Shell, Linux, Docker.</p>
+	<p class="bullet">
+		<span class="name">C</span>,
+		<span class="name">Git</span>,
+		<span class="name">Shell</span>,
+		<span class="name">Linux</span>,
+		<span class="name">Docker</span>
+	</p>
 </div>
 <hr/>
 
@@ -79,43 +86,43 @@
 
 	<ul>
 		<li>
-			<h4 class="inl"><a href="https://www.kernel.org/doc/man-pages/">Linux man-pages comaintainer @ <span class="name">Linux</span></a></h4>
+			<h4 class="inl"><a href="https://www.kernel.org/doc/man-pages/">Linux <span class="name">man-pages</span> comaintainer @ <span class="name">Linux</span></a></h4>
 			<span class="date">(2020 - present)</span>
 			<ul>
 				<li class="bullet">Review and merge incoming patches and bug reports.</li>
 			</ul>
 		</li>
 		<li class="br">
-			<h4 class="inl">Linux man-pages contributor @ <span class="name">Linux</span></h4>
+			<h4 class="inl">Linux <span class="name">man-pages</span> contributor @ <span class="name">Linux</span></h4>
 			<span class="date">(2020)</span>
 			<ul>
-				<li class="bullet">Test the Linux kernel and C library APIs.</li>
+				<li class="bullet">Test the <span class="name">Linux</span> kernel and <span class="name">C</span> library APIs.</li>
 				<li class="bullet">Write technical documentation about the APIs.</li>
 				<li class="bullet">Develop example programs using the APIs.</li>
 				<li class="bullet">Review existing technical documentation.</li>
-				<li class="bullet">Report detected bugs to the Linux kernel or C library.</li>
-				<li class="bullet"><a href="https://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html">man-pages-5.09 release.</a></li>
+				<li class="bullet">Report detected bugs to the <span class="name">Linux</span> kernel, <span class="name">C</span> library or related projects.</li>
+				<li class="bullet"><a href="https://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html"><span class="code">man-pages-5.09</span> release.</a></li>
 			</ul>
 		</li>
 		<li class="br">
 			<h4 class="inl"><a href="https://www.sqli.com/">DevOps engineer @ <span class="name">SQLI</span></a></h4>
 			<span class="date">(2020 - present)</span>
 			<ul>
-				<li class="bullet">CI/CD; Jenkins</li>
-				<li class="bullet">Source control; Git</li>
+				<li class="bullet">CI/CD; <span class="name">Jenkins</span></li>
+				<li class="bullet">Source control; <span class="name">Git</span></li>
 			</ul>
 		</li>
 		<li class="br">
 			<h4 class="inl"><a href="http://academia-online.org">DevOps engineer @ <span class="name">Academia-Online.ORG</span></a></h4>
 			<span class="date">(2018 - 2020)</span>
 			<ul>
-				<li class="bullet">Source control; Git</li>
-				<li class="bullet">Shell scripting; Bash</li>
-				<li class="bullet">Programming; C, C++</li>
-				<li class="bullet">Linux maintenance</li>
-				<li class="bullet">Containers; Docker, Kubernetes, Openshift 4</li>
-				<li class="bullet">CI/CD; GitHub</li>
-				<li class="bullet">Cloud; AWS</li>
+				<li class="bullet">Source control; <span class="name">Git</span></li>
+				<li class="bullet"><span class="name">Shell</span> scripting; <span class="name">Bash</span></li>
+				<li class="bullet">Programming; <span class="name">C</span>, <span class="name">C++</span></li>
+				<li class="bullet"><span class="name">Linux</span> maintenance</li>
+				<li class="bullet">Containers; <span class="name">Docker</span>, <span class="name">Kubernetes</span>, <span class="name">Openshift</span> 4</li>
+				<li class="bullet">CI/CD; <span class="name">GitHub</span></li>
+				<li class="bullet">Cloud; <span class="name">AWS</span></li>
 			</ul>
 		</li>
 		<li class="br">
@@ -157,9 +164,13 @@
 			<span class="name">A. Colomar</span>,
 			<span class="name">S. Colomar</span>
 			<p class="TP">
-				Project to control a system that has cameras and robots (e.g.:
-				a production line) in a high availability manner.  The programs are
-				written in C and deployed using Docker & Kubernetes.
+				Project to control a system that has cameras and robots
+				(e.g.: a production line) in a high availability manner.&ensp;
+				The programs are written in
+				<span class="name">C</span>
+				and deployed using
+				<span class="name">Docker</span> &
+				<span class="name">Kubernetes</span>.
 			</p>
 			<ul>
 				<li class="bullet">
@@ -174,7 +185,9 @@
 			<span class="date">(2017 - present)</span>
 			<span class="name">A. Colomar</span>
 			<p class="TP">
-				C & C++ library providing useful extensions to common libraries.
+				<span class="name">C</span> &
+				<span class="name">C++</span>
+				library providing useful extensions to common libraries.
 			</p>
 		</li>
 		<li class="br">
@@ -182,8 +195,18 @@
 			<span class="date">(2015 - present)</span>
 			<span class="name">A. Colomar</span>
 			<p class="TP">
-				Simple game written in C.  Based on the 1990 game 'Mine'
-				by CurtJ, LarryH, RobD at Duff Software.
+				Simple game written in
+				<span class="name">C</span>.&ensp;
+				Based on the
+				<span class="date">1990</span>
+				game
+				<span class="name">Mine</span>
+				by
+				<span class="name">CurtJ</span>,
+				<span class="name">LarryH</span>,
+				<span class="name">RobD</span>
+				at
+				<span class="name">Duff Software</span>.
 			</p>
 		</li>
 		<li class="br">
@@ -195,8 +218,13 @@
 			<span class="name">A. Colomar</span>,
 			<span class="name">T. Ruis</span>
 			<p class="TP">
-				Project to analyze clothing labels and allow laundry
-				automation, programmed in C (prototypes in C++ and Python).
+				Project to analyze clothing labels and allow laundry automation,
+				programmed in
+				<span class="name">C</span>
+				(prototypes in
+				<span class="name">C++</span>
+				and
+				<span class="name">Python</span>).
 			</p>
 		</li>
 		<li class="br">
@@ -205,7 +233,10 @@
 			<span class="name">A. Colomar</span>
 			<p class="TP">
 				Project to accurately count money from photos of coins,
-				programmed in C (prototype in C++).
+				programmed in
+				<span class="name">C</span>
+				(prototype in
+				<span class="name">C++</span>).
 			</p>
 		</li>
 		<li class="br">
@@ -215,8 +246,10 @@
 			<span class="name">F. J. García Pedroche</span>,
 			<span class="name">S. Junquera Carrero</span>
 			<p class="TP">
-				Project to demonstrate CAN communication to control an
-				embedded system, programmed in C.
+				Project to demonstrate
+				<span class="name">CAN</span>
+				communication to control an embedded system, programmed in
+				<span class="name">C</span>.
 			</p>
 		</li>
 		<li class="br">
@@ -224,8 +257,9 @@
 			<span class="date">(2012 - 2019)</span>
 			<span class="name">A. Colomar</span>
 			<p class="TP">
-				Program that solves small NP-Complete problems, written
-				in C.  Used to test the performance of the algorithm it implements.
+				Program that solves small NP-Complete problems, written in
+				<span class="name">C</span>.&ensp;
+				Used to test the performance of the algorithm it implements.
 			</p>
 		</li>
 		<li class="br">
@@ -236,7 +270,9 @@
 			<span class="date">(2010)</span>
 			<span class="name">A. Colomar</span>
 			<p class="TP">
-				Program to control a helicopter-like system using a Wii Remote.
+				Program to control a helicopter-like system using a
+				<span class="name">Wii</span>
+				remote.
 			</p>
 			<ul>
 				<li class="bullet"><a href="https://praktikumupv.wordpress.com/praktikum2010/">Project overview</a></li>
@@ -270,7 +306,7 @@
 
 	<ul>
 		<li class="br">
-			<h4 class="inl">Smart Manufacturing & Robotics Delft Minor</h4> -
+			<h4 class="inl">Smart Manufacturing & Robotics <span class="name">Delft</span> Minor</h4> -
 			European Project Semester
 			<span class="date">(2020)</span>
 			<br/>
@@ -278,7 +314,7 @@
 			<span class="name">The Netherlands</span>
 		</li>
 		<li class="br">
-			<h4 class="inl">BEng Electronic & Computer Engineeringr</h4> -
+			<h4 class="inl">BEng Electronic & Computer Engineering</h4> -
 			Erasmus Semester
 			<span class="date">(2019)</span>
 			<br/>
@@ -342,10 +378,7 @@
 						<li>
 							<h5 class="inl"><span class="name">IBM</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">PY0101EN</span>]:&thinsp;
-									<a href="https://courses.cognitiveclass.ai/certificates/ee4b0a1630b646418d0d1a0a66d1a65b">Python 101 for Data Science</a>
-								</li>
+								<li class="bullet">[<span class="code">PY0101EN</span>]:&ensp;<a href="https://courses.cognitiveclass.ai/certificates/ee4b0a1630b646418d0d1a0a66d1a65b"><span class="name">Python</span> 101 for Data Science</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -367,151 +400,76 @@
 						<li>
 							<h5 class="inl"><span class="name">AnahuacX</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">IEST-CP1-2x</span>]:&thinsp;
-									Introducción a la Inteligencia Artificial
-								</li>
+								<li class="bullet">[<span class="code">IEST-CP1-2x</span>]:&ensp;Introducción a la Inteligencia Artificial</li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">Dartmouth_IMTx</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">DART.IMT.C</span>]:&thinsp;
-									C Programming with Linux
-								</li>
+								<li class="bullet">[<span class="code">DART.IMT.C</span>]:&thinsp; <span class="name">C</span> Programming with <span class="name">Linux</span></li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">DelftX</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">AE1110x</span>]:&thinsp;
-									Introduction to Aeronautical Engineering
-								</li>
+								<li class="bullet">[<span class="code">AE1110x</span>]:&ensp;Introduction to Aeronautical Engineering</li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">IITBombayX</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">ME209.1x</span>]:&thinsp;
-									<a href="https://s3.amazonaws.com/verify.edx.org/downloads/54ad0eedabec47fbbe27be60334da757/Certificate.pdf">Thermodynamics</a>
-								</li>
+								<li class="bullet">[<span class="code">ME209.1x</span>]:&ensp;<a href="https://s3.amazonaws.com/verify.edx.org/downloads/54ad0eedabec47fbbe27be60334da757/Certificate.pdf">Thermodynamics</a></li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">LinuxFoundationX</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">LFS101x</span>]:&thinsp;
-									Introduction to Linux
-								</li>
+								<li class="bullet">[<span class="code">LFS101x</span>]:&ensp;Introduction to <span class="name">Linux</span></li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">Microsoft</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">DAT204x</span>]:&thinsp;
-									<a href="https://www.datacamp.com/statement-of-accomplishment/course/56a60439dc262dd35c6783f96d7766816fbcae16">Introduction to R for Data Science</a>
-								</li>
+								<li class="bullet">[<span class="code">DAT204x</span>]:&ensp;<a href="https://www.datacamp.com/statement-of-accomplishment/course/56a60439dc262dd35c6783f96d7766816fbcae16">Introduction to <span class="name">R</span> for Data Science</a></li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">MITx</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">2.008x</span>]:&thinsp;
-									Fundamentals of Manufacturing Processes
-								</li>
-								<li class="bullet">
-									[<span class="code">3.15.1x</span>]:&thinsp;
-									Electronic Materials and Devices
-								</li>
-								<li class="bullet">
-									[<span class="code">3.15.2x</span>]:&thinsp;
-									Optical Materials and Devices
-								</li>
-								<li class="bullet">
-									[<span class="code">3.15.3x</span>]:&thinsp;
-									Magnetic Materials and Devices
-								</li>
-								<li class="bullet">
-									[<span class="code">3.032.1x</span>]:&thinsp;
-									<a href="https://courses.edx.org/certificates/b36556f21747414eac575af7016f7252">Mechanical Behavior of Materials: Linear Elastic Behavior</a>
-								</li>
-								<li class="bullet">
-									[<span class="code">3.032.2x</span>]:&thinsp;
-									Mechanical Behavior of Materials: Stress Transformations, Beams, Columns, and Cellular Solids
-								</li>
-								<li class="bullet">
-									[<span class="code">3.091x</span>]:&thinsp;
-									Introduction to Solid State Chemistry
-								</li>
-								<li class="bullet">
-									[<span class="code">6.002.1x</span>]:&thinsp;
-									Circuits and Electronics 1: Basic Circuit Analysis
-								</li>
-								<li class="bullet">
-									[<span class="code">6.002.2x</span>]:&thinsp;
-									Circuits and Electronics 2: Amplification, Speed, and Delay
-								</li>
-								<li class="bullet">
-									[<span class="code">6.004.1x</span>]:&thinsp;
-									Computation Structures 1: Digital Circuits
-								</li>
-								<li class="bullet">
-									[<span class="code">8.MReVx</span>]:&thinsp;
-									<a href="http://www.alejandro-colomar.es/usr/share/documents/cert/edx_mitx_8mrevx.pdf">Mechanics ReView</a>
-								</li>
-								<li class="bullet">
-									[<span class="code">8.01.1x</span>]:&thinsp;
-									Mechanics: Kinematics and Dynamics
-								</li>
-								<li class="bullet">
-									[<span class="code">8.01.2x</span>]:&thinsp;
-									Mechanics: Momentum and Energy
-								</li>
-								<li class="bullet">
-									[<span class="code">8.01.3x</span>]:&thinsp;
-									Mechanics: Rotational Dynamics
-								</li>
-								<li class="bullet">
-									[<span class="code">8.02x</span>]:&thinsp;
-									<a href="https://s3.amazonaws.com/verify.edx.org/downloads/34e8b08829d6431c8b94bfba0dcafdd1/Certificate.pdf">Physics II (Electricity and Magnetism)</a>
-								</li>
-								<li class="bullet">
-									[<span class="code">16.00x</span>]:&thinsp;
-									Introduction to Aerospace Engineering: Astronautics and Human Spaceflight
-								</li>
+								<li class="bullet">[<span class="code">2.008x</span>]:&ensp;Fundamentals of Manufacturing Processes</li>
+								<li class="bullet">[<span class="code">3.15.1x</span>]:&ensp;Electronic Materials and Devices</li>
+								<li class="bullet">[<span class="code">3.15.2x</span>]:&ensp;Optical Materials and Devices</li>
+								<li class="bullet">[<span class="code">3.15.3x</span>]:&ensp;Magnetic Materials and Devices</li>
+								<li class="bullet">[<span class="code">3.032.1x</span>]:&ensp;<a href="https://courses.edx.org/certificates/b36556f21747414eac575af7016f7252">Mechanical Behavior of Materials: Linear Elastic Behavior</a></li>
+								<li class="bullet">[<span class="code">3.032.2x</span>]:&ensp;Mechanical Behavior of Materials: Stress Transformations, Beams, Columns, and Cellular Solids</li>
+								<li class="bullet">[<span class="code">3.091x</span>]:&ensp;Introduction to Solid State Chemistry</li>
+								<li class="bullet">[<span class="code">6.002.1x</span>]:&ensp;Circuits and Electronics 1: Basic Circuit Analysis</li>
+								<li class="bullet">[<span class="code">6.002.2x</span>]:&ensp;Circuits and Electronics 2: Amplification, Speed, and Delay</li>
+								<li class="bullet">[<span class="code">6.004.1x</span>]:&ensp;Computation Structures 1: Digital Circuits</li>
+								<li class="bullet">[<span class="code">8.MReVx</span>]:&ensp;<a href="http://www.alejandro-colomar.es/usr/share/documents/cert/edx_mitx_8mrevx.pdf">Mechanics ReView</a></li>
+								<li class="bullet">[<span class="code">8.01.1x</span>]:&ensp;Mechanics: Kinematics and Dynamics</li>
+								<li class="bullet">[<span class="code">8.01.2x</span>]:&ensp;Mechanics: Momentum and Energy</li>
+								<li class="bullet">[<span class="code">8.01.3x</span>]:&ensp;Mechanics: Rotational Dynamics</li>
+								<li class="bullet">[<span class="code">8.02x</span>]:&ensp;<a href="https://s3.amazonaws.com/verify.edx.org/downloads/34e8b08829d6431c8b94bfba0dcafdd1/Certificate.pdf">Physics II (Electricity and Magnetism)</a></li>
+								<li class="bullet">[<span class="code">16.00x</span>]:&ensp;Introduction to Aerospace Engineering: Astronautics and Human Spaceflight</li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">TenarisUX</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">STEEL101x</span>]:&thinsp;
-									Introduction to Steel
-								</li>
+								<li class="bullet">[<span class="code">STEEL101x</span>]:&ensp;Introduction to Steel</li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">UPValenciaX</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">DC201x</span>]:&thinsp;
-									Dynamics and Control
-								</li>
+								<li class="bullet">[<span class="code">DC201x</span>]:&ensp;Dynamics and Control</li>
 							</ul>
 						</li>
 						<li>
 							<h5 class="inl"><span class="name">UQx</span></h5>:
 							<ul>
-								<li class="bullet">
-									[<span class="code">Hypers301x</span>]:&thinsp;
-									Hypersonics - from shock waves to scramjets
-								</li>
+								<li class="bullet">[<span class="code">Hypers301x</span>]:&thinsp;Hypersonics - from shock waves to scramjets</li>
 							</ul>
 						</li>
 					</ul>
@@ -527,24 +485,24 @@
 	<h2><a href="#top">^</a> LANGUAGES</h2>
 
 	<ul>
-		<li>Catalan: Native</li>
-		<li>Spanish: Native</li>
-		<li>English: Full professional proficiency</li>
+		<li class="bullet"><span class="name">Catalan</span>: Native</li>
+		<li class="bullet"><span class="name">Spanish</span>: Native</li>
+		<li class="bullet"><span class="name">English</span>: Full professional proficiency</li>
 	</ul>
 </div>
 <hr/>
 
 
-<div id="footer">
+<div id="footer" class="footer">
 	<h2><a href="#top">^</a></h2>
 
 	<p>
 		The latest version of this CV can be found at
 		<span class="uri"><a href="https://cv.alejandro-colomar.es">https://cv.alejandro-colomar.es</a></span>
 		<br/>
-		Last modified: <span class="date">16/Dec/2020</span>
+		Last modified: <span class="date">17/Dec/2020</span>
 		<br/>
-		Alejandro Colomar
+		<span class="name">Alejandro Colomar</span>
 	</p>
 </div>
 <hr/>
