@@ -60,16 +60,14 @@ a:active {
 time {
 	font-family: sans-serif;
 	font-size: smaller;
-	font-style: italic;
-}
-
-.nomargin {
-	margin-top: 0;
-	margin-bottom: 0;
 }
 
 .bullet {
 	font-family: sans-serif;
+}
+
+.br {
+	margin-bottom: 1em;
 }
 
 .code {
@@ -89,11 +87,16 @@ time {
 	font-style: italic;
 }
 
-.src {
-	font-family: monospace;
+.nomargin {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .sh {
+	font-family: monospace;
+}
+
+.src {
 	font-family: monospace;
 }
 
