@@ -26,7 +26,7 @@ function update_date()
 {
 	local	date_str="$(date -u +%d/%b/%Y\ %H:%M:%S\ UTC)";
 
-	sed "/Last modified:/s!: .*!: ${date_str}!"			\
+	sed "/Last modified:/s%\(<time>\)\(.*\)\(</time>\)%\1${date_str}\3%"	\
 		-i ./srv/www/index.html;
 }
 
