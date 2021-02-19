@@ -24,10 +24,16 @@
 ################################################################################
 function update_date()
 {
-	local	date_str="$(date -u +%d/%b/%Y\ %H:%M:%S\ UTC)";
+	find ./srv/www/ -type f \
+	|grep '\.html$' \
+	|while read -r f; do
+		local d="$(stat -c %y "${f}" \
+			|cut -f1 -d' ' \
+			|xargs date '+%b/%Y' -d)";
 
-	sed "/Last modified:/s%\(<time>\)\(.*\)\(</time>\)%\1${date_str}\3%"	\
-		-i ./srv/www/index.html;
+		sed "/Last modified:/s%\(<time>\)\(.*\)\(</time>\)%\1${d}\3%" \
+			-i ${f};
+	done;
 }
 
 
