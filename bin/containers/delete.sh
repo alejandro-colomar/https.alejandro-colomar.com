@@ -16,4 +16,4 @@ stability="$1";
 . etc/www/config.sh;
 
 stack="${WWW_PROJECT}-${stability}";
-alx_stack_delete.sh "${WWW_DK_ORCHESTRATOR}" "${stack}";
+alx_stack_delete "${WWW_DK_ORCHESTRATOR}" "${stack}";
