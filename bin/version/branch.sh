@@ -14,6 +14,8 @@ set -Eeuo pipefail;
 #
 ########################################################################
 
+. ~/.bash_aliases;
+
 if [ $# -ne 0 ]; then
 	>&2 echo "Usage: ${BASH_SOURCE[0]}";
 	exit ${EX_USAGE};

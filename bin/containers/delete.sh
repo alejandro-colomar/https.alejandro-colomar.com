@@ -5,6 +5,8 @@ set -Eeuo pipefail;
 #      SPDX-License-Identifier:  GPL-2.0-only
 ########################################################################
 
+. ~/.bash_aliases;
+
 if [ $# -ne 1 ]; then
 	echo >&2 "Usage:  ${BASH_SOURCE[0]} exp|rc|stable";
 	exit ${EX_USAGE};
