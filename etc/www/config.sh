@@ -1,8 +1,7 @@
-################################################################################
-##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
-##      SPDX-License-Identifier:  BSD-2-Clause                                ##
-################################################################################
-
+########################################################################
+#      Copyright (C) 2020        Alejandro Colomar Andres
+#      SPDX-License-Identifier:  BSD-2-Clause
+########################################################################
 
 [ -v WWW_CONFIG_SH ] \
 	&&return;
@@ -19,3 +18,4 @@ WWW_VERSION="0.30.17-rc2";	## tag name or branch name.
 WWW_DK_REPO='alejandrocolomar';
 WWW_DK_IMG="${WWW_PROJECT}";
 WWW_DK_TAG="${WWW_VERSION}";
+WWW_DK_ORCHESTRATOR='swarm';

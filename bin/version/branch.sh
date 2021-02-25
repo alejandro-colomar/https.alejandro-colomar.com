@@ -1,29 +1,23 @@
 #!/bin/bash
-set -Eeo pipefail;
-##	./bin/version/branch.sh;
-################################################################################
-##      Copyright (C) 2020        Alejandro Colomar Andrés                    ##
-##      SPDX-License-Identifier:  GPL-2.0-only                                ##
-################################################################################
-##
-## Prepare a branch
-## ================
-##
-##  - Update version number
-##  - Update exposed port
-##  - Update stack name
-##
-################################################################################
+set -Eeuo pipefail;
+########################################################################
+#	Copyright (C) 2020        Alejandro Colomar Andres
+#	SPDX-License-Identifier:  GPL-2.0-only
+########################################################################
+#
+# Prepare a branch
+# ================
+#
+#  - Update version number
+#  - Update exposed port
+#  - Update stack name
+#
+########################################################################
 
-
-ARGC=0;
-argc=$#;
-EX_USAGE=64;
-if [ ${argc} -ne ${ARGC} ]; then
-	echo	"Illegal number of parameters (Requires ${ARGC})";
-	exit	${EX_USAGE};
-fi
-
+if [ $# -ne 0 ]; then
+	>&2 echo "Usage: ${BASH_SOURCE[0]}";
+	exit ${EX_USAGE};
+fi;
 
 . etc/www/config.sh;
 . lib/www/version/date.sh;
@@ -39,8 +33,3 @@ update_stability	"exp";
 update_version		"${branch}";
 
 git commit -a -m "Branch: ${branch}";
-
-
-################################################################################
-##	end of file							      ##
-################################################################################
