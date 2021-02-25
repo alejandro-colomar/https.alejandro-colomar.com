@@ -5,11 +5,17 @@ set -Eeuo pipefail;
 #	SPDX-License-Identifier:  GPL-2.0-only
 ########################################################################
 
-. ~/.bash_aliases;
+_h=$(eval echo ~${SUDO_USER:-});
+. ${_h}/.bash_aliases;
 
+usage="Usage: sudo ${BASH_SOURCE[0]}";
 if [ $# -ne 0 ]; then
-	>&2 echo "Usage: ${BASH_SOURCE[0]}";
+	>&2 echo "${usage}";
 	exit ${EX_USAGE};
+fi;
+if [ $(id -u) -ne 0 ]; then
+	>&2 echo "${usage}";
+	exit ${EX_NOPERM};
 fi;
 
 . etc/www/config.sh;
