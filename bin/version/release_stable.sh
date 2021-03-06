@@ -24,7 +24,7 @@ update_port		${WWW_PORT_STABLE};
 update_stability	"stable";
 update_version		"${version}";
 
-if git rev-parse "tags/${version}" >/dev/null 2>&1; then
+if git rev-parse "refs/tags/${version}" >/dev/null 2>&1; then
 	>&2 echo "Version already exists!";
 	exit ${EX_CANTCREAT};
 fi;
