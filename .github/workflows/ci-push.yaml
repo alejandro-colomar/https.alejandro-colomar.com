@@ -2,44 +2,24 @@ name: CI-push
 
 env:
     compose: etc/docker/swarm/compose.yaml
-    mode: swarm
     project: www
     tag: ci
 on:
     push:
     pull_request:
 jobs:
-    docker-build:
+    main:
         runs-on: ubuntu-20.04
         steps:
         -
-            name: checkout
-            uses: actions/checkout@v2
-        -
-            name: Push to GitHub Packages
-            uses: docker/build-push-action@v1
-            with:
-                username: ${{ github.actor }}
-                password: ${{ secrets.GITHUB_TOKEN }}
-                registry: docker.pkg.github.com
-                repository: alejandro-colomar/www/www
-                tag_with_ref: true
-    swarm:
-        needs: docker-build
-        runs-on: ubuntu-20.04
-        steps:
-        -
-            name: test
-            run: docker image ls;
-        -
-            name: clone libalx
+            name: git clone alx/config
             run: |
-                sudo git -C /usr/local/src                              \
-                        clone --single-branch --branch "1.0-b28"        \
-                        http://github.com/alejandro-colomar/libalx.git;
+                sudo git -C /usr/local/src \
+                        clone --single-branch --branch "0.1.0" \
+                        http://github.com/alejandro-colomar/config.git;
         -
-            name: install libalx
-            run: sudo make -C /usr/local/src/libalx install-sh install-libexec;
+            name: install alx/config
+            run: make -C /usr/local/src/config bash;
         -
             name: checkout
             uses: actions/checkout@v2
@@ -47,34 +27,35 @@ jobs:
             name: config branch
             run: |
                 git config --global user.email "ci@test.com";
-                git config --global user.name "CI test";
+                git config --global user.name "ci";
                 ./bin/version/release_exp.sh "${tag}";
         -
             name: docker build
             run: docker build -t "alejandrocolomar/${project}:${tag}" .;
         -
-            name: init swarm
+            name: docker swarm init
             run: docker swarm init --advertise-addr lo;
         -
             name: Fix swarm compose for a single machine
             run: sed -i "s/worker/manager/" "${compose}";
         -
             name: deploy
-            run: sudo ./bin/containers/deploy.sh "${mode}";
+            run: sudo ./bin/containers/deploy.sh;
         -
             name: wait Up
             run: |
                 while true; do
                     sleep 1;
-                    docker service ls |                                 \
-                            grep '\([0-9]\)/\1' &&                      \
-                            break;
-                done
+                    docker service ls \
+                    |grep '\([0-9]\)/\1' \
+                        && break;
+                done;
         -
             name: curl
             run: |
                 while true; do
                     sleep 1;
-                    curl --ipv4 -I localhost:32001 |                    \
-                            grep 200 && break;
-                done
+                    curl -4s -o /dev/null -w '%{http_code}' localhost:32001 \
+                    |grep 200 \
+                        && break;
+                done;
