@@ -92,7 +92,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	sudo ./bin/containers/deploy.sh	"swarm";
+	sudo ./bin/containers/deploy.sh;
 
 
 - If the pre-release isn't good engough, that deployment has to be
@@ -103,7 +103,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/containers/delete.sh	"swarm" "rc";
+	./bin/containers/delete.sh	"rc";
 
 	./bin/version/branch.sh;
 
@@ -121,8 +121,8 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/containers/delete.sh	"swarm" "stable";
-	sudo ./bin/containers/deploy.sh	"swarm";
+	./bin/containers/delete.sh	"stable";
+	sudo ./bin/containers/deploy.sh;
 
 - The published port should be forwarded back to 30001 (this is done in
   the nlb repository).
@@ -131,7 +131,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	./bin/containers/delete.sh	"swarm" "rc";
+	./bin/containers/delete.sh	"rc";
 
 
 ________________________________________________________________________________
@@ -139,6 +139,7 @@ ________________________________________________________________________________
 Kubernetes | OpenShift
 ======================
 
-There are scripts to deploy using kubernetes or openshift.  The
-procedure is exactly the same as above, replacing the word "swarm" by
-"kubernetes" or "openshift" as needed.
+To use kubernetes or openshift, simply replace "swarm" by "kubernetes"
+or "openshift", in the variable WWW_DK_ORCHESTRATOR in
+<./etc/www/config.sh>.  Then, and after setting up the corresponding
+cluster, follow the same steps above.
