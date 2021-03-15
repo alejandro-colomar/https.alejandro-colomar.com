@@ -31,12 +31,12 @@ services:
             replicas: 1
             restart_policy:
                 condition: any
-        image: "alejandrocolomar/www:0.32-rc2"
+        image: "alejandrocolomar/www:0.32-oc1"
         networks:
         -
             "alejandro-colomar"
         ports:
-        -   "31001:8080"
+        -   "32001:8080"
 
 version: "3.8"
 
