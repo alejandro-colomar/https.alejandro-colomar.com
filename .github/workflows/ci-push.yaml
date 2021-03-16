@@ -12,14 +12,14 @@ jobs:
         runs-on: ubuntu-20.04
         steps:
         -
-            name: git clone alx/config
+            name: git clone alx/containers
             run: |
                 sudo git -C /usr/local/src \
-                        clone --single-branch --branch "0.2.2" \
-                        http://github.com/alejandro-colomar/config.git;
+                        clone --single-branch --branch "0.1.0" \
+                        http://github.com/alejandro-colomar/containers.git;
         -
-            name: alx/config docker
-            run: sudo make -C /usr/local/src/config docker;
+            name: install alx/containers scripts
+            run: sudo make -C /usr/local/src/containers docker;
         -
             name: checkout
             uses: actions/checkout@v2
