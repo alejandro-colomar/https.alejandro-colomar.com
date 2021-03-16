@@ -15,11 +15,11 @@ jobs:
             name: git clone alx/config
             run: |
                 sudo git -C /usr/local/src \
-                        clone --single-branch --branch "0.1.0" \
+                        clone --single-branch --branch "0.2.0" \
                         http://github.com/alejandro-colomar/config.git;
         -
-            name: install alx/config
-            run: make -C /usr/local/src/config bash;
+            name: alx/config docker
+            run: sudo make -C /usr/local/src/config docker;
         -
             name: checkout
             uses: actions/checkout@v2

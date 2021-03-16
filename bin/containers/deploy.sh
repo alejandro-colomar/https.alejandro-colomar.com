@@ -5,8 +5,6 @@ set -Eeuo pipefail;
 #	SPDX-License-Identifier:  GPL-2.0-only
 ########################################################################
 
-_h=$(eval echo ~${SUDO_USER:-});
-. ${_h}/.bash_aliases;
 
 usage="Usage: sudo ${BASH_SOURCE[0]}";
 if [ $# -ne 0 ]; then
@@ -20,4 +18,4 @@ fi;
 
 . etc/www/config.sh;
 
-alx_stack_deploy "${WWW_DK_ORCHESTRATOR}" "${WWW_STACK}";
+alx_stack_deploy -o "${WWW_DK_ORCHESTRATOR}" "${WWW_STACK}";

@@ -5,7 +5,6 @@ set -Eeuo pipefail;
 #      SPDX-License-Identifier:  GPL-2.0-only
 ########################################################################
 
-. ~/.bash_aliases;
 
 if [ $# -ne 1 ]; then
 	echo >&2 "Usage:  ${BASH_SOURCE[0]} exp|rc|stable";
@@ -16,4 +15,4 @@ stability="$1";
 . etc/www/config.sh;
 
 stack="${WWW_PROJECT}-${stability}";
-alx_stack_delete "${WWW_DK_ORCHESTRATOR}" "${stack}";
+alx_stack_delete -o "${WWW_DK_ORCHESTRATOR}" "${stack}";
