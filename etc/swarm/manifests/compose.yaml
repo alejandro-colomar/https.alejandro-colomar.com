@@ -53,10 +53,3 @@ services:
         -   "30001:8080"
 
 version: "3.8"
-
-################################################################################
-#$ docker swarm init;
-#$ docker stack deploy -c etc/docker/swarm/compose.yaml www-exp;
-#$ docker stack rm www-exp;
-#$ docker swarm leave;
-################################################################################

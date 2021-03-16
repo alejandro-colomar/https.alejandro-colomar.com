@@ -1,7 +1,7 @@
 name: CI-push
 
 env:
-    compose: etc/docker/swarm/compose.yaml
+    compose: etc/swarm/manifests/compose.yaml
     project: www
     tag: ci
 on:
@@ -15,7 +15,7 @@ jobs:
             name: git clone alx/containers
             run: |
                 sudo git -C /usr/local/src \
-                        clone --single-branch --branch "0.3.1" \
+                        clone --single-branch --branch "0.4.0" \
                         http://github.com/alejandro-colomar/containers.git;
         -
             name: install alx/containers scripts
