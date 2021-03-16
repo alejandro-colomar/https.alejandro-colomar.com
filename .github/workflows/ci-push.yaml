@@ -15,11 +15,11 @@ jobs:
             name: git clone alx/containers
             run: |
                 sudo git -C /usr/local/src \
-                        clone --single-branch --branch "0.1.0" \
+                        clone --single-branch --branch "0.3.1" \
                         http://github.com/alejandro-colomar/containers.git;
         -
             name: install alx/containers scripts
-            run: sudo make -C /usr/local/src/containers docker;
+            run: sudo make -C /usr/local/src/containers swarm;
         -
             name: checkout
             uses: actions/checkout@v2
