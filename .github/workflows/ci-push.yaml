@@ -12,23 +12,25 @@ jobs:
         runs-on: ubuntu-20.04
         steps:
         -
-            name: git clone alx/containers
+            name: git clone alejandro-colomar/containers
             run: |
                 sudo git -C /usr/local/src \
                         clone --single-branch --branch "0.4.0" \
                         http://github.com/alejandro-colomar/containers.git;
         -
-            name: install alx/containers scripts
+            name: make swarm
             run: sudo make -C /usr/local/src/containers swarm;
         -
             name: checkout
             uses: actions/checkout@v2
         -
-            name: config branch
+            name: git config
             run: |
                 git config --global user.email "ci@test.com";
                 git config --global user.name "ci";
-                ./bin/version/release_exp.sh "${tag}";
+        -
+            name: release exp
+            run: ./bin/version/release_exp.sh "${tag}";
         -
             name: docker build
             run: docker build -t "alejandrocolomar/${project}:${tag}" .;
@@ -36,13 +38,13 @@ jobs:
             name: docker swarm init
             run: docker swarm init --advertise-addr lo;
         -
-            name: Fix swarm compose for a single machine
+            name: sed
             run: sed -i "s/worker/manager/" "${compose}";
         -
             name: deploy
             run: sudo ./bin/containers/deploy.sh;
         -
-            name: wait Up
+            name: docker service ls
             run: |
                 while true; do
                     sleep 1;
