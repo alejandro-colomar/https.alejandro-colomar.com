@@ -15,7 +15,7 @@ jobs:
             name: git clone alx/config
             run: |
                 sudo git -C /usr/local/src \
-                        clone --single-branch --branch "0.2.0" \
+                        clone --single-branch --branch "0.2.2" \
                         http://github.com/alejandro-colomar/config.git;
         -
             name: alx/config docker
