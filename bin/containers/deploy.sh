@@ -6,6 +6,9 @@ set -Eeuo pipefail;
 ########################################################################
 
 
+EX_OK=0;
+EX_USAGE=64;
+
 usage="Usage: sudo ${BASH_SOURCE[0]}";
 if [ $# -ne 0 ]; then
 	>&2 echo "${usage}";
@@ -19,3 +22,5 @@ fi;
 . etc/www/config.sh;
 
 alx_stack_deploy -o "${WWW_DK_ORCHESTRATOR}" "${WWW_STACK}";
+
+exit ${EX_OK};

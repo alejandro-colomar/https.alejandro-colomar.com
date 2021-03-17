@@ -6,6 +6,9 @@ set -Eeuo pipefail;
 ########################################################################
 
 
+EX_OK=0;
+EX_USAGE=64;
+
 if [ $# -ne 1 ]; then
 	echo >&2 "Usage:  ${BASH_SOURCE[0]} exp|rc|stable";
 	exit ${EX_USAGE};
@@ -16,3 +19,5 @@ stability="$1";
 
 stack="${WWW_PROJECT}-${stability}";
 alx_stack_delete -o "${WWW_DK_ORCHESTRATOR}" "${stack}";
+
+exit ${EX_OK};

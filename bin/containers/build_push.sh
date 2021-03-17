@@ -5,7 +5,9 @@ set -Eeuo pipefail;
 #      SPDX-License-Identifier:  GPL-2.0-only
 ########################################################################
 
-. ~/.bash_aliases;
+
+EX_OK=0;
+EX_USAGE=64;
 
 if [ $# -ne 0 ]; then
 	>&2 echo "Usage:  ${BASH_SOURCE[0]}";
@@ -16,3 +18,5 @@ fi;
 
 docker build -t "${WWW_DK_REPO}/${WWW_DK_IMG}:${WWW_DK_TAG}" .;
 docker push "${WWW_DK_REPO}/${WWW_DK_IMG}:${WWW_DK_TAG}";
+
+exit ${EX_OK};

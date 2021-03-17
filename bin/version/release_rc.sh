@@ -6,6 +6,9 @@ set -Eeuo pipefail;
 ########################################################################
 
 
+EX_OK=0;
+EX_USAGE=64;
+
 if [ $# -ne 1 ]; then
 	>&2 echo "Usage: ${BASH_SOURCE[0]} <version>";
 	exit ${EX_USAGE};
@@ -30,3 +33,5 @@ fi;
 
 git commit -a -m "Pre-release ${version}";
 git tag -a ${version} -m "";
+
+exit ${EX_OK};

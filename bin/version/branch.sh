@@ -15,6 +15,9 @@ set -Eeuo pipefail;
 ########################################################################
 
 
+EX_OK=0;
+EX_USAGE=64;
+
 if [ $# -ne 0 ]; then
 	>&2 echo "Usage: ${BASH_SOURCE[0]}";
 	exit ${EX_USAGE};
@@ -34,3 +37,5 @@ update_stability	"exp";
 update_version		"${branch}";
 
 git commit -a -m "Branch: ${branch}";
+
+exit ${EX_OK};
