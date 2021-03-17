@@ -17,11 +17,12 @@ fi;
 version="$1";
 
 _d="$(dirname "${BASH_SOURCE[0]}")";
-. ${_d}/../../etc/www/config.sh;
-. ${_d}/../../lib/www/version/date.sh;
-. ${_d}/../../lib/www/version/port.sh;
-. ${_d}/../../lib/www/version/stability.sh;
-. ${_d}/../../lib/www/version/version.sh;
+_D="${_d}/../..";
+. ${_D}/etc/www/config.sh;
+. ${_D}/lib/www/version/date.sh;
+. ${_D}/lib/www/version/port.sh;
+. ${_D}/lib/www/version/stability.sh;
+. ${_D}/lib/www/version/version.sh;
 
 update_date;
 update_port		${WWW_PORT_STABLE};

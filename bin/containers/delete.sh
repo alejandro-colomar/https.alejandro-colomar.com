@@ -16,7 +16,8 @@ fi;
 stability="$1";
 
 _d="$(dirname "${BASH_SOURCE[0]}")";
-. ${_d}/../../etc/www/config.sh;
+_D="${_d}/../..";
+. ${_D}/etc/www/config.sh;
 
 stack="${WWW_PROJECT}-${stability}";
 alx_stack_delete -o "${WWW_DK_ORCHESTRATOR}" "${stack}";
