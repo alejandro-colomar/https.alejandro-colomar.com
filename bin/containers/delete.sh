@@ -15,7 +15,8 @@ if [ $# -ne 1 ]; then
 fi;
 stability="$1";
 
-. etc/www/config.sh;
+_d="$(dirname "${BASH_SOURCE[0]}")";
+. ${_d}/../../etc/www/config.sh;
 
 stack="${WWW_PROJECT}-${stability}";
 alx_stack_delete -o "${WWW_DK_ORCHESTRATOR}" "${stack}";

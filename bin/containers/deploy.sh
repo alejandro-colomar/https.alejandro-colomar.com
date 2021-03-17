@@ -20,7 +20,8 @@ if [ $(id -u) -ne 0 ]; then
 	exit ${EX_NOPERM};
 fi;
 
-. etc/www/config.sh;
+_d="$(dirname "${BASH_SOURCE[0]}")";
+. ${_d}/../../etc/www/config.sh;
 
 alx_stack_deploy -o "${WWW_DK_ORCHESTRATOR}" "${WWW_STACK}";
 

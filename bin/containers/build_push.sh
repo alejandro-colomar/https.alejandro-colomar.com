@@ -14,7 +14,8 @@ if [ $# -ne 0 ]; then
 	exit ${EX_USAGE};
 fi;
 
-. etc/www/config.sh;
+_d="$(dirname "${BASH_SOURCE[0]}")";
+. ${_d}/../../etc/www/config.sh;
 
 docker build -t "${WWW_DK_REPO}/${WWW_DK_IMG}:${WWW_DK_TAG}" .;
 docker push "${WWW_DK_REPO}/${WWW_DK_IMG}:${WWW_DK_TAG}";
