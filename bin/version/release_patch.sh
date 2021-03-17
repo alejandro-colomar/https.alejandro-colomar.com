@@ -16,6 +16,12 @@ if [ $# -ne 1 ]; then
 fi;
 version="$1";
 
+_d="$(dirname "${BASH_SOURCE[0]}")";
+_D="${_d}/../..";
+. ${_D}/lib/www/version/digest.sh;
+
+update_digest;
+
 if git rev-parse "refs/tags/${version}" >/dev/null 2>&1; then
 	>&2 echo "Version already exists!";
 	exit ${EX_CANTCREAT};

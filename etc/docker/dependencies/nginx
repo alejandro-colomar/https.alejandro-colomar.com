@@ -1,0 +1,6 @@
+reg	docker.io
+user	alejandrocolomar
+repo	nginx
+lbl	1.16.0
+digest	x86_64	sha256:34c652cbc41b0c09daab213282ab0af88d4a55dd532a98458e221035bdfa6d0d
+digest	aarch64	sha256:a70106790923049e88ec5c0d8166270781d5403bf26a2110788af14584242b77

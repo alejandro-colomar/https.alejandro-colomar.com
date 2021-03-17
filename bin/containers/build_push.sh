@@ -18,7 +18,9 @@ _d="$(dirname "${BASH_SOURCE[0]}")";
 _D="${_d}/../..";
 . ${_D}/etc/www/config.sh;
 
-docker build -t "${WWW_DK_REPO}/${WWW_DK_IMG}:${WWW_DK_TAG}" ${_D}/;
-docker push "${WWW_DK_REPO}/${WWW_DK_IMG}:${WWW_DK_TAG}";
+img="${WWW_DK_REG}/${WWW_DK_USER}/${WWW_DK_REPO}:${WWW_DK_LBL}";
+
+docker build -t "${img}" ${_D}/;
+docker push "${img}";
 
 exit ${EX_OK};

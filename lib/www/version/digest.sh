@@ -4,22 +4,25 @@
 ################################################################################
 
 
-function update_version()
+function update_digest()
 {
-	local version="$1";
-
 	local _d="$(dirname "${BASH_SOURCE[0]}")";
-	local _D="${_d}/../../..";
+	local _D="${_d}/../../../";
 	. ${_D}/etc/www/config.sh;
 
 	local dk_repo="${WWW_DK_REG}/${WWW_DK_USER}/${WWW_DK_REPO}";
 
-	sed "\%${dk_repo}:%s%:.*\"%:${version}\"%" \
+	case "$(uname -m)" in
+	x86_64)
+		local digest="${WWW_DK_DIGEST_x86_64}";
+		;;
+	aarch64)
+		local digest="${WWW_DK_DIGEST_aarch64}";
+		;;
+	esac;
+
+	sed "\%${dk_repo}:%s%\"$%@${digest}\"%" \
 		-i ./etc/kubernetes/manifests/030_deploy.yaml;
-	sed "\%${dk_repo}:%s%:.*\"%:${version}\"%" \
+	sed "\%${dk_repo}:%s%\"$%@${digest}\"%" \
 		-i ./etc/swarm/manifests/compose.yaml;
-	sed "\%WWW_VERSION=%s%\".*\";%\"${version}\";%" \
-		-i ./etc/www/config.sh;
-	sed "\%Version:%s%\(<.*>\)\(.*\)\(</.*>\)%\1${version}\3%" \
-		-i ./srv/www/index.html;
 }
