@@ -8,6 +8,7 @@ set -Eeuo pipefail;
 
 EX_OK=0;
 EX_USAGE=64;
+EX_NOPERM=77;
 
 usage="Usage: sudo ${BASH_SOURCE[0]}";
 if [ $# -ne 0 ]; then
