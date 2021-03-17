@@ -45,7 +45,7 @@ services:
             start_period: 30s
             test: curl -4s -o /dev/null -w '%{http_code}' http://localhost:8080
             timeout: 1s
-        image: "alejandrocolomar/www:0.34.1"
+        image: "alejandrocolomar/www:0.34.2"
         networks:
         -
             "alejandro-colomar"
