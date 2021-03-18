@@ -14,9 +14,9 @@ function update_version()
 
 	local dk_repo="${WWW_DK_REG}/${WWW_DK_USER}/${WWW_DK_REPO}";
 
-	sed "\%${dk_repo}:%s%:.*\"%:${version}\"%" \
+	sed "\%${dk_repo}:%s%${WWW_DK_REPO}:.*\"%${WWW_DK_REPO}:${version}\"%" \
 		-i ./etc/kubernetes/manifests/030_deploy.yaml;
-	sed "\%${dk_repo}:%s%:.*\"%:${version}\"%" \
+	sed "\%${dk_repo}:%s%${WWW_DK_REPO}:.*\"%${WWW_DK_REPO}:${version}\"%" \
 		-i ./etc/swarm/manifests/compose.yaml;
 	sed "\%WWW_VERSION=%s%\".*\";%\"${version}\";%" \
 		-i ./etc/www/config.sh;
