@@ -9,10 +9,14 @@ SHELL	= /bin/bash
 reg	= $(shell <$(CURDIR)/etc/docker/images/www grep '^reg' | cut -f2)
 user	= $(shell <$(CURDIR)/etc/docker/images/www grep '^user' | cut -f2)
 repo	= $(shell <$(CURDIR)/etc/docker/images/www grep '^repo' | cut -f2)
+repository = $(reg)/$(user)/$(repo)
 lbl	= $(shell git describe --tags | sed 's/^v//')
 lbl_	= $(lbl)_$(shell uname -m)
-img	= $(reg)/$(user)/$(repo):$(lbl)
-img_	= $(reg)/$(user)/$(repo):$(lbl_)
+img	= $(repository):$(lbl)
+img_	= $(repository):$(lbl_)
+archs	= aarch64 x86_64
+imgs	= $(addprefix $(img)_,$(archs))
+
 orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
 stack	= $(shell . $(CURDIR)/etc/www/config.sh && echo "$${WWW_STACK}")
 
@@ -36,7 +40,7 @@ image-push:
 .PHONY: image-manifest
 image-manifest:
 	@echo '	DOCKER manifest create	$(img)';
-	@docker manifest create '$(img)' '$(img)_x86_64' '$(img)_aarch64';
+	@docker manifest create '$(img)' $(imgs);
 
 .PHONY: image-manifest-push
 image-manifest-push:
