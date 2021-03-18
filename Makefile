@@ -13,6 +13,7 @@ lbl	= $(shell git describe --tags | sed 's/^v//')
 lbl_	= $(lbl)_$(shell uname -m)
 img	= $(reg)/$(user)/$(repo):$(lbl)
 img_	= $(reg)/$(user)/$(repo):$(lbl_)
+orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
 
 
 .PHONY: Dockerfile

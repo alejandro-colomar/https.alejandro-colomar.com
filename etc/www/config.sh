@@ -14,4 +14,3 @@ WWW_PROJECT="www";
 WWW_STABILITY="unstable";	## "stable" or "unstable"
 WWW_STACK="${WWW_PROJECT}-${WWW_STABILITY}";
 WWW_VERSION="0.40";
-WWW_DK_ORCHESTRATOR='swarm';
