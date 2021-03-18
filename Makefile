@@ -31,7 +31,7 @@ image: Dockerfile
 .PHONY: image-push
 image-push:
 	@echo '	DOCKER image push	$(img_)';
-	@docker image push '$(img_)'; 
+	@docker image push '$(img_)';
 
 .PHONY: manifest
 manifest:
