@@ -27,8 +27,8 @@ jobs:
                 git config --global user.email "ci@test.com";
                 git config --global user.name "ci";
         -
-            name: release_unstable
-            run: ./bin/release_unstable "ci";
+            name: release_test
+            run: ./bin/release_test "ci";
         -
             name: make image
             run: make image;

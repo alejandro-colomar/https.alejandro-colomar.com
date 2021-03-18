@@ -15,12 +15,12 @@ The following scripts don't automate the push step to the remote git
 repository, as a caution.  Every automated commit should be checked by
 a human before pushing.
 
-Pre-release an unstable version
+Pre-release a test version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/release_unstable	<version>;
+	./bin/release_test	<version>;
 
 Release a stable version
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -68,11 +68,11 @@ For a seamless deployment, the following steps need to be done:
 
 - Assuming there is an old stack deployed at port 30001.
 
-- `Pre-release an unstable version`_ (see above).
+- `Pre-release an test version`_ (see above).
 
 - `Build and push multi-arch Docker image manifest`_ (see above).
 
-- Deploy the unstable pre-release at port 31001:
+- Deploy the test pre-release at port 31001:
 
 .. code-block:: BASH
 
@@ -84,7 +84,7 @@ For a seamless deployment, the following steps need to be done:
 
 .. code-block:: BASH
 
-	make stack-rm-unstable;
+	make stack-rm-test;
 
 
 - Else, if the pre-release passes the tests, the published port should be
@@ -102,11 +102,11 @@ For a seamless deployment, the following steps need to be done:
 - The published port should be forwarded back to 30001 (this is done in
   the nlb repository).
 
-- Remove the unstable deployment at port 31001:
+- Remove the test deployment at port 31001:
 
 .. code-block:: BASH
 
-	make stack-rm-unstable;
+	make stack-rm-test;
 
 
 ________________________________________________________________________________

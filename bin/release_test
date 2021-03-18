@@ -23,11 +23,11 @@ _D="${_d}/..";
 . ${_D}/lib/www/version/stability.sh;
 . ${_D}/lib/www/version/version.sh;
 
-port="$(<${_D}/.config grep '^port' | grep 'unstable' | cut -f3)";
+port="$(<${_D}/.config grep '^port' | grep 'test' | cut -f3)";
 
 update_date;
 update_port		${port};
-update_stability	"unstable";
+update_stability	"test";
 update_version		"${version}";
 
 if git rev-parse "refs/tags/v${version}" >/dev/null 2>&1; then

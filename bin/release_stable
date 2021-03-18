@@ -23,7 +23,7 @@ _D="${_d}/..";
 . ${_D}/lib/www/version/stability.sh;
 . ${_D}/lib/www/version/version.sh;
 
-port="$(<${_D}/.config grep '^port' | grep '\bstable' | cut -f3)";
+port="$(<${_D}/.config grep '^port' | grep 'stable' | cut -f3)";
 
 update_date;
 update_port		${port};

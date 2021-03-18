@@ -53,8 +53,8 @@ stack-deploy:
 	@echo '	STACK deploy	$(orchestrator) $(stack)';
 	@alx_stack_deploy -o '$(orchestrator)' '$(stack)';
 
-.PHONY: stack-rm-unstable
 .PHONY: stack-rm-stable
-stack-rm-unstable stack-rm-stable: stack-rm-%:
+.PHONY: stack-rm-test
+stack-rm-stable stack-rm-test: stack-rm-%:
 	@echo '	STACK rm	$(orchestrator) $(project)-$*';
 	@alx_stack_delete -o '$(orchestrator)' '$(project)-$*';
