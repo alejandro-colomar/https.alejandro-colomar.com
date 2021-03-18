@@ -18,14 +18,15 @@ version="$1";
 
 _d="$(dirname "${BASH_SOURCE[0]}")";
 _D="${_d}/..";
-. ${_D}/etc/www/config.sh;
 . ${_D}/lib/www/version/date.sh;
 . ${_D}/lib/www/version/port.sh;
 . ${_D}/lib/www/version/stability.sh;
 . ${_D}/lib/www/version/version.sh;
 
+port="$(<${_D}/.config grep '^port' | grep '\bstable' | cut -f3)";
+
 update_date;
-update_port		${WWW_PORT_STABLE};
+update_port		${port};
 update_stability	"stable";
 update_version		"${version}";
 

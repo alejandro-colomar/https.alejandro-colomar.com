@@ -18,7 +18,7 @@ archs	= aarch64 x86_64
 imgs	= $(addprefix $(img)_,$(archs))
 
 orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
-stack	= $(shell . $(CURDIR)/etc/www/config.sh && echo "$${WWW_STACK}")
+stack	= $(shell <$(CURDIR)/.config grep '^stack' | cut -f2)
 
 
 .PHONY: Dockerfile

@@ -6,8 +6,9 @@
 
 function update_stability()
 {
-	local	stability="$1";
+	local stability="$1";
+	local _d="$(dirname "${BASH_SOURCE[0]}")";
+	local _D="${_d}/../../..";
 
-	sed "/WWW_STABILITY=/s/\".*\"\;/\"${stability}\"\;/" \
-		-i ./etc/www/config.sh;
+	sed -i "/stability	/s/	.*/	${stability}/" ${_D}/.config;
 }
