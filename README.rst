@@ -6,11 +6,6 @@ ________________________________________________________________________
 Versioning
 ==========
 
-Releasing will create the ``x86_64`` docker image.  However, DockerHub only
-automates ``x86_64``; for other architectures, and for the multi-arch docker
-manifest, which is needed for the deployment, the images have to be built
-manually in machines of the supported architectures.
-
 Pre-release a test version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
