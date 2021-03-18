@@ -123,7 +123,7 @@ For a seamless deployment, the following steps need to be done:
 
 - `Release a stable version`_ (see above).
 
-- `Specify the digests of the multi-arch Docker image manifest`_ (see above)
+- `Specify the digests of the multi-arch Docker image manifest`_ (see above).
 
 - Remove the oldstable release, and deploy the stable release at port 30001:
 
