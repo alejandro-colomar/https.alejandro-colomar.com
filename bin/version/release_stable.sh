@@ -29,12 +29,12 @@ update_port		${WWW_PORT_STABLE};
 update_stability	"stable";
 update_version		"${version}";
 
-if git rev-parse "refs/tags/${version}" >/dev/null 2>&1; then
+if git rev-parse "refs/tags/v${version}" >/dev/null 2>&1; then
 	>&2 echo "Version already exists!";
 	exit ${EX_CANTCREAT};
 fi;
 
-git commit -a -m "Release ${version}";
-git tag -a ${version} -m "";
+git commit -a -m "Release v${version}";
+git tag -a "v${version}" -m "";
 
 exit ${EX_OK};

@@ -22,11 +22,11 @@ _D="${_d}/../..";
 
 update_digest;
 
-if git rev-parse "refs/tags/${version}" >/dev/null 2>&1; then
+if git rev-parse "refs/tags/v${version}" >/dev/null 2>&1; then
 	>&2 echo "Version already exists!";
 	exit ${EX_CANTCREAT};
 fi;
 
-git tag -a ${version} -m "";
+git tag -a "v${version}" -m "";
 
 exit ${EX_OK};
