@@ -13,7 +13,7 @@ jobs:
             name: git clone alejandro-colomar/containers
             run: |
                 sudo git -C /usr/local/src \
-                        clone --single-branch --branch "0.4.0" \
+                        clone --single-branch --branch "v0.4.1" \
                         http://github.com/alejandro-colomar/containers.git;
         -
             name: make swarm
