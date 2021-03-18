@@ -8,15 +8,13 @@
 _d="$(dirname "${BASH_SOURCE[0]}")";
 _D="${_d}/..";
 
-nginx="${_D}/etc/docker/dependencies/nginx";
-
-arch="$(uname -m)";
+nginx="${_D}/etc/docker/images/nginx";
 
 nginx_reg="$(<${nginx} grep '^reg' | cut -f2)";
 nginx_user="$(<${nginx} grep '^user' | cut -f2)";
 nginx_repo="$(<${nginx} grep '^repo' | cut -f2)";
 nginx_lbl="$(<${nginx} grep '^lbl' | cut -f2)";
-nginx_digest="$(<${nginx} grep '^digest' | grep "${arch}" | cut -f3)";
+nginx_digest="$(<${nginx} grep '^digest' | grep "$(uname -m)" | cut -f3)";
 
 sed -i \
 	-e "/^ARG	NGINX_REG=/s/=.*/=${nginx_reg}/" \

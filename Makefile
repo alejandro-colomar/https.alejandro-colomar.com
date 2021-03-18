@@ -6,19 +6,17 @@
 SHELL	= /bin/bash
 
 
-arch	= $(shell uname -m)
-
-reg	= $(shell . $(CURDIR)/etc/www/config.sh && echo $$WWW_DK_REG)
-user	= $(shell . $(CURDIR)/etc/www/config.sh && echo $$WWW_DK_USER)
-repo	= $(shell . $(CURDIR)/etc/www/config.sh && echo $$WWW_DK_REPO)
+reg	= $(shell <$(CURDIR)/etc/docker/images/www grep '^reg' | cut -f2)
+user	= $(shell <$(CURDIR)/etc/docker/images/www grep '^user' | cut -f2)
+repo	= $(shell <$(CURDIR)/etc/docker/images/www grep '^repo' | cut -f2)
 lbl	= $(shell git describe --tags | sed 's/^v//')
-lbl_	= $(lbl)_$(arch)
+lbl_	= $(lbl)_$(shell uname -m)
 img	= $(reg)/$(user)/$(repo):$(lbl)
 img_	= $(reg)/$(user)/$(repo):$(lbl_)
 
 
 .PHONY: Dockerfile
-Dockerfile: $(CURDIR)/etc/docker/dependencies/nginx
+Dockerfile: $(CURDIR)/etc/docker/images/nginx
 Dockerfile: $(CURDIR)/libexec/update_dockerfile
 	@echo '	Update Dockerfile ARGs';
 	@$<;

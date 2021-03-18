@@ -7,22 +7,18 @@
 function update_digest()
 {
 	local _d="$(dirname "${BASH_SOURCE[0]}")";
-	local _D="${_d}/../../../";
-	. ${_D}/etc/www/config.sh;
+	local _D="${_d}/../../..";
 
-	local dk_repo="${WWW_DK_REG}/${WWW_DK_USER}/${WWW_DK_REPO}";
+	local www="${_D}/etc/docker/images/www"
 
-	case "$(uname -m)" in
-	x86_64)
-		local digest="${WWW_DK_DIGEST_x86_64}";
-		;;
-	aarch64)
-		local digest="${WWW_DK_DIGEST_aarch64}";
-		;;
-	esac;
+	local dk_reg="$(<${www} grep '^reg' | cut -f2)";
+	local dk_user="$(<${www} grep '^user' | cut -f2)";
+	local dk_repo="$(<${www} grep '^repo' | cut -f2)";
+	local dk_digest="$(<${www} grep '^digest' | grep "$(uname -m)" | cut -f3)";
+	local dk_repository="${dk_reg}/${dk_user}/${dk_repo}";
 
-	sed "\%${dk_repo}:%s%\"$%@${digest}\"%" \
-		-i ./etc/kubernetes/manifests/030_deploy.yaml;
-	sed "\%${dk_repo}:%s%\"$%@${digest}\"%" \
-		-i ./etc/swarm/manifests/compose.yaml;
+	sed "\%${dk_repository}:%s%\"$%@${dk_digest}\"%" \
+		-i ${_D}/etc/kubernetes/manifests/030_deploy.yaml;
+	sed "\%${dk_repository}:%s%\"$%@${dk_digest}\"%" \
+		-i ${_D}/etc/swarm/manifests/compose.yaml;
 }

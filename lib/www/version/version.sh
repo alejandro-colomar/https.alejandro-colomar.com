@@ -10,16 +10,20 @@ function update_version()
 
 	local _d="$(dirname "${BASH_SOURCE[0]}")";
 	local _D="${_d}/../../..";
-	. ${_D}/etc/www/config.sh;
 
-	local dk_repo="${WWW_DK_REG}/${WWW_DK_USER}/${WWW_DK_REPO}";
+	local www="${_D}/etc/docker/images/www";
 
-	sed "\%${dk_repo}:%s%${WWW_DK_REPO}:.*\"%${WWW_DK_REPO}:${version}\"%" \
-		-i ./etc/kubernetes/manifests/030_deploy.yaml;
-	sed "\%${dk_repo}:%s%${WWW_DK_REPO}:.*\"%${WWW_DK_REPO}:${version}\"%" \
-		-i ./etc/swarm/manifests/compose.yaml;
-	sed "\%WWW_VERSION=%s%\".*\";%\"${version}\";%" \
-		-i ./etc/www/config.sh;
+	local dk_reg="$(<${www} grep '^reg' | cut -f2)";
+	local dk_user="$(<${www} grep '^user' | cut -f2)";
+	local dk_repo="$(<${www} grep '^repo' | cut -f2)";
+	local dk_repository="${dk_reg}/${dk_user}/${dk_repo}";
+
+	sed "\%^lbl	%s%	.*%	${version}%" \
+		-i ${_D}/etc/docker/images/www;
+	sed "\%${dk_repository}:%s%${dk_repo}:.*\"%${dk_repo}:${version}\"%" \
+		-i ${_D}/etc/kubernetes/manifests/030_deploy.yaml;
+	sed "\%${dk_repository}:%s%${dk_repo}:.*\"%${dk_repo}:${version}\"%" \
+		-i ${_D}/etc/swarm/manifests/compose.yaml;
 	sed "\%Version:%s%\(<.*>\)\(.*\)\(</.*>\)%\1${version}\3%" \
-		-i ./srv/www/index.html;
+		-i ${_D}/srv/www/index.html;
 }
