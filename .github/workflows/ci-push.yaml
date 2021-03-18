@@ -2,8 +2,6 @@ name: CI-push
 
 env:
     compose: etc/swarm/manifests/compose.yaml
-    project: www
-    tag: ci
 on:
     push:
     pull_request:
@@ -30,10 +28,10 @@ jobs:
                 git config --global user.name "ci";
         -
             name: release exp
-            run: ./bin/version/release_exp.sh "${tag}";
+            run: ./bin/version/release_exp.sh "ci";
         -
             name: docker build
-            run: docker build -t "alejandrocolomar/${project}:${tag}" .;
+            run: make image;
         -
             name: docker swarm init
             run: docker swarm init --advertise-addr lo;
