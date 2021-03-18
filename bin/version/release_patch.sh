@@ -27,6 +27,7 @@ if git rev-parse "refs/tags/v${version}" >/dev/null 2>&1; then
 	exit ${EX_CANTCREAT};
 fi;
 
+git commit -a -m "Release v${version}";
 git tag -a "v${version}" -m "";
 
 exit ${EX_OK};
