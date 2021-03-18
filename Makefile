@@ -19,6 +19,7 @@ imgs	= $(addprefix $(img)_,$(archs))
 
 orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
 stack	= $(shell <$(CURDIR)/.config grep '^stack' | cut -f2)
+project	= $(shell <$(CURDIR)/.config grep '^project' | cut -f2)
 
 
 .PHONY: Dockerfile
@@ -52,7 +53,8 @@ stack-deploy:
 	@echo '	STACK deploy	$(orchestrator) $(stack)';
 	@alx_stack_deploy -o '$(orchestrator)' '$(stack)';
 
-.PHONY: stack-rm
-stack-rm:
-	@echo '	STACK rm	$(orchestrator) $(stack)';
-	@alx_stack_delete -o '$(orchestrator)' '$(stack)';
+.PHONY: stack-rm-unstable
+.PHONY: stack-rm-stable
+stack-rm-unstable stack-rm-stable: stack-rm-%:
+	@echo '	STACK rm	$(orchestrator) $(project)-$*';
+	@alx_stack_delete -o '$(orchestrator)' '$(project)-$*';
