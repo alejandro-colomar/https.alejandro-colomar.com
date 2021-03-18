@@ -1,6 +1,6 @@
 reg	docker.io
 user	alejandrocolomar
 repo	www
-lbl	0.46
+lbl	ci
 digest	x86_64	<digest>
 digest	aarch64	<digest>
