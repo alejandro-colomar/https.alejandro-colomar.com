@@ -10,5 +10,5 @@ function update_stability()
 	local _d="$(dirname "${BASH_SOURCE[0]}")";
 	local _D="${_d}/../../..";
 
-	sed -i "/stability	/s/	.*/	${stability}/" ${_D}/.config;
+	sed -i "/^stabe	/s/	.*/	${stability}/" ${_D}/.config;
 }

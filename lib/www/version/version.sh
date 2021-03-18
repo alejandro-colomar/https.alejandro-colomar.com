@@ -26,4 +26,6 @@ function update_version()
 		-i ${_D}/etc/swarm/manifests/compose.yaml;
 	sed "\%Version:%s%\(<.*>\)\(.*\)\(</.*>\)%\1${version}\3%" \
 		-i ${_D}/srv/www/index.html;
+	sed "\%^version	%s%	.*%	${version}%" \
+		-i ${_D}/.config;
 }
