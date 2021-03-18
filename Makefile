@@ -14,6 +14,7 @@ lbl_	= $(lbl)_$(shell uname -m)
 img	= $(reg)/$(user)/$(repo):$(lbl)
 img_	= $(reg)/$(user)/$(repo):$(lbl_)
 orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
+stack	= $(shell . $(CURDIR)/etc/www/config.sh && echo "$${WWW_STACK}")
 
 
 .PHONY: Dockerfile
@@ -41,3 +42,13 @@ image-manifest:
 image-manifest-push:
 	@echo '	DOCKER manifest push	$(img)';
 	@docker manifest push '$(img)';
+
+.PHONY: stack-deploy
+stack-deploy:
+	@echo '	STACK deploy	$(orchestrator) $(stack)';
+	@alx_stack_deploy -o '$(orchestrator)' '$(stack)';
+
+.PHONY: stack-rm
+stack-rm:
+	@echo '	STACK rm	$(orchestrator) $(stack)';
+	@alx_stack_delete -o '$(orchestrator)' '$(stack)';
