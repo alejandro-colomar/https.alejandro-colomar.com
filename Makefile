@@ -72,7 +72,7 @@ digest:
 		$(CURDIR)/etc/swarm/manifests/compose.yaml;
 
 .PHONY: stack-deploy
-stack-deploy: digest
+stack-deploy:
 	@echo '	STACK deploy	$(orchestrator) $(stack)';
 	@alx_stack_deploy -o '$(orchestrator)' '$(stack)';
 
