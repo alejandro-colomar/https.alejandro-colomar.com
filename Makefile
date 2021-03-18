@@ -6,13 +6,21 @@
 SHELL	= /bin/bash
 
 
+arch	= $(shell uname -m)
+
+nginx		= $(CURDIR)/etc/docker/images/nginx
+nginx_reg	= $(shell <$(nginx) grep '^reg' | cut -f2)
+nginx_user	= $(shell <$(nginx) grep '^user' | cut -f2)
+nginx_repo	= $(shell <$(nginx) grep '^repo' | cut -f2)
+nginx_lbl	= $(shell <$(nginx) grep '^lbl' | cut -f2)
+nginx_digest	= $(shell <$(nginx) grep '^digest' | grep $(arch) | cut -f3)
+
 www	= $(CURDIR)/etc/docker/images/www
 reg	= $(shell <$(www) grep '^reg' | cut -f2)
 user	= $(shell <$(www) grep '^user' | cut -f2)
 repo	= $(shell <$(www) grep '^repo' | cut -f2)
 repository = $(reg)/$(user)/$(repo)
 lbl	= $(shell git describe --tags | sed 's/^v//')
-arch	= $(shell uname -m)
 lbl_	= $(lbl)_$(arch)
 img	= $(repository):$(lbl)
 img_	= $(repository):$(lbl_)
@@ -26,10 +34,15 @@ project	= $(shell <$(CURDIR)/.config grep '^project' | cut -f2)
 
 
 .PHONY: Dockerfile
-Dockerfile: $(CURDIR)/etc/docker/images/nginx
-Dockerfile: $(CURDIR)/libexec/update_dockerfile
+Dockerfile:
 	@echo '	Update Dockerfile ARGs';
-	@$<;
+	@sed -i \
+		-e '/^ARG	NGINX_REG/s/=.*/=$(nginx_reg)/' \
+		-e '/^ARG	NGINX_USER/s/=.*/=$(nginx_user)/' \
+		-e '/^ARG	NGINX_REPO/s/=.*/=$(nginx_repo)/' \
+		-e '/^ARG	NGINX_LBL/s/=.*/=$(nginx_lbl)/' \
+		-e '/^ARG	NGINX_DIGEST/s/=.*/=$(nginx_digest)/' \
+		$(CURDIR)/$@;
 
 .PHONY: image
 image: Dockerfile
