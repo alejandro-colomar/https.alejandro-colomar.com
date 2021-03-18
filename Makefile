@@ -67,7 +67,7 @@ image-manifest-push:
 .PHONY: digest
 digest:
 	@echo '	Update digest';
-	@sed -i '\#$(repository)#s#"$$#@$(digest)"#' \
+	@sed -i '\#$(repository)#s#$(lbl).*"$$#$(lbl)@$(digest)"#' \
 		$(CURDIR)/etc/kubernetes/manifests/030_deploy.yaml \
 		$(CURDIR)/etc/swarm/manifests/compose.yaml;
 
