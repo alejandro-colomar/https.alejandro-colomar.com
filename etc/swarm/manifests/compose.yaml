@@ -45,7 +45,7 @@ services:
             start_period: 30s
             test: curl -4s -o /dev/null -w '%{http_code}' http://localhost:8080
             timeout: 1s
-        image: "docker.io/alejandrocolomar/www:0.46"
+        image: "docker.io/alejandrocolomar/www:0.46@sha256:f59659e57ba556dbf26910c050fe34939dfb17b3183f85ecb32f96a016c810a2"
         networks:
         -
             "alejandro-colomar"
