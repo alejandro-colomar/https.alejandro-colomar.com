@@ -124,6 +124,12 @@ For a seamless deployment, the following steps need to be done:
 
 - `Specify the digests of the multi-arch Docker image manifest`_ (see above).
 
+- Update the digest in the manifests to match the current architecture.
+
+.. code-block:: BASH
+
+	make digest;
+
 - Remove the oldstable release, and deploy the stable release at port 30001:
 
 .. code-block:: BASH
