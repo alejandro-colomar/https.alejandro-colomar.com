@@ -12,7 +12,7 @@ docker manifest, which is needed for the deployment, the images have to be
 built manually in machines of the supported architectures.
 
 Pre-release a test version
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
@@ -99,7 +99,7 @@ For a seamless deployment, the following steps need to be done:
 
 - Assuming there is an old stack deployed at port 30001.
 
-- `Pre-release an test version`_ (see above).
+- `Pre-release a test version`_ (see above).
 
 - `Build and push multi-arch Docker image manifest`_ (see above).
 
