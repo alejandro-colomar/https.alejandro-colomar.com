@@ -89,8 +89,6 @@ Deployment
 This repository assumes a docker swarm is already running.  See the
 `parent repository`_ to know how to prepare the machines for docker swarm.
 
-_`parent repository`: https://github.com/alejandro-colomar/alejandro-colomar.git
-
 Releases use port 30001.
 Pre-releases use port 31001.
 
@@ -118,7 +116,7 @@ For a seamless deployment, the following steps need to be done:
 
 
 - Else, if the pre-release passes the tests, the published port should be
-  forwarded to 31001 (this is done in the nlb repository).
+  forwarded to 31001 (this is done in the nlb_ repository).
 
 - `Release a stable version`_ (see above).
 
@@ -138,7 +136,7 @@ For a seamless deployment, the following steps need to be done:
 	sudo make stack-deploy;
 
 - The published port should be forwarded back to 30001 (this is done in
-  the nlb repository).
+  the nlb_ repository).
 
 - Remove the test deployment at port 31001:
 
@@ -155,3 +153,10 @@ Kubernetes | OpenShift
 To use kubernetes or openshift, simply replace ``swarm`` by ``kubernetes``
 or ``openshift``, in ``<./etc/docker/orchestrator>``.  Then, and after setting
 up the corresponding cluster, follow the same steps above.
+
+
+________________________________________________________________________
+
+_`parent repository`: https://github.com/alejandro-colomar/server.git
+
+_`nlb`: https://github.com/alejandro-colomar/nlb.git
