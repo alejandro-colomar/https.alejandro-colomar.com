@@ -6,16 +6,19 @@
 SHELL	= /bin/bash
 
 
-reg	= $(shell <$(CURDIR)/etc/docker/images/www grep '^reg' | cut -f2)
-user	= $(shell <$(CURDIR)/etc/docker/images/www grep '^user' | cut -f2)
-repo	= $(shell <$(CURDIR)/etc/docker/images/www grep '^repo' | cut -f2)
+www	= $(CURDIR)/etc/docker/images/www
+reg	= $(shell <$(www) grep '^reg' | cut -f2)
+user	= $(shell <$(www) grep '^user' | cut -f2)
+repo	= $(shell <$(www) grep '^repo' | cut -f2)
 repository = $(reg)/$(user)/$(repo)
 lbl	= $(shell git describe --tags | sed 's/^v//')
-lbl_	= $(lbl)_$(shell uname -m)
+arch	= $(shell uname -m)
+lbl_	= $(lbl)_$(arch)
 img	= $(repository):$(lbl)
 img_	= $(repository):$(lbl_)
 archs	= aarch64 x86_64
 imgs	= $(addprefix $(img)_,$(archs))
+digest	= $(shell <$(www) grep '^digest' | grep $(arch) | cut -f3)
 
 orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
 stack	= $(shell <$(CURDIR)/.config grep '^stack' | cut -f2)
@@ -48,8 +51,15 @@ image-manifest-push:
 	@echo '	DOCKER manifest push	$(img)';
 	@docker manifest push '$(img)';
 
+.PHONY: digest
+digest:
+	@echo '	Update digest';
+	@sed -i '/$(repository)/s/"$$/@$(digest)"/' \
+		$(CURDIR)/etc/kubernetes/manifests/030_deploy.yaml \
+		$(CURDIR)/etc/swarm/manifests/compose.yaml;
+
 .PHONY: stack-deploy
-stack-deploy:
+stack-deploy: digest
 	@echo '	STACK deploy	$(orchestrator) $(stack)';
 	@alx_stack_deploy -o '$(orchestrator)' '$(stack)';
 
