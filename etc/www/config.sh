@@ -8,11 +8,10 @@
 WWW_CONFIG_SH="${BASH_SOURCE[0]}";
 
 
-WWW_PORT_EXP=32001;
-WWW_PORT_RC=31001;
+WWW_PORT_UNSTABLE=31001;
 WWW_PORT_STABLE=30001;
 WWW_PROJECT="www";
-WWW_STABILITY="stable";	## "stable", "rc", or "exp"
+WWW_STABILITY="stable";	## "stable" or "unstable"
 WWW_STACK="${WWW_PROJECT}-${WWW_STABILITY}";
-WWW_VERSION="0.40";	## tag name or branch name.
+WWW_VERSION="0.40";
 WWW_DK_ORCHESTRATOR='swarm';

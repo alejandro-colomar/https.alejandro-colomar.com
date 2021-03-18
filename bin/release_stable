@@ -1,8 +1,8 @@
 #!/bin/bash
 set -Eeuo pipefail;
 ########################################################################
-#	Copyright (C) 2020        Alejandro Colomar Andres
-#	SPDX-License-Identifier:  GPL-2.0-only
+#      Copyright (C) 2020        Alejandro Colomar Andres
+#      SPDX-License-Identifier:  GPL-2.0-only
 ########################################################################
 
 
@@ -17,7 +17,7 @@ fi;
 version="$1";
 
 _d="$(dirname "${BASH_SOURCE[0]}")";
-_D="${_d}/../..";
+_D="${_d}/..";
 . ${_D}/etc/www/config.sh;
 . ${_D}/lib/www/version/date.sh;
 . ${_D}/lib/www/version/port.sh;
@@ -25,8 +25,8 @@ _D="${_d}/../..";
 . ${_D}/lib/www/version/version.sh;
 
 update_date;
-update_port		"${WWW_PORT_EXP}";
-update_stability	"exp";
+update_port		${WWW_PORT_STABLE};
+update_stability	"stable";
 update_version		"${version}";
 
 if git rev-parse "refs/tags/v${version}" >/dev/null 2>&1; then
@@ -34,7 +34,7 @@ if git rev-parse "refs/tags/v${version}" >/dev/null 2>&1; then
 	exit ${EX_CANTCREAT};
 fi;
 
-git commit -a -m "Pre-release v${version}";
-git tag "v${version}";
+git commit -a -m "Release v${version}";
+git tag -a "v${version}" -m "";
 
 exit ${EX_OK};

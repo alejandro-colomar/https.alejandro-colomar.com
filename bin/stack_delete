@@ -10,13 +10,13 @@ EX_OK=0;
 EX_USAGE=64;
 
 if [ $# -ne 1 ]; then
-	echo >&2 "Usage:  ${BASH_SOURCE[0]} exp|rc|stable";
+	echo >&2 "Usage:  ${BASH_SOURCE[0]} unstable|stable";
 	exit ${EX_USAGE};
 fi;
 stability="$1";
 
 _d="$(dirname "${BASH_SOURCE[0]}")";
-_D="${_d}/../..";
+_D="${_d}/..";
 . ${_D}/etc/www/config.sh;
 
 stack="${WWW_PROJECT}-${stability}";
