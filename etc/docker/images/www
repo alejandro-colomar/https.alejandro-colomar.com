@@ -1,6 +1,6 @@
 reg	docker.io
 user	alejandrocolomar
 repo	www
-lbl	0.43-rc4
+lbl	0.43-rc5
 digest	x86_64	<digest>
 digest	aarch64	<digest>
