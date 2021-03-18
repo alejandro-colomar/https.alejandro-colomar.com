@@ -6,10 +6,10 @@ ________________________________________________________________________________
 Versioning
 ==========
 
-Releasing will create the x86_64 docker image.  However, DockerHub only
-automates x86_64; for other architectures, and for the multi-arch
-docker manifest, which is needed for the deployment, the images have to be
-built manually in machines of the supported architectures.
+Releasing will create the ``x86_64`` docker image.  However, DockerHub only
+automates ``x86_64``; for other architectures, and for the multi-arch docker
+manifest, which is needed for the deployment, the images have to be built
+manually in machines of the supported architectures.
 
 Pre-release a test version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,8 +40,8 @@ For various architectures, simply run in various machines.
 Build and push multi-arch Docker image manifest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This step requires that arch-specific images of all supported architectures are
-already pushed to the Docker registry (see
+This step requires that arch-specific images of all supported architectures
+are already pushed to the Docker registry (see
 `Build and push arch-specific Docker images`_).
 
 .. code-block:: BASH
@@ -52,13 +52,12 @@ Specify the digests of the multi-arch Docker image manifest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To avoid loading different docker images with the same name (possibly crafted
-by crackers), we should specify the digests of the docker image manifest for
-production releases.  Based on a stable image, specify the digest of the image
-in <./etc/docker/images/www>, and release a patch.  In the code below,
-`DIGEST_*` shall be replaced by the appropriate digest.  Note that the `main`
-branch shall not receive the patches `vX.Y.0`, and should instead continue
-from `vX.Y`, so after running the code below and deploying the image, the user
-should use `git switch main`.
+by crackers), we should specify the digests of the docker image manifest
+for production releases.  Based on a stable image, specify the digest of
+the image in ``<./etc/docker/images/www>``, and release a patch.  In the code
+below, ``DIGEST_*`` shall be replaced by the appropriate digest.  Note that
+the ``main`` branch shall not receive the patches ``vX.Y.0``, and should
+instead continue from ``vX.Y``.
 
 .. code-block:: BASH
 
@@ -73,9 +72,9 @@ should use `git switch main`.
 Continue after a release + patch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Note that the `main` branch shall not receive the patches `vX.Y.0`, and should
-instead continue from `vX.Y`, so after running the code above and deploying
-the image, the user should go back to `main`.
+Note that the ``main`` branch shall not receive the patches ``vX.Y.0``, and
+should instead continue from ``vX.Y``, so after running the code above and
+deploying the image, the user should go back to ``main``.
 
 .. code-block:: BASH
 
@@ -147,6 +146,6 @@ ________________________________________________________________________________
 Kubernetes | OpenShift
 ======================
 
-To use kubernetes or openshift, simply replace "swarm" by "kubernetes"
-or "openshift", in <./etc/docker/orchestrator>.  Then, and after setting up
-the corresponding cluster, follow the same steps above.
+To use kubernetes or openshift, simply replace ``swarm`` by ``kubernetes``
+or ``openshift``, in ``<./etc/docker/orchestrator>``.  Then, and after setting
+up the corresponding cluster, follow the same steps above.
