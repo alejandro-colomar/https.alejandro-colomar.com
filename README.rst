@@ -8,26 +8,24 @@ Versioning
 
 Releasing will create the x86_64 docker image.  However, DockerHub only
 automates x86_64; for other architectures, and for the multi-arch
-docker manifest, which is needed for the deployment, docker has to be
-run manually in a building machine.
-
-The following scripts don't automate the push step to the remote git
-repository, as a caution.  Every automated commit should be checked by
-a human before pushing.
+docker manifest, which is needed for the deployment, the images have to be
+built manually in machines of the supported architectures.
 
 Pre-release a test version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/release_test	X.Y-extraversion;
+	./bin/release_test	 X.Y-extraversion;
+	git push origin		vX.Y-extraversion;
 
 Release a stable version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: BASH
 
-	./bin/release_stable	X.Y;
+	./bin/release_stable	 X.Y;
+	git push origin		vX.Y;
 
 Build and push arch-specific Docker images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -64,13 +62,13 @@ should use `git switch main`.
 
 .. code-block:: BASH
 
-	git checkout vX.Y;
+	git checkout	vX.Y;
 	sed -i '/digest	aarch64/s/<digest>/DIGEST_arm64/' etc/docker/images/www;
 	sed -i '/digest	x86_64/s/<digest>/DIGEST_amd64/' etc/docker/images/www;
 	make digest;
 	git commit -am 'Specify digest of X.Y';
-	git tag -a vX.Y.0 -m 'Release X.Y.0'
-	git push origin vX.Y.0;
+	git tag -a vX.Y.0 -m 'Release X.Y.0';
+	git push origin	vX.Y.0;
 
 Continue after a release + patch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
