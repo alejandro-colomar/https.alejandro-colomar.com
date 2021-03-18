@@ -10,5 +10,10 @@ function update_stability()
 	local _d="$(dirname "${BASH_SOURCE[0]}")";
 	local _D="${_d}/../../..";
 
-	sed -i "/^stabe	/s/	.*/	${stability}/" ${_D}/.config;
+	local prj="$(<${_D}/.config grep '^project' | cut -f2)";
+
+	sed -i \
+		-e "/^stable	/s/	.*/	${stability}/" \
+		-e "/^stack	/s/	${prj}-.*/	${prj}-${stability}/" \
+		${_D}/.config;
 }
