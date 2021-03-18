@@ -27,10 +27,10 @@ jobs:
                 git config --global user.email "ci@test.com";
                 git config --global user.name "ci";
         -
-            name: release exp
-            run: ./bin/version/release_exp.sh "ci";
+            name: release_unstable
+            run: ./bin/release_unstable "ci";
         -
-            name: docker build
+            name: make image
             run: make image;
         -
             name: docker swarm init
@@ -39,8 +39,8 @@ jobs:
             name: sed
             run: sed -i "s/worker/manager/" "${compose}";
         -
-            name: deploy
-            run: sudo ./bin/containers/deploy.sh;
+            name: make stack-deploy
+            run: sudo make stack-deploy;
         -
             name: docker service ls
             run: |
