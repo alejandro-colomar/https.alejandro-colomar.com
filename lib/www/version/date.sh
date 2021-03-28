@@ -9,8 +9,8 @@ function update_date()
 	find srv/www/ -type f \
 	|grep -v 'srv/www/share/' \
 	|while read -r f; do
-		local d="$(git log -1 --format='%ai' -- "${f}"
-			|xargs date '+%b/%Y' -d)";
+		local d="$(git log -1 --format='%ai' -- "${f}" \
+			|xargs -I {} date '+%b/%Y' -d {})";
 
 		sed -i -E "\%Last modified:%s%(<time>)(.*)(</time>)%\1${d}\3%" \
 			"${f}";
