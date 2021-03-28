@@ -1,0 +1,3 @@
+[submodule "src/man-pages"]
+	path = src/man-pages
+	url = https://github.com/alejandro-colomar/man-pages.git
