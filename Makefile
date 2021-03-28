@@ -48,6 +48,15 @@ Dockerfile:
 		-e '/^ARG	NGINX_DIGEST/s/=.*/=$(nginx_digest)/' \
 		$(CURDIR)/$@;
 
+.PHONY: man
+man:
+	make -C src/man-pages/ html HTOPTS='-r'; \
+	make -C src/man-pages/ install-html htmldir='$(CURDIR)/srv/www/share/';
+
+.PHONY: clean-man
+clean-man:
+	make -C src/man-pages/ uninstall-html htmldir='$(CURDIR)/srv/www/share/';
+
 .PHONY: image
 image: Dockerfile
 	@echo '	DOCKER image build	$(img_)';
@@ -85,3 +94,6 @@ stack-deploy:
 stack-rm-stable stack-rm-test: stack-rm-%:
 	@echo '	STACK rm	$(orchestrator) $(project)-$*';
 	@alx_stack_delete -o '$(orchestrator)' '$(project)-$*';
+
+.PHONY: clean
+clean: clean-man
