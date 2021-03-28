@@ -31,6 +31,12 @@ jobs:
             name: release_test
             run: ./bin/release_test 'ci';
         -
+            name: make config
+            run: make config;
+        -
+            name: make
+            run: make;
+        -
             name: make image
             run: make image;
         -
