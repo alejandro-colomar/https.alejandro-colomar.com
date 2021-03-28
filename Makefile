@@ -58,16 +58,16 @@ config: Dockerfile digest submodules
 Dockerfile:
 	@echo '	Update Dockerfile ARGs';
 	@sed -i \
-		-e '/^ARG	MAKE_REG/s/=.*/="$(make_reg)"/' \
-		-e '/^ARG	MAKE_USER/s/=.*/="$(make_user)"/' \
-		-e '/^ARG	MAKE_REPO/s/=.*/="$(make_repo)"/' \
-		-e '/^ARG	MAKE_LBL/s/=.*/="$(make_lbl)"/' \
-		-e '/^ARG	MAKE_DIGEST/s/=.*/="$(make_digest)"/' \
-		-e '/^ARG	NGINX_REG/s/=.*/="$(nginx_reg)"/' \
-		-e '/^ARG	NGINX_USER/s/=.*/="$(nginx_user)"/' \
-		-e '/^ARG	NGINX_REPO/s/=.*/="$(nginx_repo)"/' \
-		-e '/^ARG	NGINX_LBL/s/=.*/="$(nginx_lbl)"/' \
-		-e '/^ARG	NGINX_DIGEST/s/=.*/="$(nginx_digest)"/' \
+		-e '/^ARG	MAKE_REG=/s/=.*/="$(make_reg)"/' \
+		-e '/^ARG	MAKE_USER=/s/=.*/="$(make_user)"/' \
+		-e '/^ARG	MAKE_REPO=/s/=.*/="$(make_repo)"/' \
+		-e '/^ARG	MAKE_LBL=/s/=.*/="$(make_lbl)"/' \
+		-e '/^ARG	MAKE_DIGEST=/s/=.*/="$(make_digest)"/' \
+		-e '/^ARG	NGINX_REG=/s/=.*/="$(nginx_reg)"/' \
+		-e '/^ARG	NGINX_USER=/s/=.*/="$(nginx_user)"/' \
+		-e '/^ARG	NGINX_REPO=/s/=.*/="$(nginx_repo)"/' \
+		-e '/^ARG	NGINX_LBL=/s/=.*/="$(nginx_lbl)"/' \
+		-e '/^ARG	NGINX_DIGEST=/s/=.*/="$(nginx_digest)"/' \
 		$(CURDIR)/$@;
 
 .PHONY: digest
