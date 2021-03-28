@@ -31,6 +31,11 @@ orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
 stack	= $(shell <$(CURDIR)/.config grep '^stack' | cut -f2)
 project	= $(shell <$(CURDIR)/.config grep '^project' | cut -f2)
 
+.PHONY: config
+config: Dockerfile digest
+
+.PHONY: all
+all: man
 
 .PHONY: Dockerfile
 Dockerfile:
