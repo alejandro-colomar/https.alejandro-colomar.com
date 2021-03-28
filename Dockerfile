@@ -6,14 +6,31 @@
 
 
 ########################################################################
-ARG	NGINX_REG=docker.io
-ARG	NGINX_USER=alejandrocolomar
-ARG	NGINX_REPO=nginx
-ARG	NGINX_LBL=1.16.0
-ARG	NGINX_DIGEST=sha256:34c652cbc41b0c09daab213282ab0af88d4a55dd532a98458e221035bdfa6d0d
+ARG	MAKE_REG="docker.io"
+ARG	MAKE_USER="alejandrocolomar"
+ARG	MAKE_REPO="make"
+ARG	MAKE_REPOSITORY="make"
+ARG	MAKE_LBL="1.0.0"
+ARG	MAKE_DIGEST="sha256:e147f9d190a31cfebbb60beb134869d39554d5938c1f3d8fe5282bc53d81530d"
 ########################################################################
-FROM	"${NGINX_REG}/${NGINX_USER}/${NGINX_REPO}:${NGINX_LBL}@${NGINX_DIGEST}" \
-	AS nginx
+FROM	"${MAKE_REPOSITORY}:${MAKE_LBL}@${MAKE_DIGEST}" AS make
 ########################################################################
-COPY	srv/	/srv/
+COPY	./	/usr/local/src/www/
+########################################################################
+RUN	make -C /usr/local/src/www/;
+RUN	make -C /usr/local/src/www/ install-srv;
+########################################################################
+
+
+########################################################################
+ARG	NGINX_REG="docker.io"
+ARG	NGINX_USER="alejandrocolomar"
+ARG	NGINX_REPO="nginx"
+ARG	NGINX_REPOSITORY="nginx"
+ARG	NGINX_LBL="1.16.0"
+ARG	NGINX_DIGEST="sha256:34c652cbc41b0c09daab213282ab0af88d4a55dd532a98458e221035bdfa6d0d"
+########################################################################
+FROM	"${NGINX_REPOSITORY}:${NGINX_LBL}@${NGINX_DIGEST}" AS nginx
+########################################################################
+COPY	--from=make	/srv/	/srv/
 ########################################################################

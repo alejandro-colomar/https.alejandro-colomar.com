@@ -1,0 +1,6 @@
+reg	docker.io
+user	alejandrocolomar
+repo	make
+lbl	1.0.0
+digest	x86_64	sha256:e147f9d190a31cfebbb60beb134869d39554d5938c1f3d8fe5282bc53d81530d
+digest	aarch64	sha256:b827742c5145a30eeeda505aa1eca3d52f70108cd9128fbfff784eaa5b9ff383
