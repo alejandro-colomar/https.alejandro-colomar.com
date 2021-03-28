@@ -25,6 +25,7 @@ img_	= $(repository):$(lbl_)
 archs	= aarch64 x86_64
 imgs	= $(addprefix $(img)_,$(archs))
 digest	= $(shell <$(www) grep '^digest' | grep $(arch) | cut -f3)
+digest_	= $(shell echo '$(digest)' | sed 's/sha256:/@sha256:/')
 
 orchestrator = $(shell cat $(CURDIR)/etc/docker/orchestrator)
 stack	= $(shell <$(CURDIR)/.config grep '^stack' | cut -f2)
@@ -65,7 +66,7 @@ image-manifest-push:
 .PHONY: digest
 digest:
 	@echo '	Update digest';
-	@sed -i '\#$(repository)#s#$(lbl).*"$$#$(lbl)@$(digest)"#' \
+	@sed -i '\#$(repository)#s#$(lbl).*"$$#$(lbl)$(digest_)"#' \
 		$(CURDIR)/etc/kubernetes/manifests/030_deploy.yaml \
 		$(CURDIR)/etc/swarm/manifests/compose.yaml;
 
