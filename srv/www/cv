@@ -37,7 +37,7 @@
 		.src {font-family: monospace;}
 		.uri {font-family: monospace;}
 	</style>
-	<link rel="icon" href="http://www.alejandro-colomar.es/usr/share/pictures/alx.ico"/>
+	<link rel="icon" href="http://www.alejandro-colomar.es/share/misc/pictures/alx.ico"/>
 </head>
 
 
@@ -183,7 +183,7 @@
 			</p>
 			<ul>
 				<li class="bullet">
-					<span class="uri"><a href="http://www.alejandro-colomar.es/usr/share/videos/20200221_love_c.mp4">love.c</a></span>
+					<span class="uri"><a href="http://www.alejandro-colomar.es/share/misc/videos/20200221_love_c.mp4">love.c</a></span>
 					<time>(2020)</time>
 					<span class="name">A. Colomar</span>
 				</li>
@@ -457,7 +457,7 @@
 								<li class="bullet">[<span class="code">6.002.1x</span>]:&ensp;Circuits and Electronics 1: Basic Circuit Analysis</li>
 								<li class="bullet">[<span class="code">6.002.2x</span>]:&ensp;Circuits and Electronics 2: Amplification, Speed, and Delay</li>
 								<li class="bullet">[<span class="code">6.004.1x</span>]:&ensp;Computation Structures 1: Digital Circuits</li>
-								<li class="bullet">[<span class="code">8.MReVx</span>]:&ensp;<a href="http://www.alejandro-colomar.es/usr/share/documents/cert/edx_mitx_8mrevx.pdf">Mechanics ReView</a></li>
+								<li class="bullet">[<span class="code">8.MReVx</span>]:&ensp;<a href="http://www.alejandro-colomar.es/share/doc/cert/edx_mitx_8mrevx.pdf">Mechanics ReView</a></li>
 								<li class="bullet">[<span class="code">8.01.1x</span>]:&ensp;Mechanics: Kinematics and Dynamics</li>
 								<li class="bullet">[<span class="code">8.01.2x</span>]:&ensp;Mechanics: Momentum and Energy</li>
 								<li class="bullet">[<span class="code">8.01.3x</span>]:&ensp;Mechanics: Rotational Dynamics</li>
