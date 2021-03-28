@@ -17,10 +17,12 @@ FROM	"${MAKE_REPOSITORY}:${MAKE_LBL}@${MAKE_DIGEST}" AS make
 ########################################################################
 COPY	./	/usr/local/src/www/
 ########################################################################
-# busybox doesn't understand 'install -T'
-RUN	sed -i '/INSTALL/s/-T//' Makefile;
+WORKDIR	/usr/local/src/www/
 ########################################################################
-RUN	make -C /usr/local/src/www/ install-srv;
+# busybox doesn't understand 'install -T'
+RUN	sed -i '/INSTALL/s/-T//' Makefile src/man-pages/Makefile;
+########################################################################
+RUN	make install-srv;
 ########################################################################
 
 
