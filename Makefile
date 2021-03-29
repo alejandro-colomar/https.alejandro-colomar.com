@@ -51,6 +51,9 @@ project	= $(shell <$(CURDIR)/.config grep '^project' | cut -f2)
 .PHONY: all
 all: man
 
+.PHONY: config
+config: submodules
+
 .PHONY: Dockerfile
 Dockerfile:
 	@echo '	Update Dockerfile ARGs';
@@ -79,7 +82,7 @@ submodules:
 	git submodule init && git submodule update;
 
 .PHONY: man
-man: submodules
+man:
 	$(MAKE) -C src/man-pages/ html HTOPTS='-r';
 
 .PHONY: clean-man
