@@ -51,9 +51,6 @@ project	= $(shell <$(CURDIR)/.config grep '^project' | cut -f2)
 .PHONY: all
 all: man
 
-.PHONY: config
-config: Dockerfile digest submodules
-
 .PHONY: Dockerfile
 Dockerfile:
 	@echo '	Update Dockerfile ARGs';
@@ -82,7 +79,7 @@ submodules:
 	git submodule init && git submodule update;
 
 .PHONY: man
-man:
+man: submodules
 	$(MAKE) -C src/man-pages/ html HTOPTS='-r';
 
 .PHONY: clean-man
@@ -113,7 +110,7 @@ install-man:
 	$(MAKE) -C src/man-pages/ install-html htmldir='$(wwwdir)/share/';
 
 .PHONY: image
-image: Dockerfile
+image: Dockerfile submodules
 	@echo '	DOCKER image build	$(img_)';
 	@docker image build -t '$(img_)' $(CURDIR);
 
@@ -133,7 +130,7 @@ image-manifest-push:
 	@docker manifest push '$(img)';
 
 .PHONY: stack-deploy
-stack-deploy:
+stack-deploy: digest
 	@echo '	STACK deploy	$(orchestrator) $(stack)';
 	@alx_stack_deploy -o '$(orchestrator)' '$(stack)';
 
