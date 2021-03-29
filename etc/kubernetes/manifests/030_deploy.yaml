@@ -21,7 +21,7 @@ spec:
         spec:
             containers:
             -
-                image: "docker.io/alejandrocolomar/www:0.47"
+                image: "docker.io/alejandrocolomar/www:0.47@sha256:28ad9883ccbe3b736b743dfba55d2b8951dcab377385f035d22467a5561a8bc6"
                 livenessProbe:
                     httpGet:
                         path: /

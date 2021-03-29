@@ -2,5 +2,5 @@ reg	docker.io
 user	alejandrocolomar
 repo	www
 lbl	0.47
-digest	x86_64	
-digest	aarch64	
+digest	x86_64	sha256:28ad9883ccbe3b736b743dfba55d2b8951dcab377385f035d22467a5561a8bc6
+digest	aarch64	sha256:6490105284207db9f71177156534d6042e09d76eb33eb856178a247e7c4a165b
