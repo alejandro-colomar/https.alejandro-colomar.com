@@ -83,11 +83,11 @@ submodules:
 
 .PHONY: man
 man:
-	make -C src/man-pages/ html HTOPTS='-r';
+	$(MAKE) -C src/man-pages/ html HTOPTS='-r';
 
 .PHONY: clean-man
 clean-man:
-	make -C src/man-pages/ clean;
+	$(MAKE) -C src/man-pages/ clean;
 
 .PHONY: clean
 clean: clean-man
@@ -110,7 +110,7 @@ installdirs-srv:
 
 .PHONY: install-man
 install-man:
-	make -C src/man-pages/ install-html htmldir='$(wwwdir)/share/';
+	$(MAKE) -C src/man-pages/ install-html htmldir='$(wwwdir)/share/';
 
 .PHONY: image
 image: Dockerfile
