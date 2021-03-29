@@ -14,9 +14,6 @@ jobs:
                         clone --single-branch --branch 'v0.4.1' \
                         http://github.com/alejandro-colomar/containers.git;
         -
-            name: install man2html
-            run: sudo apt-get install --no-install-recommends -V man2html --yes;
-        -
             name: make swarm
             run: sudo make -C /usr/local/src/containers swarm;
         -
@@ -36,9 +33,6 @@ jobs:
         -
             name: make config
             run: make config;
-        -
-            name: make
-            run: make;
         -
             name: make image
             run: make image;
