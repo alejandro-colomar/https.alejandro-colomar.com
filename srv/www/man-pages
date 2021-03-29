@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--=================================================================-->
+<!--    Copyright (C)             Alejandro Colomar Andres           -->
+<!--    SPDX-License-Identifier:  GPL-2.0-only                       -->
+<!--=================================================================-->
+<head>
+	<meta charset="utf-8"/>
+	<title>alejandro-colomar/man-pages/</title>
+	<link rel="icon" href="../share/misc/pictures/alx.ico"/>
+	<link rel="stylesheet" type="text/css" href="../share/css/style.css" title="style">
+</head>
+
+
+<body>
+
+
+<div id="path">
+	<h3 class="uri nomargin">
+		<a href="../">alejandro-colomar/</a>&#x200B;
+		man-pages/
+	</h3>
+</div>
+<hr/>
+
+
+<div id="contents">
+        <h4 class="inl">
+                <a href="../">Home</a> |
+                <a href="../links/">Links</a> |
+                <a href="../libalx/">Libalx</a> |
+                man-pages |
+                <a href="../contact/">Contact</a> ||
+                <a href="../cv/">CV</a> |
+        </h4>
+</div>
+<hr/>
+
+
+<div id="main">
+	<h2><span class="name">Linux man-pages</span> online</h2>
+
+	<p>
+		<li class="bullet"><a href="/share/man/man1/">man1</a>: User commands (programs)</li>
+		<li class="bullet"><a href="/share/man/man2/">man2</a>: System calls</li>
+		<li class="bullet"><a href="/share/man/man3/">man3</a>: Library calls</li>
+		<li class="bullet"><a href="/share/man/man4/">man4</a>: Special files (devices)</li>
+		<li class="bullet"><a href="/share/man/man5/">man5</a>: File formats and configuration files</li>
+		<li class="bullet"><a href="/share/man/man6/">man6</a>: Games</li>
+		<li class="bullet"><a href="/share/man/man7/">man7</a>: Overviews, conventions, and miscellaneous</li>
+		<li class="bullet"><a href="/share/man/man8/">man8</a>: System management commands</li>
+	</p>
+
+	<h4>Search online <span class="name">man-pages</span>:</h4>
+	<iframe src="https://duckduckgo.com/search.html?duck=yes&site=www.alejandro-colomar.es/share/man/&kae=d&ks=m&prefill=Search online man-pages&focus=yes" style="overflow:hidden;margin:0;padding:0;width:500px;height:80px;" frameborder="0"></iframe>
+</div>
+<hr/>
+
+
+<div id="footer" class="footer">
+	<h2><a href="#top">^</a></h2>
+
+	<p>
+		This site doesn't use cookies.
+		<br/>
+		Last modified: <time>Mar/2021</time>
+		<br/>
+		<span class="name">Alejandro Colomar</span>
+	</p>
+</div>
+<hr/>
+
+
+</body>
+</html>
