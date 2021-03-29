@@ -1,0 +1,6 @@
+reg	docker.io
+user	alejandrocolomar
+repo	build-essential
+lbl	1.0.0
+digest	x86_64	sha256:ccde260ba2881dd35e26a343fafab20e9b5e3e668a0e11d7063675f429937452
+digest	aarch64	sha256:2a301a196cd4aeb9a875bbc19d273797289dcc45d23516ccf01e9793aab55d0f

@@ -6,12 +6,12 @@
 
 
 ########################################################################
-ARG	MAKE_REG="docker.io"
-ARG	MAKE_USER="alejandrocolomar"
-ARG	MAKE_REPO="make"
-ARG	MAKE_REPOSITORY="${MAKE_REG}/${MAKE_USER}/${MAKE_REPO}"
-ARG	MAKE_LBL="1.0.0"
-ARG	MAKE_DIGEST="sha256:e147f9d190a31cfebbb60beb134869d39554d5938c1f3d8fe5282bc53d81530d"
+ARG	BUILD_REG="docker.io"
+ARG	BUILD_USER="alejandrocolomar"
+ARG	BUILD_REPO="build-essential"
+ARG	BUILD_REPOSITORY="${BUILD_REG}/${BUILD_USER}/${BUILD_REPO}"
+ARG	BUILD_LBL="1.0.0"
+ARG	BUILD_DIGEST="sha256:ccde260ba2881dd35e26a343fafab20e9b5e3e668a0e11d7063675f429937452"
 ########################################################################
 ARG	NGINX_REG="docker.io"
 ARG	NGINX_USER="alejandrocolomar"
@@ -23,14 +23,11 @@ ARG	NGINX_DIGEST="sha256:34c652cbc41b0c09daab213282ab0af88d4a55dd532a98458e22103
 
 
 ########################################################################
-FROM	"${MAKE_REPOSITORY}:${MAKE_LBL}@${MAKE_DIGEST}" AS make
+FROM	"${BUILD_REPOSITORY}:${BUILD_LBL}@${BUILD_DIGEST}" AS build
 ########################################################################
 COPY	./	/usr/local/src/www/
 ########################################################################
 WORKDIR	/usr/local/src/www/
-########################################################################
-# busybox doesn't understand 'install -T'
-RUN	sed -i '/INSTALL/s/-T//' Makefile src/man-pages/Makefile;
 ########################################################################
 RUN	make install-srv;
 ########################################################################
@@ -39,5 +36,5 @@ RUN	make install-srv;
 ########################################################################
 FROM	"${NGINX_REPOSITORY}:${NGINX_LBL}@${NGINX_DIGEST}" AS nginx
 ########################################################################
-COPY	--from=make	/srv/	/srv/
+COPY	--from=build	/srv/	/srv/
 ########################################################################

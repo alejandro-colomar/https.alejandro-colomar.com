@@ -16,12 +16,12 @@ INSTALL_DIR	= $(INSTALL) -m 755 -d
 
 arch	= $(shell uname -m)
 
-make		= $(CURDIR)/etc/docker/images/make
-make_reg	= $(shell <$(make) grep '^reg' | cut -f2)
-make_user	= $(shell <$(make) grep '^user' | cut -f2)
-make_repo	= $(shell <$(make) grep '^repo' | cut -f2)
-make_lbl	= $(shell <$(make) grep '^lbl' | cut -f2)
-make_digest	= $(shell <$(make) grep '^digest' | grep $(arch) | cut -f3)
+build		= $(CURDIR)/etc/docker/images/build-essential
+build_reg	= $(shell <$(build) grep '^reg' | cut -f2)
+build_user	= $(shell <$(build) grep '^user' | cut -f2)
+build_repo	= $(shell <$(build) grep '^repo' | cut -f2)
+build_lbl	= $(shell <$(build) grep '^lbl' | cut -f2)
+build_digest	= $(shell <$(build) grep '^digest' | grep $(arch) | cut -f3)
 
 nginx		= $(CURDIR)/etc/docker/images/nginx
 nginx_reg	= $(shell <$(nginx) grep '^reg' | cut -f2)
@@ -58,11 +58,11 @@ config: Dockerfile digest submodules
 Dockerfile:
 	@echo '	Update Dockerfile ARGs';
 	@sed -i \
-		-e '/^ARG	MAKE_REG=/s/=.*/="$(make_reg)"/' \
-		-e '/^ARG	MAKE_USER=/s/=.*/="$(make_user)"/' \
-		-e '/^ARG	MAKE_REPO=/s/=.*/="$(make_repo)"/' \
-		-e '/^ARG	MAKE_LBL=/s/=.*/="$(make_lbl)"/' \
-		-e '/^ARG	MAKE_DIGEST=/s/=.*/="$(make_digest)"/' \
+		-e '/^ARG	BUILD_REG=/s/=.*/="$(build_reg)"/' \
+		-e '/^ARG	BUILD_USER=/s/=.*/="$(build_user)"/' \
+		-e '/^ARG	BUILD_REPO=/s/=.*/="$(build_repo)"/' \
+		-e '/^ARG	BUILD_LBL=/s/=.*/="$(build_lbl)"/' \
+		-e '/^ARG	BUILD_DIGEST=/s/=.*/="$(build_digest)"/' \
 		-e '/^ARG	NGINX_REG=/s/=.*/="$(nginx_reg)"/' \
 		-e '/^ARG	NGINX_USER=/s/=.*/="$(nginx_user)"/' \
 		-e '/^ARG	NGINX_REPO=/s/=.*/="$(nginx_repo)"/' \
