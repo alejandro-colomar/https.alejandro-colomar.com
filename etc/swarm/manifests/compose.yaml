@@ -45,11 +45,11 @@ services:
             start_period: 30s
             test: curl -4s -o /dev/null -w '%{http_code}' http://localhost:8080
             timeout: 1s
-        image: "docker.io/alejandrocolomar/www:0.47"
+        image: "docker.io/alejandrocolomar/www:0.48-rc1"
         networks:
         -
             "alejandro-colomar"
         ports:
-        -   "30001:8080"
+        -   "31001:8080"
 
 version: "3.8"
