@@ -113,7 +113,7 @@ man-pages:
 
 .PHONY: man-pages-posix
 man-pages-posix:
-	$(MAKE) html MANDIR_='$(CURDIR)/src/$@';
+	$(MAKE) html MANDIR_='$(CURDIR)/src/$@/man-pages-posix-2017';
 
 .PHONY: clean-man
 clean-man:
