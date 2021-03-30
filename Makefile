@@ -7,8 +7,11 @@
 DESTDIR		=
 prefix		= /usr/local
 sysconfdir	= $(prefix:/usr=)/etc
+MANDIR_		= $(CURDIR)/src/man-pages/
+htmlbuilddir	= $(CURDIR)/tmp/html
 srvdir		= /srv
 wwwdir		= $(srvdir)/www
+htmlext		= .html
 
 INSTALL		= install
 INSTALL_DATA	= $(INSTALL) -m 644
@@ -81,13 +84,40 @@ digest:
 submodules:
 	git submodule init && git submodule update;
 
+.PHONY: html
+html: | builddirs-html
+	cd $(MANDIR_)/ && \
+	find man?/ -type f \
+	|while read f; do \
+		man2html -r "$$f" \
+		|sed -e '1,2d' \
+		>"$(htmlbuilddir)/$${f}$(htmlext)" \
+			|| exit $$?; \
+	done;
+
+.PHONY: builddirs-html
+builddirs-html:
+	cd $(MANDIR_)/ && \
+	find man?/ -type d \
+	|while read d; do \
+		$(INSTALL_DIR) "$(htmlbuilddir)/$$d" || exit $$?; \
+	done;
+
 .PHONY: man
-man:
-	$(MAKE) -C src/man-pages/ html HTOPTS='-r';
+man: man-pages man-pages-posix
+
+
+.PHONY: man-pages
+man-pages:
+	$(MAKE) html MANDIR_='$(CURDIR)/src/$@';
+
+.PHONY: man-pages-posix
+man-pages-posix:
+	$(MAKE) html MANDIR_='$(CURDIR)/src/$@';
 
 .PHONY: clean-man
 clean-man:
-	$(MAKE) -C src/man-pages/ clean;
+	rm -rf "$(htmlbuilddir)/";
 
 .PHONY: clean
 clean: clean-man
