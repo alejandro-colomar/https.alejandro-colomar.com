@@ -142,7 +142,7 @@ installdirs-srv:
 	done;
 
 .PHONY: install-man
-install-man:
+install-man: | installdirs-man
 	cd $(htmlbuilddir)/ && \
 	find man?/ -type f \
 	|while read f; do \
