@@ -140,7 +140,20 @@ installdirs-srv:
 
 .PHONY: install-man
 install-man:
-	$(MAKE) -C src/man-pages/ install-html htmldir='$(wwwdir)/share/';
+	cd $(htmlbuilddir)/ && \
+	find man?/ -type f \
+	|while read f; do \
+		$(INSTALL_DATA) -T "$$f" "$(DESTDIR)$(wwwdir)/share/man/$$f" \
+			|| exit $$?; \
+	done;
+
+.PHONY: installdirs-man
+installdirs-man:
+	cd $(htmlbuilddir)/ && \
+	find man?/ -type d \
+	|while read d; do \
+		$(INSTALL_DIR) "$(DESTDIR)$(wwwdir)/share/man/$$d" || exit $$?; \
+	done;
 
 .PHONY: image
 image: Dockerfile submodules
