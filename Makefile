@@ -87,18 +87,21 @@ submodules:
 .PHONY: html
 html: | builddirs-html
 	cd $(MANDIR_)/ && \
-	find man?/ -type f \
+	find man*/ -type f \
 	|while read f; do \
+		_d=$$(dirname $$f | sed -E 's/(man.).*/\1/'); \
+		_f=$$(basename $$f); \
 		man2html -r "$$f" \
 		|sed -e '1,2d' \
-		>"$(htmlbuilddir)/$${f}$(htmlext)" \
+		>"$(htmlbuilddir)/$$_d/$${_f}$(htmlext)" \
 			|| exit $$?; \
 	done;
 
 .PHONY: builddirs-html
 builddirs-html:
 	cd $(MANDIR_)/ && \
-	find man?/ -type d \
+	find man*/ -type d \
+	|sed -E 's/(man.).*/\1/' \
 	|while read d; do \
 		$(INSTALL_DIR) "$(htmlbuilddir)/$$d" || exit $$?; \
 	done;
