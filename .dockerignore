@@ -1,5 +1,4 @@
 **/*
-!Dockerfile
 !Makefile
 !etc/docker/images/
 !src/
