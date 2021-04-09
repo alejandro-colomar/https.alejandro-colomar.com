@@ -43,9 +43,10 @@ user	= $(shell <$(www) grep '^user' | cut -f2)
 repo	= $(shell <$(www) grep '^repo' | cut -f2)
 repository = $(reg)/$(user)/$(repo)
 lbl	= $(shell <$(www) grep '^lbl' | cut -f2)
-lbl_	= $(shell git describe --tags | sed 's/^v//')_$(arch)
+lbl_	= $(shell git describe --tags | sed 's/^v//')
+lbl_a	= $(lbl_)_$(arch)
 img	= $(repository):$(lbl)
-img_	= $(repository):$(lbl_)
+img_a	= $(repository):$(lbl_a)
 archs	= $(shell <$(CURDIR)/.config grep '^archs' | cut -f2 | tr ',' ' ')
 imgs	= $(addprefix $(img)_,$(archs))
 digest	= $(shell <$(www) grep '^digest' | grep $(arch) | cut -f3)
@@ -173,17 +174,18 @@ image: submodules
 		$(MAKE) image-build arch=$${arch} || exit $$?; \
 		$(MAKE) image-push arch=$${arch} || exit $$?; \
 	done;
+	@sed -Ei 's/lbl	.*/lbl	$(lbl_)/' $(www);
 	@$(MAKE) image-manifest;
 
 .PHONY: image-build
 image-build: Dockerfile
-	@echo '	DOCKER image build	$(img_)';
-	@docker image build -t '$(img_)' $(CURDIR) >/dev/null;
+	@echo '	DOCKER image build	$(img_a)';
+	@docker image build -t '$(img_a)' $(CURDIR) >/dev/null;
 
 .PHONY: image-push
 image-push:
-	@echo '	DOCKER image push	$(img_)';
-	@docker image push '$(img_)' \
+	@echo '	DOCKER image push	$(img_a)';
+	@docker image push '$(img_a)' \
 	|grep 'digest:' \
 	|sed -E 's/.*digest: ([^ ]+) .*/\1/' \
 	|while read d; do \

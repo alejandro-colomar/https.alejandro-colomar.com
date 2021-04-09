@@ -18,7 +18,7 @@ ARG	NGINX_USER="alejandrocolomar"
 ARG	NGINX_REPO="nginx"
 ARG	NGINX_REPOSITORY="${NGINX_REG}/${NGINX_USER}/${NGINX_REPO}"
 ARG	NGINX_LBL="1.16.0"
-ARG	NGINX_DIGEST="sha256:34c652cbc41b0c09daab213282ab0af88d4a55dd532a98458e221035bdfa6d0d"
+ARG	NGINX_DIGEST="sha256:a70106790923049e88ec5c0d8166270781d5403bf26a2110788af14584242b77"
 ########################################################################
 
 
