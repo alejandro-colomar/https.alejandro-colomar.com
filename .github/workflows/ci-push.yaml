@@ -35,10 +35,8 @@ jobs:
             run: make config;
         -
             name: make image
-            run: make image;
-        -
-            name: docker image tag
             run: |
+                make image-build;
                 docker image tag \
                         'alejandrocolomar/www:ci_x86_64' \
                         'alejandrocolomar/www:ci';

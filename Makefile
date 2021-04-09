@@ -110,7 +110,6 @@ builddirs-html:
 .PHONY: man
 man: man-pages man-pages-posix
 
-
 .PHONY: man-pages
 man-pages:
 	$(MAKE) html MANDIR_='$(CURDIR)/src/$@';
@@ -160,7 +159,15 @@ installdirs-man:
 	done;
 
 .PHONY: image
-image: Dockerfile submodules
+image: submodules
+	@for arch in $(archs); do \
+		$(MAKE) image-build arch=$${arch} || exit $$?; \
+		$(MAKE) image-push arch=$${arch} || exit $$?; \
+	done;
+	@$(MAKE) image-manifest;
+
+.PHONY: image-build
+image-build: Dockerfile
 	@echo '	DOCKER image build	$(img_)';
 	@docker image build -t '$(img_)' $(CURDIR);
 
@@ -171,6 +178,11 @@ image-push:
 
 .PHONY: image-manifest
 image-manifest:
+	@$(MAKE) image-manifest-create;
+	@$(MAKE) image-manifest-push;
+
+.PHONY: image-manifest-create
+image-manifest-create:
 	@echo '	DOCKER manifest create	$(img)';
 	@docker manifest create '$(img)' $(imgs);
 

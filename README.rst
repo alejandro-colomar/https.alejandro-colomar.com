@@ -22,26 +22,16 @@ Release a stable version
 	./bin/release_stable	 X.Y;
 	git push origin		vX.Y;
 
-Build and push arch-specific Docker images
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build and push multi-arch Docker images and an image manifest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The image will have the architecture of the machine in which it is run.
-For various architectures, simply run in various machines.
-
-.. code-block:: BASH
-
-	make image && make image-push;
-
-Build and push multi-arch Docker image manifest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This step requires that arch-specific images of all supported architectures
-are already pushed to the Docker registry (see
-`Build and push arch-specific Docker images`_).
+This creates and pushes images for all the supported architectures from
+a single building machine, and also a multi-arch manifest.  This command
+also stores the digest of the created images in ``<./etc/docker/images/www>``.
 
 .. code-block:: BASH
 
-	make image-manifest && make image-manifest-push;
+	make image;
 
 Specify the digests of the multi-arch Docker image manifest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -93,7 +83,7 @@ For a seamless deployment, the following steps need to be done:
 
 - `Pre-release a test version`_ (see above).
 
-- `Build and push multi-arch Docker image manifest`_ (see above).
+- `Build and push multi-arch Docker images and an image manifest`_ (see above).
 
 - Deploy the test pre-release at port 31001:
 
