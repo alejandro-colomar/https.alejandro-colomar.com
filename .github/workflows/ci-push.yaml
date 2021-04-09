@@ -34,7 +34,7 @@ jobs:
             name: make config
             run: make config;
         -
-            name: make image
+            name: make image-build
             run: make image-build lbl_a=ci;
         -
             name: docker swarm init
