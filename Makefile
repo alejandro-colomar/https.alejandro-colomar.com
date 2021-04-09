@@ -125,6 +125,9 @@ clean-man:
 .PHONY: clean
 clean: clean-man
 
+.PHONY: install
+install: install-srv
+
 .PHONY: install-srv
 install-srv: install-man | installdirs-srv
 	cd srv/ && \
