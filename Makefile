@@ -177,7 +177,12 @@ image-build: Dockerfile
 .PHONY: image-push
 image-push:
 	@echo '	DOCKER image push	$(img_)';
-	@docker image push '$(img_)';
+	@docker image push '$(img_)' \
+	|grep 'digest:' \
+	|sed -E 's/.*digest: ([^ ]+) .*/\1/' \
+	|while read d; do \
+		sed -Ei "s/(digest	$(arch)).*/\1	$${d}/" $(www); \
+	done;
 
 .PHONY: image-manifest
 image-manifest:
