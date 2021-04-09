@@ -35,11 +35,7 @@ jobs:
             run: make config;
         -
             name: make image
-            run: |
-                make image-build;
-                docker image tag \
-                        'alejandrocolomar/www:ci_x86_64' \
-                        'alejandrocolomar/www:ci';
+            run: make image-build lbl_a=ci;
         -
             name: docker swarm init
             run: docker swarm init --advertise-addr lo;
