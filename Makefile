@@ -58,6 +58,10 @@ all: man
 .PHONY: config
 config: submodules
 
+.PHONY: submodules
+submodules:
+	git submodule init && git submodule update;
+
 .PHONY: Dockerfile
 Dockerfile:
 	@echo '	Update Dockerfile ARGs';
@@ -80,10 +84,6 @@ digest:
 	@sed -i '\#$(repository)#s#$(lbl).*"$$#$(lbl)$(digest_)"#' \
 		$(CURDIR)/etc/kubernetes/manifests/030_deploy.yaml \
 		$(CURDIR)/etc/swarm/manifests/compose.yaml;
-
-.PHONY: submodules
-submodules:
-	git submodule init && git submodule update;
 
 .PHONY: html
 html: | builddirs-html
