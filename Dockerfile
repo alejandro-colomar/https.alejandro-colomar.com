@@ -17,8 +17,8 @@ ARG	NGINX_REG="docker.io"
 ARG	NGINX_USER="alejandrocolomar"
 ARG	NGINX_REPO="nginx"
 ARG	NGINX_REPOSITORY="${NGINX_REG}/${NGINX_USER}/${NGINX_REPO}"
-ARG	NGINX_LBL="1.16.0"
-ARG	NGINX_DIGEST="sha256:a70106790923049e88ec5c0d8166270781d5403bf26a2110788af14584242b77"
+ARG	NGINX_LBL="1.19.9-alpine-alx1"
+ARG	NGINX_DIGEST="sha256:7b8d8978173a3d90dbc52048bd5b6a91765c408b8c29b299fcc01f53335ae95a"
 ########################################################################
 
 
