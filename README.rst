@@ -22,33 +22,30 @@ Release a stable version
 	./bin/release_stable	 X.Y;
 	git push origin		vX.Y;
 
-Build and push multi-arch Docker images and an image manifest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build and push multi-arch Docker images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This creates and pushes images for all the supported architectures from
 a single building machine, and also a multi-arch manifest.  This command
 also stores the digest of the created images in ``<./etc/docker/images/www>``.
 
+To avoid loading different docker images with the same name (possibly crafted
+by crackers), the build system specifies the digests of the docker images
+in ``<./etc/docker/images/www>``.
+
 .. code-block:: BASH
 
 	make image;
 
-Specify the digests of the multi-arch Docker image manifest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Release first patch vX.Y.0
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To avoid loading different docker images with the same name (possibly crafted
-by crackers), we should specify the digests of the docker image manifest
-for production releases.  Based on a stable image, specify the digest of
-the image in ``<./etc/docker/images/www>``, and release a patch.  In the code
-below, ``DIGEST_*`` shall be replaced by the appropriate digest.  Note that
-the ``main`` branch shall not receive the patches ``vX.Y.0``, and should
-instead continue from ``vX.Y``.
+The previous ``make image`` stored the digest of the released image.  The
+stable releases need to use that image, so the first patch will do that.
 
 .. code-block:: BASH
 
 	git checkout	vX.Y;
-	sed -i '/digest	aarch64/s/<digest>/DIGEST_arm64/' etc/docker/images/www;
-	sed -i '/digest	x86_64/s/<digest>/DIGEST_amd64/' etc/docker/images/www;
 	make digest;
 	git commit -am 'Specify digest of X.Y';
 	git tag -a vX.Y.0 -m 'Release X.Y.0';
@@ -57,7 +54,7 @@ instead continue from ``vX.Y``.
 Continue after a release + patch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Note that the ``main`` branch shall not receive the patches ``vX.Y.0``, and
+Note that the ``main`` branch shall not receive the patches ``vX.Y.Z``, and
 should instead continue from ``vX.Y``, so after running the code above and
 deploying the image, the user should go back to ``main``.
 
@@ -83,7 +80,7 @@ For a seamless deployment, the following steps need to be done:
 
 - `Pre-release a test version`_ (see above).
 
-- `Build and push multi-arch Docker images and an image manifest`_ (see above).
+- `Build and push multi-arch Docker images`_ (see above).
 
 - Deploy the test pre-release at port 31001:
 
@@ -105,13 +102,9 @@ For a seamless deployment, the following steps need to be done:
 
 - `Release a stable version`_ (see above).
 
-- `Specify the digests of the multi-arch Docker image manifest`_ (see above).
+- `Build and push multi-arch Docker images`_ (see above).
 
-- Update the digest in the manifests to match the current architecture.
-
-.. code-block:: BASH
-
-	make digest;
+- `Release first patch vX.Y.0`_ (see above).
 
 - Remove the oldstable release, and deploy the stable release at port 30001:
 
