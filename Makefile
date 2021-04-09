@@ -17,14 +17,15 @@ INSTALL		= install
 INSTALL_DATA	= $(INSTALL) -m 644
 INSTALL_DIR	= $(INSTALL) -m 755 -d
 
-arch	= $(shell uname -m)
+current_arch	= $(shell uname -m)
+arch		= $(shell uname -m)
 
 build		= $(CURDIR)/etc/docker/images/build-essential
 build_reg	= $(shell <$(build) grep '^reg' | cut -f2)
 build_user	= $(shell <$(build) grep '^user' | cut -f2)
 build_repo	= $(shell <$(build) grep '^repo' | cut -f2)
 build_lbl	= $(shell <$(build) grep '^lbl' | cut -f2)
-build_digest	= $(shell <$(build) grep '^digest' | grep $(arch) | cut -f3)
+build_digest	= $(shell <$(build) grep '^digest' | grep $(current_arch) | cut -f3)
 
 nginx		= $(CURDIR)/etc/docker/images/nginx
 nginx_reg	= $(shell <$(nginx) grep '^reg' | cut -f2)
