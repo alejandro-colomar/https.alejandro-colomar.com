@@ -4,6 +4,9 @@
 # SPDX-License-Identifier:	GPL-2.0-only OR LGPL-2.0-only
 ########################################################################
 
+# Do not print "Entering directory ..."
+MAKEFLAGS += --no-print-directory
+
 DESTDIR		=
 prefix		= /usr/local
 sysconfdir	= $(prefix:/usr=)/etc
@@ -87,7 +90,8 @@ digest:
 
 .PHONY: html
 html: | builddirs-html
-	cd $(MANDIR_)/ && \
+	@echo '	HTML2MAN	$(MANDIR_)/man*/**';
+	@cd $(MANDIR_)/ && \
 	find man*/ -type f \
 	|while read f; do \
 		_d=$$(dirname $$f | sed -E 's/(man.).*/\1/'); \
@@ -100,7 +104,7 @@ html: | builddirs-html
 
 .PHONY: builddirs-html
 builddirs-html:
-	cd $(MANDIR_)/ && \
+	@cd $(MANDIR_)/ && \
 	find man*/ -type d \
 	|sed -E 's/(man.).*/\1/' \
 	|while read d; do \
@@ -112,11 +116,11 @@ man: man-pages man-pages-posix
 
 .PHONY: man-pages
 man-pages:
-	$(MAKE) html MANDIR_='$(CURDIR)/src/$@';
+	@$(MAKE) html MANDIR_='$(CURDIR)/src/$@';
 
 .PHONY: man-pages-posix
 man-pages-posix:
-	$(MAKE) html MANDIR_='$(CURDIR)/src/$@/man-pages-posix-2017';
+	@$(MAKE) html MANDIR_='$(CURDIR)/src/$@/man-pages-posix-2017';
 
 .PHONY: clean-man
 clean-man:
@@ -130,7 +134,8 @@ install: install-srv
 
 .PHONY: install-srv
 install-srv: install-man | installdirs-srv
-	cd srv/ && \
+	@echo '	INSTALL	$(DESTDIR)$(srvdir)/**';
+	@cd srv/ && \
 	find ./ -type f \
 	|while read f; do \
 		$(INSTALL_DATA) -T "$$f" "$(DESTDIR)$(srvdir)/$$f" || exit $$?; \
@@ -138,7 +143,7 @@ install-srv: install-man | installdirs-srv
 
 .PHONY: installdirs-srv
 installdirs-srv:
-	cd srv/ && \
+	@cd srv/ && \
 	find ./ -type d \
 	|while read d; do \
 		$(INSTALL_DIR) "$(DESTDIR)$(srvdir)/$$d" || exit $$?; \
@@ -146,7 +151,8 @@ installdirs-srv:
 
 .PHONY: install-man
 install-man: | installdirs-man
-	cd $(htmlbuilddir)/ && \
+	@echo '	INSTALL	$(DESTDIR)$(wwwdir)/share/man/man?/**';
+	@cd $(htmlbuilddir)/ && \
 	find man?/ -type f \
 	|while read f; do \
 		$(INSTALL_DATA) -T "$$f" "$(DESTDIR)$(wwwdir)/share/man/$$f" \
@@ -155,7 +161,7 @@ install-man: | installdirs-man
 
 .PHONY: installdirs-man
 installdirs-man:
-	cd $(htmlbuilddir)/ && \
+	@cd $(htmlbuilddir)/ && \
 	find man?/ -type d \
 	|while read d; do \
 		$(INSTALL_DIR) "$(DESTDIR)$(wwwdir)/share/man/$$d" || exit $$?; \
@@ -172,7 +178,7 @@ image: submodules
 .PHONY: image-build
 image-build: Dockerfile
 	@echo '	DOCKER image build	$(img_)';
-	@docker image build -t '$(img_)' $(CURDIR);
+	@docker image build -t '$(img_)' $(CURDIR) >/dev/null;
 
 .PHONY: image-push
 image-push:
@@ -192,12 +198,12 @@ image-manifest:
 .PHONY: image-manifest-create
 image-manifest-create:
 	@echo '	DOCKER manifest create	$(img)';
-	@docker manifest create '$(img)' $(imgs);
+	@docker manifest create '$(img)' $(imgs) >/dev/null;
 
 .PHONY: image-manifest-push
 image-manifest-push:
 	@echo '	DOCKER manifest push	$(img)';
-	@docker manifest push '$(img)';
+	@docker manifest push '$(img)' >/dev/null;
 
 .PHONY: stack-deploy
 stack-deploy: digest
